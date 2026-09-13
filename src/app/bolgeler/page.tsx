@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { districts } from "@/lib/districts";
-import { PageHeader } from "@/components/PageHeader";
+import { site, telHref, waLink } from "@/lib/site";
+import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { Button } from "@/components/Button";
 import { Reveal } from "@/components/Reveal";
-import { CtaBand } from "@/components/CtaBand";
 import { Icon } from "@/components/Icon";
 
 export const metadata: Metadata = {
@@ -13,70 +14,109 @@ export const metadata: Metadata = {
   alternates: { canonical: "/bolgeler" },
 };
 
+/* Bölgeler sayfası bilinçli olarak tek ritimli ve sessizdir: teknik zemin,
+   kart çerçevesi ve bölüm etiketi tekrarı kullanılmaz. Sayfanın kimliğini
+   tipografi, ince ayraçlar ve tek bir keşif bloğu taşır. */
 export default function DistrictsPage() {
   return (
     <>
-      <PageHeader
-        label="Bölgeler"
-        breadcrumbs={[{ label: "Bölgeler" }]}
-        title={
-          <>
-            Bakırköy&apos;den Florya&apos;ya,{" "}
-            <em className="italic text-brass-deep">yerinde</em> hizmet.
-          </>
-        }
-        intro="Merkezimiz Bakırköy'de; ekiplerimiz beş bölgede aynı gün keşfe gelir. Her bölgenin imar koşullarını, yapı stokunu ve beklentilerini ayrı ayrı biliyoruz."
-      />
+      <section className="border-b border-ink/10">
+        <div className="page-shell pb-11 pt-6 lg:pb-14 lg:pt-8">
+          <Breadcrumbs items={[{ label: "Bölgeler" }]} />
 
-      <section className="mx-auto max-w-7xl px-5 py-20 lg:px-8 lg:py-28">
-        <p className="max-w-[var(--measure)] text-[15px] leading-relaxed text-muted">
-          Aşağıdaki beş bölge güncel hizmet kapsamımızdır. Geçmiş proje
-          fotoğrafları Etiler (İstanbul) ve Karaburun (İzmir) konumlarına
-          aittir; bu bölgelerde yapılmış iş gibi gösterilmez.
-        </p>
-        <div className="mt-10 border-b border-ink/10">
-          {districts.map((district, index) => (
-            <Reveal key={district.slug}>
-              <Link
-                href={`/bolgeler/${district.slug}`}
-                className="group relative -mx-4 grid gap-5 border-t border-ink/10 px-4 py-8 transition-colors duration-500 hover:border-brass/40 hover:bg-paper-deep/40 lg:grid-cols-[minmax(0,15rem)_minmax(0,1fr)_auto] lg:items-center lg:gap-10 lg:py-10"
-              >
-                <span
-                  aria-hidden="true"
-                  className="pointer-events-none absolute -top-px left-0 h-px w-0 bg-brass transition-[width] duration-700 ease-[cubic-bezier(.16,1,.3,1)] group-hover:w-full"
-                />
-                <div className="flex items-baseline gap-5 lg:min-w-[14rem]">
-                  <span className="eyebrow text-muted">
-                    {String(index + 1).padStart(2, "0")}
-                  </span>
-                  <div>
-                    <span className="font-display text-3xl transition-colors duration-300 group-hover:text-brass-deep">
-                      {district.name}
-                    </span>
-                    <p className="eyebrow mt-2 text-brass-deep">
-                      {district.role}
-                    </p>
-                  </div>
-                </div>
+          <h1
+            className="mt-9 font-display text-[2.4rem] leading-[1.06] tracking-tight sm:max-w-[26ch] sm:text-[2.9rem] lg:mt-12 lg:text-[3.4rem]"
+          >
+            <span className="sm:block">Bakırköy&apos;den Florya&apos;ya,</span>{" "}
+            <span className="sm:block">
+              <em className="italic text-brass-deep">yerinde</em> hizmet.
+            </span>
+          </h1>
 
-                <p className="text-[15px] leading-relaxed text-muted lg:max-w-3xl">
-                  {district.summary}
-                </p>
-
-                <span className="hidden h-10 w-10 items-center justify-center border border-ink/20 transition-colors duration-300 group-hover:border-brass group-hover:bg-brass group-hover:text-ink lg:inline-flex">
-                  <Icon name="arrowUpRight" className="h-4 w-4" />
-                </span>
-              </Link>
-            </Reveal>
-          ))}
+          <p className="mt-6 max-w-[var(--measure)] text-[15px] leading-relaxed text-muted sm:text-base">
+            Merkezimiz Bakırköy&apos;de; ekiplerimiz beş bölgede aynı gün keşfe
+            gelir. Her bölgenin imar koşullarını, yapı stokunu ve
+            beklentilerini ayrı ayrı biliyoruz.
+          </p>
         </div>
       </section>
 
-      <CtaBand
-        label="Bölgenizde keşif"
-        title="Bölgenizdeki yapıyı yerinde inceleyelim."
-        text="Bulunduğunuz sokaktaki yapı stokunu ve imar durumunu biliyoruz. Ücretsiz keşif için bir telefon yeterli."
-      />
+      <section
+        aria-label="Hizmet bölgeleri listesi"
+        className="page-shell grid gap-12 py-14 lg:grid-cols-12 lg:gap-16 lg:py-20"
+      >
+        <div className="lg:col-span-8">
+          <ul className="border-t border-ink/10">
+            {districts.map((district, index) => (
+              <li key={district.slug} className="border-b border-ink/10">
+                <Reveal delay={index * 60}>
+                  <Link
+                    href={`/bolgeler/${district.slug}`}
+                    className="group grid gap-2 py-6 lg:grid-cols-[11rem_minmax(0,1fr)_1.25rem] lg:items-baseline lg:gap-10 lg:py-7"
+                  >
+                    <span className="flex items-baseline justify-between gap-4">
+                      <span className="font-display text-[1.6rem] leading-none transition-colors duration-300 group-hover:text-brass-deep lg:text-[1.85rem]">
+                        {district.name}
+                      </span>
+                      <Icon
+                        name="arrowRight"
+                        className="h-4 w-4 shrink-0 text-muted transition-colors duration-300 group-hover:text-brass lg:hidden"
+                      />
+                    </span>
+
+                    <span className="text-[15px] leading-relaxed text-muted lg:pt-1">
+                      {district.summary}
+                    </span>
+
+                    <Icon
+                      name="arrowRight"
+                      className="hidden h-4 w-4 text-muted/60 transition-[color,transform] duration-300 group-hover:translate-x-1 group-hover:text-brass lg:block"
+                    />
+                  </Link>
+                </Reveal>
+              </li>
+            ))}
+          </ul>
+
+          <p className="mt-6 text-[11px] leading-relaxed text-muted">
+            Bu beş bölge güncel hizmet kapsamımızdır. Arşivdeki proje
+            fotoğrafları Etiler (İstanbul) ve Karaburun (İzmir) konumlarına
+            aittir; bu bölgelerde yürütülmüş iş olarak gösterilmez.
+          </p>
+        </div>
+
+        <aside className="lg:col-span-4 lg:sticky lg:top-[calc(var(--header-h)_+_2.5rem)] lg:self-start">
+          <p className="tag text-brass-deep">Ücretsiz keşif</p>
+          <p className="mt-4 max-w-[34ch] text-[15px] leading-relaxed text-muted">
+            Bölgenizdeki yapıyı yerinde inceleyelim. Keşif ve ön değerlendirme
+            ücretsizdir.
+          </p>
+
+          <a
+            href={telHref}
+            className="link-underline mt-7 inline-block font-display text-[1.75rem] leading-none transition-colors duration-300 hover:text-brass-deep"
+          >
+            {site.phoneDisplay}
+          </a>
+          <p className="mt-3 text-[12px] tracking-wide text-muted">
+            {site.hours}
+          </p>
+
+          <div className="mt-7 hidden flex-col gap-3 lg:flex">
+            <Button href={telHref} icon="phone">
+              Hemen ara
+            </Button>
+            <Button
+              href={waLink()}
+              variant="outline"
+              icon="whatsapp"
+              external
+            >
+              {"WhatsApp'tan yaz"}
+            </Button>
+          </div>
+        </aside>
+      </section>
     </>
   );
 }

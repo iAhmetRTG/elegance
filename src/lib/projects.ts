@@ -45,10 +45,8 @@ export type Project = {
   duration: string;
   /** Sunum tablosunda alanı belirtilmeyen projelerde tanımsızdır. */
   area?: string;
-  /** Teyit edilmemiş durum bilgisi yazılmaz. */
-  status?: string;
-  /** Durum çelişkisi olan projeler için kısa teyit notu. */
-  statusNote?: string;
+  /* Durum bilgisi (tamamlandı / devam ediyor) bilinçli olarak taşınmaz:
+     sunum dosyasındaki kayıtlarla çelişiyor ve arayüzde gösterilmez. */
   cover?: string;
   coverAlt?: string;
   coverKind?: MediaKind;
@@ -71,20 +69,6 @@ export const MEDIA_LABELS: Record<MediaKind, string> = {
 
 export const projects: Project[] = [
   {
-    slug: "proje-cicek",
-    name: "Proje Çiçek",
-    buildingName: "Çiçek Apt.",
-    location: "Etiler",
-    city: "İstanbul",
-    contractYear: "2014",
-    occupancyYear: "2014",
-    duration: "10 ay",
-    status: "Tamamlandı",
-    /* Sunum sayfa 2'deki dört görselden hangisinin bu projeye ait olduğu kesin
-       olmadığı için tekil görsel atanmaz; kart tipografik kalır. */
-    media: [],
-  },
-  {
     slug: "proje-mercan",
     name: "Proje Mercan",
     buildingName: "Dilmen Apt.",
@@ -94,7 +78,6 @@ export const projects: Project[] = [
     occupancyYear: "2017",
     duration: "12 ay",
     area: "2.400 m²",
-    status: "Tamamlandı",
     cover: enhanced("proje-mercan--hero-enhanced.webp"),
     coverAlt: "Proje Mercan dış cephesinin tamamlanmış hâli",
     coverKind: "enhanced-photo",
@@ -157,7 +140,6 @@ export const projects: Project[] = [
     occupancyYear: "2018",
     duration: "11 ay",
     area: "1.850 m²",
-    status: "Tamamlandı",
     cover: enhanced("proje-ametist--hero-enhanced.webp"),
     coverAlt: "Proje Ametist dış cephesinin tamamlanmış hâli",
     coverKind: "enhanced-photo",
@@ -243,7 +225,6 @@ export const projects: Project[] = [
     occupancyYear: "2019",
     duration: "21 ay",
     area: "6.500 m²",
-    status: "Tamamlandı",
     cover: enhanced("proje-kuvars--hero-enhanced.webp"),
     coverAlt: "Proje Kuvars bloklarının tamamlanmış dış cephesi",
     coverKind: "enhanced-photo",
@@ -314,9 +295,7 @@ export const projects: Project[] = [
     occupancyYear: "2021",
     duration: "10 ay",
     /* Sunumda proje adı sayfa 2'de "Topoz", sayfa 4 ve 19'da "Topaz" geçer.
-       Ayrıca durum çelişkisi var: tablo iskân 2021 derken görsel sayfasında
-       "Devam Ediyor" yazar. İkisi de teyit edilene kadar durum gösterilmez. */
-    statusNote: "Durum teyit edilecek",
+       Durum bilgisi sayfalarda çeliştiği için hiçbir yerde yayınlanmaz. */
     cover: enhanced("proje-topaz--hero-enhanced.webp"),
     coverAlt: "Proje Topaz şantiye fotoğrafı, uygulama aşaması",
     coverKind: "construction",
@@ -353,7 +332,6 @@ export const projects: Project[] = [
     occupancyYear: "2024",
     duration: "21 ay",
     area: "4.200 m²",
-    status: "Tamamlandı",
     cover: enhanced("terrace-house--hero-enhanced.webp"),
     coverAlt: "Terrace House yerleşkesinin tamamlanmış hâli",
     coverKind: "enhanced-photo",
@@ -399,7 +377,6 @@ export const projects: Project[] = [
     occupancyYear: "2024",
     duration: "21 ay",
     area: "5.250 m²",
-    status: "Tamamlandı",
     cover: enhanced("hill-stone--hero-enhanced.webp"),
     coverAlt: "Hill Stone yerleşkesinin tamamlanmış hâli",
     coverKind: "enhanced-photo",
@@ -433,6 +410,20 @@ export const projects: Project[] = [
         sourcePage: 23,
       },
     ],
+  },
+  {
+    slug: "proje-cicek",
+    name: "Proje Çiçek",
+    buildingName: "Çiçek Apt.",
+    location: "Etiler",
+    city: "İstanbul",
+    contractYear: "2014",
+    occupancyYear: "2014",
+    duration: "10 ay",
+    /* Sunum sayfa 2'deki dört görselden hangisinin bu projeye ait olduğu kesin
+       olmadığı için tekil görsel atanmaz; kart tipografik kalır. Görselsiz
+       kayıt, listede en sonda tutulur. */
+    media: [],
   },
 ];
 

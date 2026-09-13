@@ -3,8 +3,8 @@ import { Reveal } from "./Reveal";
 
 export type { ProjectCardData };
 
-/* Filtreler geçmiş projelerin gerçek konumlarıdır. Durum filtresi, Proje Topaz
-   durumu teyit edilene kadar eklenmez (bkz. CONTENT_INVENTORY.md § 4). */
+/* Filtreler geçmiş projelerin gerçek konumlarıdır; kayıtlarda yayınlanan
+   başka bir kırılım (durum, tip) bulunmaz. */
 export type ProjectFilter = "all" | "Etiler" | "Karaburun";
 
 const FILTERS: { key: ProjectFilter; label: string }[] = [

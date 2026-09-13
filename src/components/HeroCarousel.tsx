@@ -247,11 +247,11 @@ export function HeroCarousel() {
           arkasinda, alt seritte ve iki alt kosede toplanir. */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-[44%] bg-[linear-gradient(to_top,rgba(18,16,10,0.72)_0%,rgba(18,16,10,0.36)_36%,rgba(18,16,10,0.1)_68%,rgba(18,16,10,0)_100%)] lg:h-[40%]"
+        className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-[50%] bg-[linear-gradient(to_top,rgba(18,16,10,0.8)_0%,rgba(18,16,10,0.66)_25%,rgba(18,16,10,0.52)_45%,rgba(18,16,10,0.3)_72%,rgba(18,16,10,0)_100%)] lg:h-[42%] lg:bg-[linear-gradient(to_top,rgba(18,16,10,0.72)_0%,rgba(18,16,10,0.46)_24%,rgba(18,16,10,0.24)_52%,rgba(18,16,10,0.07)_78%,rgba(18,16,10,0)_100%)]"
       />
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 z-10 bg-[radial-gradient(118%_40%_at_6%_100%,rgba(18,16,10,0.58),transparent_74%)] lg:bg-[radial-gradient(46%_44%_at_0%_100%,rgba(18,16,10,0.56),transparent_74%)]"
+        className="pointer-events-none absolute inset-0 z-10 bg-[radial-gradient(118%_42%_at_6%_100%,rgba(18,16,10,0.66),transparent_76%)] lg:bg-[radial-gradient(52%_52%_at_0%_100%,rgba(18,16,10,0.68),transparent_76%)]"
       />
       <div
         aria-hidden="true"
@@ -262,28 +262,29 @@ export function HeroCarousel() {
         <div className="mx-auto flex max-w-[1440px] flex-col gap-8 px-5 pb-[calc(1.75rem_+_env(safe-area-inset-bottom))] lg:flex-row lg:items-end lg:justify-between lg:gap-16 lg:px-14 lg:pb-12 xl:px-16">
           <div
             aria-live={interacted ? "polite" : "off"}
-            className="max-w-md [text-shadow:0_1px_18px_rgba(18,16,10,0.8)] lg:max-w-lg"
+            className="max-w-md [text-shadow:0_1px_2px_rgba(18,16,10,0.9),0_2px_20px_rgba(18,16,10,0.65)] lg:max-w-lg"
           >
-            <p className="text-[10px] font-semibold uppercase tracking-[0.26em] text-paper/65 lg:text-[11px]">
+            <p className="text-[10px] font-semibold uppercase tracking-[0.26em] text-paper/90 lg:text-[11px]">
               {"Proje / "}
               {active.id}
             </p>
             <p className="mt-3 font-display text-[2.1rem] leading-[1.05] lg:mt-4 lg:text-[3.6rem] xl:text-[4rem]">
               {active.name}
             </p>
-            <p className="mt-3 text-[13px] tracking-wide text-paper/80 lg:mt-4 lg:text-[15px]">
+            <p className="mt-3 text-[13px] tracking-wide text-paper/90 lg:mt-4 lg:text-[15px]">
               {metaLine(active)}
             </p>
             <Link
               href={active.href}
-              className="mt-5 inline-flex items-center gap-3 border-b border-paper/40 pb-1.5 text-[13px] tracking-wide text-paper transition-colors duration-300 hover:border-paper lg:mt-6 lg:text-sm"
+              className="mt-5 inline-flex items-center gap-3 border-b border-paper/50 pb-1.5 text-[13px] tracking-wide text-paper transition-colors duration-300 hover:border-paper lg:mt-6 lg:text-sm"
             >
               Projeyi incele
               <Icon name="arrowUpRight" className="h-4 w-4" />
             </Link>
           </div>
 
-          <div className="flex flex-col gap-8 lg:w-auto lg:items-end lg:gap-16">
+          {/* lg:mr-10 sag alttaki WhatsApp butonunun kapladigi alani acik birakir. */}
+          <div className="flex flex-col gap-8 lg:mr-10 lg:w-auto lg:items-end lg:gap-16">
             <div className="hidden lg:block">
               <Slogan className="text-right text-[1.2rem] leading-[1.5] xl:text-[1.35rem]" />
             </div>
@@ -304,7 +305,7 @@ export function HeroCarousel() {
                     className="group/bar py-3"
                   >
                     <span
-                      className={`block h-[2px] w-9 transition-colors duration-500 lg:w-11 ${
+                      className={`block h-[2px] w-7 transition-colors duration-500 lg:w-9 ${
                         i === index
                           ? "bg-paper"
                           : "bg-paper/30 group-hover/bar:bg-paper/60"
@@ -314,7 +315,7 @@ export function HeroCarousel() {
                 ))}
               </div>
 
-              <span className="eyebrow text-paper/75 tabular-nums">
+              <span className="eyebrow text-paper/85 tabular-nums">
                 {counter}
               </span>
 

@@ -17,7 +17,7 @@ export function Footer() {
         </span>
       </div>
 
-      <div className="mx-auto max-w-7xl px-5 pb-28 pt-16 lg:px-8 lg:pb-16 lg:pt-20">
+      <div className="mx-auto max-w-7xl px-5 pb-[calc(7rem_+_env(safe-area-inset-bottom))] pt-16 lg:px-8 lg:pb-16 lg:pt-20">
         <div className="grid gap-12 lg:grid-cols-12 lg:gap-8">
           <div className="lg:col-span-4">
             <Logo tone="light" variant="stacked" />

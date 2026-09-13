@@ -46,7 +46,7 @@ export function MobileCtaBar() {
     <nav
       aria-label="Hızlı iletişim"
       aria-hidden={visible ? undefined : true}
-      className={`fixed inset-x-0 bottom-0 z-50 mx-auto w-full max-w-md px-3 pb-[calc(env(safe-area-inset-bottom)+0.75rem)] transition-[opacity,transform] duration-500 ease-out motion-reduce:transition-none lg:hidden ${
+      className={`fixed inset-x-0 bottom-0 z-50 mx-auto w-full max-w-md px-3 pb-[calc(env(safe-area-inset-bottom)+0.75rem)] transition-[opacity,translate] duration-500 ease-out motion-reduce:transition-none lg:hidden ${
         visible
           ? "visible translate-y-0 opacity-100"
           : "invisible translate-y-4 opacity-0"

@@ -185,6 +185,31 @@ body {
   color: transparent;
 }
 
+/* Acik zemin icin baslik foyu: koyu murekkep tonundan pirince akan doku. */
+.foil-ink {
+  background-image: linear-gradient(
+    100deg,
+    #12100a 0%,
+    #1d1608 50%,
+    #7a571f 82%,
+    #a87c35 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Arşiv başlığı altındaki pirinç çizgi: solda dolu, sağda erir. */
+.rule-brass {
+  height: 1px;
+  background-image: linear-gradient(
+    90deg,
+    rgb(177 131 63 / 0.95) 0%,
+    rgb(177 131 63 / 0.3) 38%,
+    transparent 100%
+  );
+}
+
 .ghost {
   color: transparent;
   background-image: linear-gradient(

@@ -36,7 +36,7 @@ export function ProjectsBoard({ no = "05" }: { no?: string }) {
           <div>
             <SectionLabel no={no}>Geçmiş projeler</SectionLabel>
             <h2 className="mt-5 font-display text-4xl leading-tight lg:text-5xl">
-              Tamamlanmış işlerimizden
+              Geçmiş işlerimizden
             </h2>
           </div>
 
@@ -74,10 +74,6 @@ export function ProjectsBoard({ no = "05" }: { no?: string }) {
                     aria-hidden="true"
                     className="absolute inset-0 bg-gradient-to-t from-ink/70 via-ink/10 to-transparent"
                   />
-
-                  <span className="absolute left-4 top-4 bg-ink px-3 py-1.5 text-[10px] font-semibold uppercase tracking-[0.2em] text-paper">
-                    {feature.status ?? feature.statusNote}
-                  </span>
 
                   <div className="absolute inset-x-4 bottom-4 flex flex-wrap items-end justify-between gap-4">
                     <div>
@@ -132,9 +128,6 @@ export function ProjectsBoard({ no = "05" }: { no?: string }) {
                           className="object-cover"
                         />
                       ) : null}
-                      <span className="absolute left-2.5 top-2.5 bg-ink px-2 py-1 text-[9px] font-semibold uppercase tracking-[0.18em] text-paper">
-                        {project.status ?? project.statusNote}
-                      </span>
                     </div>
 
                     <div className="min-w-0 flex-1">

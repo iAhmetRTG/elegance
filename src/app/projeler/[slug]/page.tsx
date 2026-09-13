@@ -71,8 +71,6 @@ export default async function ProjectPage({
     { label: "Sözleşme", value: project.contractYear },
     { label: "İskân", value: project.occupancyYear },
     { label: "Süre", value: project.duration },
-    { label: "Durum", value: project.status },
-    { label: "Durum notu", value: project.statusNote },
   ].filter((spec) => Boolean(spec.value));
 
   const projectJsonLd = {
@@ -198,9 +196,7 @@ export default async function ProjectPage({
                 {project.name} ({project.buildingName}), {project.contractYear}{" "}
                 sözleşme yılında {project.location}&apos;de başlanan ve{" "}
                 {project.duration} süren bir {site.legalName} işidir.
-                {project.statusNote
-                  ? ` Sunum dosyasındaki tabloda iskân yılı ${project.occupancyYear} olarak kayıtlıdır; aynı dosyanın görsel sayfasında proje "Devam Ediyor" olarak işaretlenmiştir. Bu çelişki teyit edilene kadar durum bilgisi gösterilmez.`
-                  : ` İskân kaydı ${project.occupancyYear} yılına aittir.`}
+                {` Künyedeki iskân yılı ${project.occupancyYear} olarak kayıtlıdır.`}
               </p>
               {constructionCount > 0 ? (
                 <p>

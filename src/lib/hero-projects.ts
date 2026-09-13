@@ -7,7 +7,14 @@
 
    Her slaytın künyesi gerçek proje adını ve gerçek konumunu gösterir; hedef
    hizmet bölgeleri (Bakırköy, Yeşilköy, Ataköy, Yeşilyurt, Florya) yalnızca
-   ana hero metninde anılır, slayt künyesine karıştırılmaz. */
+   ana hero metninde anılır, slayt künyesine karıştırılmaz.
+
+   Slayt sırası iki coğrafyayı gruplar: önce Etiler (İstanbul) projeleri,
+   ardından Karaburun (İzmir) yerleşkeleri.
+
+   Proje Kuvars ve Hill Stone için pakette yalnızca geniş desktop varyantı
+   vardır; ayrı bir 4:5 mobil kırpım üretilmediği için aynı dosya iki
+   kırılımda da kullanılır ve mobil kadraj `mobilePosition` ile ayarlanır. */
 
 export type HeroProject = {
   id: string;
@@ -59,6 +66,20 @@ export const heroProjects: HeroProject[] = [
   },
   {
     id: "03",
+    slug: "proje-kuvars",
+    mediaKind: "enhanced-photo",
+    name: "Proje Kuvars",
+    location: "Etiler, İstanbul",
+    note: "Tamamlanmış proje · 2017 — 2019",
+    desktopImage: enhanced("proje-kuvars--hero-enhanced.webp"),
+    mobileImage: enhanced("proje-kuvars--hero-enhanced.webp"),
+    desktopPosition: "center center",
+    mobilePosition: "center center",
+    alt: "Proje Kuvars bloklarının tamamlanmış dış cephesi",
+    href: "/projeler/proje-kuvars",
+  },
+  {
+    id: "04",
     slug: "terrace-house",
     mediaKind: "enhanced-photo",
     name: "Terrace House",
@@ -70,5 +91,19 @@ export const heroProjects: HeroProject[] = [
     mobilePosition: "center center",
     alt: "Terrace House yerleşkesinin tamamlanmış hâli",
     href: "/projeler/terrace-house",
+  },
+  {
+    id: "05",
+    slug: "hill-stone",
+    mediaKind: "enhanced-photo",
+    name: "Hill Stone",
+    location: "Karaburun, İzmir",
+    note: "Tamamlanmış proje · 2022 — 2024",
+    desktopImage: enhanced("hill-stone--hero-enhanced.webp"),
+    mobileImage: enhanced("hill-stone--hero-enhanced.webp"),
+    desktopPosition: "center center",
+    mobilePosition: "center center",
+    alt: "Hill Stone yerleşkesinin tamamlanmış hâli",
+    href: "/projeler/hill-stone",
   },
 ];

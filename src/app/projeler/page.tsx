@@ -35,18 +35,6 @@ export default function ProjectsPage() {
       <ProjectsListing
         projects={cards}
         breadcrumbs={[{ label: "Projeler" }]}
-        title={
-          <>
-            Arşivdeki{" "}
-            <em className="italic text-brass-deep">gerçek</em> projeler
-          </>
-        }
-        intro="Şirket sunum dosyasında yer alan yedi geçmiş proje kaydı. Künyedeki yapı adı, konum, alan, sözleşme ve iskân yılları ile süre bilgileri sunumdaki tablodan alınmıştır. Proje konumları geçmiş işlerin gerçek yerleridir; güncel hizmet bölgeleri Bakırköy, Yeşilköy, Ataköy, Yeşilyurt ve Florya'dır."
-        media={{
-          src: "/media/elegance-projects/enhanced/proje-kuvars--hero-enhanced.webp",
-          alt: "Proje Kuvars bloklarının tamamlanmış dış cephesi",
-          caption: "Proje Kuvars · Etiler, İstanbul",
-        }}
       />
 
       <CtaBand

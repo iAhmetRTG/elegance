@@ -5,13 +5,11 @@ import { JsonLd } from "@/components/JsonLd";
 import { HeroCarousel } from "@/components/HeroCarousel";
 import { ConstructionSequence } from "@/components/scenes/ConstructionSequence";
 import { StatsScale } from "@/components/home/StatsScale";
-import { CompanyProfile } from "@/components/home/CompanyProfile";
 import { ServicesSheets } from "@/components/home/ServicesSheets";
 import { StandardsBrief } from "@/components/home/StandardsBrief";
 import { ProjectsBoard } from "@/components/home/ProjectsBoard";
 import { TransformationSteps } from "@/components/home/TransformationSteps";
 import { InteriorSelection } from "@/components/home/InteriorSelection";
-import { ProcessSchedule } from "@/components/home/ProcessSchedule";
 import { DistrictAtlas } from "@/components/home/DistrictAtlas";
 import { FaqSheet } from "@/components/home/FaqSheet";
 import { CtaBand } from "@/components/CtaBand";
@@ -68,23 +66,19 @@ export default function HomePage() {
 
       <StatsScale />
 
-      <CompanyProfile no="02" />
+      <ServicesSheets no="02" />
 
-      <ServicesSheets no="03" />
+      <StandardsBrief no="03" />
 
-      <StandardsBrief no="04" />
+      <ProjectsBoard no="04" />
 
-      <ProjectsBoard no="05" />
+      <TransformationSteps no="05" />
 
-      <TransformationSteps no="06" />
+      <InteriorSelection no="06" />
 
-      <InteriorSelection no="07" />
+      <DistrictAtlas no="07" />
 
-      <ProcessSchedule no="08" />
-
-      <DistrictAtlas no="09" />
-
-      <FaqSheet no="10" />
+      <FaqSheet no="08" />
 
       <CtaBand showMarks />
     </>

@@ -16,8 +16,6 @@ export type ProjectCardData = Pick<
   | "occupancyYear"
   | "duration"
   | "area"
-  | "status"
-  | "statusNote"
   | "cover"
   | "coverAlt"
   | "coverKind"
@@ -28,8 +26,6 @@ export function toProjectCardData(project: Project): ProjectCardData {
 }
 
 export function ProjectCard({ project }: { project: ProjectCardData }) {
-  /* Durumu teyit edilmemiş kayıtlarda (Proje Topaz) iddia yerine not gösterilir. */
-  const stateLabel = project.status ?? project.statusNote;
   const kindLabel =
     project.coverKind && project.coverKind !== "photo"
       ? MEDIA_LABELS[project.coverKind]
@@ -63,8 +59,7 @@ export function ProjectCard({ project }: { project: ProjectCardData }) {
 
       <div className="mt-4 flex items-start justify-between gap-4">
         <div className="min-w-0">
-          <span className="eyebrow block text-brass-deep">{stateLabel}</span>
-          <h3 className="mt-2 font-display text-xl leading-snug transition-colors duration-300 group-hover:text-brass-deep lg:text-[1.6rem]">
+          <h3 className="font-display text-xl leading-snug transition-colors duration-300 group-hover:text-brass-deep lg:text-[1.6rem]">
             {project.name}
           </h3>
           <p className="mt-2 flex flex-wrap items-center gap-x-2 gap-y-1 text-[11px] uppercase tracking-[0.14em] text-muted">
