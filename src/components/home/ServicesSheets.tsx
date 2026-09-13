@@ -16,21 +16,21 @@ export function ServicesSheets({ no = "03" }: { no?: string }) {
 
   return (
     <section className="cv-auto drafting border-b border-ink/10">
-      <div className="mx-auto max-w-7xl px-5 py-20 lg:px-8 lg:py-28">
-        <div className="flex flex-wrap items-end justify-between gap-8">
+      <div className="mx-auto max-w-7xl px-5 py-14 lg:px-8 lg:py-28">
+        <div className="flex flex-wrap items-end justify-between gap-x-8 gap-y-3 lg:gap-y-8">
           <div>
             <SectionLabel no={no}>Hizmetler</SectionLabel>
-            <h2 className="mt-5 max-w-xl font-display text-4xl leading-tight lg:text-5xl">
+            <h2 className="mt-4 max-w-xl font-display text-[2rem] leading-[1.12] lg:mt-5 lg:text-5xl lg:leading-tight">
               Uçtan uca inşaat çözümleri
             </h2>
           </div>
-          <p className="max-w-sm text-[15px] leading-relaxed text-muted">
+          <p className="max-w-sm text-[13px] leading-relaxed text-muted lg:text-[15px]">
             Altı hizmet kalemi; kapsamı, süreci ve teslim biçimiyle birlikte
             aşağıda özetlenmiştir.
           </p>
         </div>
 
-        <div className="mt-14 grid gap-10 lg:grid-cols-12 lg:gap-8">
+        <div className="mt-8 grid gap-10 lg:mt-14 lg:grid-cols-12 lg:gap-8">
           <div className="lg:col-span-4">
             <ul className="border-t border-ink/15">
               {services.map((item, index) => {
@@ -43,7 +43,7 @@ export function ServicesSheets({ no = "03" }: { no?: string }) {
                       onFocus={() => setActive(index)}
                       onClick={() => setActive(index)}
                       aria-pressed={isActive}
-                      className="group relative flex w-full items-center gap-4 py-4 text-left"
+                      className="group relative flex w-full items-center gap-4 py-3.5 text-left lg:py-4"
                     >
                       <span
                         aria-hidden="true"
@@ -60,14 +60,14 @@ export function ServicesSheets({ no = "03" }: { no?: string }) {
                       </span>
                       <span className="min-w-0 flex-1">
                         <span
-                          className={`block font-display text-xl leading-snug lg:text-2xl ${
+                          className={`block font-display text-[1.125rem] leading-snug lg:text-2xl ${
                             isActive ? "text-ink" : "text-ink/65"
                           }`}
                         >
                           {item.name}
                         </span>
                         <span
-                          className="mt-1 block text-[13px] leading-relaxed text-muted"
+                          className="mt-1 hidden text-[13px] leading-relaxed text-muted lg:block"
                         >
                           {item.tagline}
                         </span>
@@ -84,9 +84,66 @@ export function ServicesSheets({ no = "03" }: { no?: string }) {
               })}
             </ul>
 
+            {/* Mobilde seçili hizmetin özeti: dizinin hemen altında açılan pafta.
+                Çizimli büyük pafta yalnızca geniş ekranda gösterilir. */}
+            <article key={service.slug} className="sheet sheet-in mt-5 lg:hidden">
+              <div className="flex items-center justify-between gap-3 border-b border-ink/10 px-4 py-3">
+                <span className="flex min-w-0 items-center gap-2.5">
+                  <span className="grid h-7 w-7 shrink-0 place-items-center border border-ink/15 text-brass">
+                    <Icon name={service.icon} className="h-4 w-4" />
+                  </span>
+                  <span className="truncate font-display text-[15px]">
+                    {service.name}
+                  </span>
+                </span>
+                <span className="shrink-0 text-[12px] tracking-wide text-muted">
+                  {sheetNo} / {String(TOTAL).padStart(2, "0")}
+                </span>
+              </div>
+
+              <div className="px-4 pb-5 pt-4">
+                <p className="font-display text-[15px] italic leading-snug text-brass-deep">
+                  {service.tagline}
+                </p>
+                <p className="mt-2.5 text-[13px] leading-relaxed text-muted">
+                  {service.summary}
+                </p>
+
+                <p className="tag mt-4 flex items-center gap-2.5 text-muted">
+                  Kapsam
+                  <span aria-hidden="true" className="leader-dots flex-1" />
+                </p>
+                <ul className="mt-2.5 space-y-1.5 sm:columns-2 sm:gap-x-8 sm:space-y-0 sm:[&>li]:break-inside-avoid sm:[&>li]:py-0.5">
+                  {service.features.slice(0, 4).map((feature) => (
+                    <li
+                      key={feature}
+                      className="flex items-start gap-2.5 text-[13px] leading-snug text-muted"
+                    >
+                      <Icon
+                        name="check"
+                        className="mt-[3px] h-3.5 w-3.5 shrink-0 text-brass"
+                      />
+                      {feature}
+                    </li>
+                  ))}
+                </ul>
+
+                <Link
+                  href={`/hizmetler/${service.slug}`}
+                  className="group mt-5 inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.2em] text-ink"
+                >
+                  Detayları gör
+                  <Icon
+                    name="arrowUpRight"
+                    className="h-3.5 w-3.5 text-brass transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                  />
+                </Link>
+              </div>
+            </article>
+
             <Link
               href="/hizmetler"
-              className="group mt-6 inline-flex items-center gap-3 text-[11px] font-semibold uppercase tracking-[0.2em] text-ink"
+              className="group mt-5 flex w-full items-center justify-between gap-3 border border-ink/25 px-5 py-3.5 text-[11px] font-semibold uppercase tracking-[0.2em] text-ink transition-colors duration-300 active:bg-ink active:text-paper sm:w-fit sm:justify-start sm:gap-4 sm:px-6 lg:mt-6 lg:inline-flex lg:border-0 lg:px-0 lg:py-0 lg:active:bg-transparent lg:active:text-ink"
             >
               Tüm hizmetler
               <Icon
@@ -96,7 +153,7 @@ export function ServicesSheets({ no = "03" }: { no?: string }) {
             </Link>
           </div>
 
-          <div className="lg:col-span-8">
+          <div className="hidden lg:col-span-8 lg:block">
             <article key={service.slug} className="sheet">
               <div className="flex flex-wrap items-center justify-between gap-3 border-b border-ink/10 px-5 py-4 lg:px-7">
                 <span className="font-display text-lg">{service.name}</span>
