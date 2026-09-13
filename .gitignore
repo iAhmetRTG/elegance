@@ -39,3 +39,11 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# local working artifacts (not part of the site source)
+/tmp/
+/screenshots/
+
+# large handoff binaries; the copies used by the site live in public/
+/handoff/elegance-pdf-site-package/assets/
+/handoff/elegance-pdf-site-package/source-document/
