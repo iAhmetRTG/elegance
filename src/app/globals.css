@@ -264,155 +264,75 @@ body {
   background-size: 100% 1px;
 }
 
-/* Ana sayfa menusundeki "Kentsel Donusum" bagi markanin foy dokusuyla one
-   cikarilir: acik sicak altin gradyan, altinda ince pirinc hatti ve cok yavas
-   bir isik gecisi. Agir neon yerine kontrollu bir vurgu hedeflenir.
-   Header acik zemine gectiginde ayni doku murekkebe cekilir. */
-/* `.nav-glow` adlari onceki surumun uyumlulugu icin ayni kurallari paylasir. */
+/* Ana sayfa menusundeki "Kentsel Donusum" bagi: hangi fotograf gelirse gelsin
+   okunakli kalan ince bir cam kapsul ve pirinc hat. Bulanik isik lekesi ve
+   gradyan metin kaldirildi; vurgu artik temiz ve kontrollu durur.
+   `.nav-glow` adlari onceki Header surumuyle uyumluluk icin ayni kurallari
+   paylasir. */
 .nav-spotlight,
 .nav-glow {
   position: relative;
-  background-image: linear-gradient(
-    100deg,
-    #c8a05c 0%,
-    #fff3d6 24%,
-    #dcbf85 48%,
-    #fffaf0 72%,
-    #cfa95f 100%
-  );
-  background-size: 240% 100%;
-  background-position: 0% 50%;
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  text-shadow:
-    0 1px 12px rgb(18 16 10 / 0.5),
-    0 0 22px rgb(224 196 140 / 0.42);
-  animation: nav-sheen 16s ease-in-out infinite;
-}
-
-.nav-spotlight::after,
-.nav-spotlight-ink::after,
-.nav-glow::after,
-.nav-glow-ink::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: -5px;
-  height: 1px;
-  opacity: 0.7;
-  transition: opacity 0.5s var(--ease-out-expo);
-}
-
-/* Metnin arkasindaki yumusak isik: baglantiyi cerceve veya buton gibi
-   gostermeden, yalnizca bir isik lekesiyle one cikarir. */
-.nav-spotlight::before,
-.nav-spotlight-ink::before,
-.nav-glow::before,
-.nav-glow-ink::before {
-  content: "";
-  position: absolute;
-  inset: -12px -14px;
+  margin-inline: -5px;
+  padding: 6px 14px;
   border-radius: 999px;
-  pointer-events: none;
-}
-
-.nav-spotlight::before,
-.nav-glow::before {
-  background: radial-gradient(
-    62% 120% at 50% 50%,
-    rgb(224 196 140 / 0.24),
-    transparent 74%
-  );
-}
-
-.nav-spotlight-ink::before,
-.nav-glow-ink::before {
-  background: radial-gradient(
-    62% 120% at 50% 50%,
-    rgb(177 131 63 / 0.18),
-    transparent 74%
-  );
-}
-
-.nav-spotlight::after,
-.nav-glow::after {
+  border: 1px solid rgb(224 196 140 / 0.42);
   background-image: linear-gradient(
-    90deg,
-    transparent 0%,
-    rgb(224 196 140 / 0.7) 22%,
-    rgb(255 243 214 / 0.95) 50%,
-    rgb(224 196 140 / 0.7) 78%,
-    transparent 100%
+    180deg,
+    rgb(20 17 10 / 0.46),
+    rgb(20 17 10 / 0.28)
   );
+  color: #f6e7c4;
+  text-shadow: 0 1px 3px rgb(18 16 10 / 0.5);
+  -webkit-backdrop-filter: blur(7px) saturate(120%);
+  backdrop-filter: blur(7px) saturate(120%);
+  box-shadow:
+    0 10px 24px -18px rgb(0 0 0 / 0.9),
+    inset 0 1px 0 rgb(255 255 255 / 0.06);
+  transition:
+    border-color 0.45s var(--ease-out-expo),
+    box-shadow 0.45s var(--ease-out-expo),
+    color 0.45s var(--ease-out-expo);
 }
 
 .nav-spotlight:hover,
 .nav-spotlight:focus-visible,
 .nav-glow:hover,
 .nav-glow:focus-visible {
-  text-shadow:
-    0 1px 12px rgb(18 16 10 / 0.5),
-    0 0 28px rgb(255 240 205 / 0.66);
+  border-color: rgb(240 216 168 / 0.78);
+  color: #fff8e8;
+  box-shadow:
+    0 12px 26px -16px rgb(0 0 0 / 0.9),
+    0 0 18px -2px rgb(224 196 140 / 0.38),
+    inset 0 1px 0 rgb(255 255 255 / 0.09);
 }
 
-.nav-spotlight:hover::after,
-.nav-spotlight:focus-visible::after,
-.nav-spotlight-ink:hover::after,
-.nav-spotlight-ink:focus-visible::after,
-.nav-glow:hover::after,
-.nav-glow:focus-visible::after,
-.nav-glow-ink:hover::after,
-.nav-glow-ink:focus-visible::after {
-  opacity: 1;
-}
-
-/* Acik header karsiligi: parilti yerine net kontrast, ince pirinc hatti kalir. */
+/* Acik header karsiligi: saman tonlu kapsul, murekkep-pirinc metin. */
 .nav-spotlight-ink,
 .nav-glow-ink {
   position: relative;
+  margin-inline: -5px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  border: 1px solid rgb(177 131 63 / 0.42);
   background-image: linear-gradient(
-    100deg,
-    #12100a 0%,
-    #3d2c0d 42%,
-    #6b4a17 74%,
-    #7a571f 100%
+    180deg,
+    rgb(177 131 63 / 0.14),
+    rgb(177 131 63 / 0.07)
   );
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  text-shadow: 0 0 12px rgb(177 131 63 / 0.3);
+  color: var(--color-brass-deep);
+  transition:
+    border-color 0.45s var(--ease-out-expo),
+    box-shadow 0.45s var(--ease-out-expo),
+    color 0.45s var(--ease-out-expo);
 }
 
-.nav-spotlight-ink::after,
-.nav-glow-ink::after {
-  background-image: linear-gradient(
-    90deg,
-    transparent 0%,
-    rgb(122 87 31 / 0.75) 28%,
-    rgb(177 131 63 / 0.9) 50%,
-    rgb(122 87 31 / 0.75) 72%,
-    transparent 100%
-  );
-}
-
-/* Foy dokusundaki isik cok yavas kayar; azaltilmis harekette sabit kalir. */
-@keyframes nav-sheen {
-  0%,
-  100% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .nav-spotlight,
-  .nav-glow {
-    animation: none;
-  }
+.nav-spotlight-ink:hover,
+.nav-spotlight-ink:focus-visible,
+.nav-glow-ink:hover,
+.nav-glow-ink:focus-visible {
+  border-color: rgb(122 87 31 / 0.68);
+  color: #5f4316;
+  box-shadow: 0 0 14px -4px rgb(177 131 63 / 0.45);
 }
 
 .vertical-rl {
