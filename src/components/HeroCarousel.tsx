@@ -15,7 +15,7 @@ const SWIPE_THRESHOLD = 48;
 function Slogan({ className = "" }: { className?: string }) {
   return (
     <p
-      className={`font-display text-paper [text-shadow:0_2px_6px_rgba(18,16,10,0.5),0_2px_26px_rgba(18,16,10,0.62)] ${className}`.trim()}
+      className={`font-display text-paper [text-shadow:0_2px_8px_rgba(18,16,10,0.52),0_3px_30px_rgba(18,16,10,0.66)] ${className}`.trim()}
     >
       <span className="block tracking-[-0.01em]">Yeni nesil bir yaşam tarzı,</span>
       <span className="mt-1 block pr-[1.1em] tracking-[-0.01em] text-paper/80">
@@ -287,7 +287,7 @@ export function HeroCarousel() {
           {/* lg:mr-10 sag alttaki WhatsApp butonunun kapladigi alani acik birakir. */}
           <div className="flex flex-col gap-8 lg:mr-10 lg:w-auto lg:items-end lg:gap-16">
             <div className="hidden lg:block">
-              <Slogan className="text-right text-[1.5rem] leading-[1.35] xl:text-[1.7rem]" />
+              <Slogan className="text-right text-[1.9rem] leading-[1.22] xl:text-[2.15rem]" />
             </div>
 
             <div className="flex items-center justify-between gap-6 lg:justify-end lg:gap-7">
