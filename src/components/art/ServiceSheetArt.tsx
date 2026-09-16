@@ -4,7 +4,7 @@ export type ServiceSheetVariant =
   | "kentsel-donusum"
   | "kat-karsiligi-insaat"
   | "anahtar-teslim-insaat"
-  | "tadilat-renovasyon"
+  | "endustriyel-yapi"
   | "villa-mustakil-yapi"
   | "deprem-guclendirme";
 
@@ -491,128 +491,161 @@ function AnahtarTeslim() {
   );
 }
 
-/* 04 · Tadilat: katmanlara ayrilmis duvar ve plan parçasi. */
-function Tadilat() {
-  const hatch = Array.from({ length: 9 }, (_, i) => 120 + i * 10);
+/* 04 · Endustriyel yapi: celik portal cerceve kesiti ve depo akslari.
+   Iki ayri disiplin yan yana gosterilir: solda tasiyici sistem kesiti,
+   sagda depolama hacminin aks yerlesimi. */
+function EndustriyelYapi() {
+  /* Cati alti mertek hatlari: cerceve yuzeyine paralel iki ince cizgi. */
+  const purlin = (offset: number, plane: "left" | "right") =>
+    plane === "left"
+      ? {
+          x1: 72 + offset * 0.545,
+          y1: 176 + offset * 0.839,
+          x2: 152 + offset * 0.545,
+          y2: 124 + offset * 0.839,
+        }
+      : {
+          x1: 152 - offset * 0.545,
+          y1: 124 + offset * 0.839,
+          x2: 232 - offset * 0.545,
+          y2: 176 + offset * 0.839,
+        };
+
+  const purlins = [9, 18].flatMap((offset) => [
+    { key: `l-${offset}`, ...purlin(offset, "left") },
+    { key: `r-${offset}`, ...purlin(offset, "right") },
+  ]);
 
   return (
     <>
       <line
         x1={48}
-        y1={296}
+        y1={300}
         x2={512}
-        y2={296}
+        y2={300}
         {...ink}
         strokeWidth={1}
         opacity={0.4}
       />
-
-      <rect
-        x={104}
-        y={96}
-        width={86}
-        height={200}
-        {...ink}
-        strokeWidth={1.4}
-      />
-      <g {...ink} strokeWidth={0.75} opacity={0.35}>
-        {hatch.map((x, index) => (
+      {/* Saha betonu: zemin cizgisinin altindaki tarama. */}
+      <g {...ink} strokeWidth={0.7} opacity={0.2}>
+        {Array.from({ length: 10 }, (_, i) => (
           <line
-            key={`h-${x}`}
-            x1={x}
-            y1={index % 2 === 0 ? 96 : 296}
-            x2={x + 30}
-            y2={index % 2 === 0 ? 126 : 266}
+            key={`slab-${i}`}
+            x1={56 + i * 46}
+            y1={300}
+            x2={68 + i * 46}
+            y2={310}
           />
         ))}
       </g>
-      <Label x={104} y={86}>
-        MEVCUT DUVAR
-      </Label>
 
-      <rect
-        x={214}
-        y={78}
-        width={54}
-        height={200}
+      {/* Celik portal cerceve: tek aciklikli kesit. */}
+      <polyline
+        pathLength={1}
+        className="draw"
+        points="72,300 72,176 152,124 232,176 232,300"
         {...ink}
-        strokeWidth={1.2}
-        strokeDasharray="6 5"
-        opacity={0.8}
+        strokeWidth={1.6}
       />
-      <Label x={206} y={68}>
-        YALITIM
+      <g {...ink} strokeWidth={0.75} opacity={0.3}>
+        {purlins.map((line) => (
+          <line
+            key={line.key}
+            x1={line.x1}
+            y1={line.y1}
+            x2={line.x2}
+            y2={line.y2}
+          />
+        ))}
+      </g>
+      <g {...brass} strokeWidth={1.2}>
+        <rect x={64} y={292} width={16} height={8} />
+        <rect x={224} y={292} width={16} height={8} />
+      </g>
+      <Label x={72} y={112}>
+        ÇELİK PORTAL ÇERÇEVE
       </Label>
 
-      <rect
-        x={300}
-        y={62}
-        width={28}
-        height={200}
-        {...brass}
-        strokeWidth={1.5}
-      />
-      <rect
-        x={300}
-        y={62}
-        width={28}
-        height={200}
-        fill="var(--color-brass)"
-        opacity={0.14}
-        stroke="none"
-      />
-      <Label x={292} y={52} tone="brass">
-        YENİ YÜZEY
+      {/* Vinc yolu: kiris, araba ve kanca. */}
+      <g {...brass} strokeWidth={1.2}>
+        <line x1={72} y1={200} x2={232} y2={200} />
+        <line x1={80} y1={192} x2={80} y2={208} />
+        <line x1={224} y1={192} x2={224} y2={208} />
+        <rect x={140} y={190} width={22} height={16} />
+        <line x1={151} y1={206} x2={151} y2={246} />
+        <path d="M143 246a8 8 0 0 0 16 0" />
+      </g>
+      <Label x={240} y={196} tone="brass">
+        VİNÇ YOLU
       </Label>
 
-      <g {...ink} strokeWidth={0.9} opacity={0.4}>
-        <line x1={190} y1={110} x2={104} y2={110} />
-        <line x1={268} y1={92} x2={214} y2={92} />
-        <line x1={328} y1={72} x2={392} y2={72} />
+      {/* Depo yapisi: testere disli cati, akslar ve sevk kapisi. */}
+      <polyline
+        points="352,300 352,196 404,166 404,196 456,166 456,196 508,166 508,300"
+        {...ink}
+        strokeWidth={1.4}
+      />
+      {/* Testere dislerinin dusey yuzu camli yuzeydir: ince ikinci hat. */}
+      <g {...ink} strokeWidth={0.75} opacity={0.35}>
+        {[404, 456].map((x) => (
+          <line key={`glazing-${x}`} x1={x + 3} y1={168} x2={x + 3} y2={196} />
+        ))}
+      </g>
+      <g {...brass} strokeWidth={0.9} opacity={0.75}>
+        {[378, 482].map((x) => (
+          <g key={`axis-${x}`}>
+            <line
+              x1={x}
+              y1={100}
+              x2={x}
+              y2={300}
+              strokeDasharray="9 5 2 5"
+            />
+            <circle cx={x} cy={96} r={3.5} fill="none" />
+          </g>
+        ))}
+      </g>
+      <Label x={352} y={124}>
+        DEPO AKSI
+      </Label>
+
+      <g {...ink} strokeWidth={0.9} opacity={0.45}>
+        <line x1={358} y1={218} x2={400} y2={218} />
+        <line x1={358} y1={258} x2={400} y2={258} />
+        <rect x={362} y={200} width={16} height={18} />
+        <rect x={382} y={200} width={16} height={18} />
+        <rect x={362} y={240} width={16} height={18} />
+        <rect x={382} y={240} width={16} height={18} />
       </g>
 
       <rect
-        x={376}
-        y={132}
-        width={126}
-        height={92}
+        x={418}
+        y={238}
+        width={52}
+        height={62}
         {...ink}
-        strokeWidth={1.3}
+        strokeWidth={1.1}
       />
-      <line x1={376} y1={178} x2={436} y2={178} {...ink} opacity={0.45} />
-      <line x1={436} y1={132} x2={436} y2={224} {...ink} opacity={0.45} />
-      <rect
-        x={436}
-        y={178}
-        width={66}
-        height={46}
-        fill="var(--color-brass)"
-        opacity={0.12}
-        stroke="none"
-      />
-      <Label x={444} y={206} tone="brass">
-        MUTFAK
-      </Label>
-      <Label x={376} y={124}>
-        UYGULAMA PLANI
-      </Label>
-
-      <g {...ink} strokeWidth={1.3}>
-        <line x1={392} y1={266} x2={424} y2={246} />
-        <rect x={416} y={234} width={30} height={16} />
-        <line x1={446} y1={242} x2={470} y2={242} />
+      <g {...ink} strokeWidth={0.6} opacity={0.35}>
+        {[250, 262, 274, 286].map((y) => (
+          <line key={`slat-${y}`} x1={418} y1={y} x2={470} y2={y} />
+        ))}
       </g>
-      <Label x={392} y={288}>
-        YIKIM VE UYGULAMA
+      <Label x={444} y={230} anchor="middle">
+        SEVK KAPISI
       </Label>
 
       <g {...ink} opacity={0.45}>
-        <line x1={104} y1={320} x2={328} y2={320} />
-        <line x1={104} y1={314} x2={104} y2={326} />
-        <line x1={328} y1={314} x2={328} y2={326} />
+        <line x1={72} y1={322} x2={232} y2={322} />
+        <line x1={72} y1={316} x2={72} y2={328} />
+        <line x1={232} y1={316} x2={232} y2={328} />
       </g>
-      <Label x={216} y={336} anchor="middle" tone="brass">
-        0–8 HAFTA
+      <Label x={152} y={338} anchor="middle" tone="brass">
+        GENİŞ AÇIKLIK
+      </Label>
+      <Label x={430} y={338} anchor="middle">
+        YÜKLEME SAHASI
       </Label>
     </>
   );
@@ -847,7 +880,7 @@ const variants: Record<ServiceSheetVariant, () => ReactElement> = {
   "kentsel-donusum": KentselDonusum,
   "kat-karsiligi-insaat": KatKarsiligi,
   "anahtar-teslim-insaat": AnahtarTeslim,
-  "tadilat-renovasyon": Tadilat,
+  "endustriyel-yapi": EndustriyelYapi,
   "villa-mustakil-yapi": Villa,
   "deprem-guclendirme": Guclendirme,
 };

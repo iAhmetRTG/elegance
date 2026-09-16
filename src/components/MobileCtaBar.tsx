@@ -9,8 +9,9 @@ import { Icon } from "./Icon";
 
 /**
  * Mobilde ekranın altına oturan hızlı iletişim plakası.
- * Masaüstü paneliyle aynı dili taşır: mürekkep zemin, pirinç çizgi,
- * köşe tırnakları ve pafta tipografisi.
+ * Masaüstü paneliyle aynı dili taşır: koyu lacivert plaka, mavi hat,
+ * köşe tırnakları ve pafta tipografisi. Mavi vurgu yalnızca bu plakaya
+ * aittir; sitenin geri kalan pirinç kimliği değişmez.
  * Ana sayfada hero görünürken gizli kalır; hero geçildikten sonra belirir,
  * böylece ilk ekranda fotoğrafın üzerine ikinci bir katman binmez.
  */
@@ -64,34 +65,34 @@ export function MobileCtaBar() {
           : "invisible translate-y-4 opacity-0"
       }`}
     >
-      <div className="relative border border-brass/45 bg-ink shadow-[0_24px_60px_-26px_rgba(18,16,10,0.95)] backdrop-blur-md">
+      <div className="relative border border-[#3b82f6]/45 bg-[#08182f] shadow-[0_24px_60px_-26px_rgba(4,14,33,0.95)] backdrop-blur-md">
         <span
           aria-hidden="true"
-          className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-brass/80 to-transparent"
+          className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#60a5fa]/85 to-transparent"
         />
-        <CornerTicks className="text-brass/45" />
+        <CornerTicks className="text-[#3b82f6]/55" />
 
         {/* 360px altındaki dar ekranlarda ara tarafı biraz daha pay alır,
             böylece numara kırpılmadan tek satırda kalır. */}
         <div className="grid grid-cols-[1.16fr_1fr] items-stretch min-[360px]:grid-cols-[1.06fr_1fr]">
           <a
             href={telHref}
-            className="relative flex items-center gap-2 overflow-hidden bg-[linear-gradient(152deg,#d0a262_0%,#b1833f_48%,#966c2f_100%)] px-2.5 py-3.5 text-ink transition-opacity duration-300 active:opacity-90 min-[360px]:gap-2.5 min-[360px]:px-3"
+            className="relative flex items-center gap-2 overflow-hidden bg-[linear-gradient(152deg,#1d4ed8_0%,#1e40af_52%,#172554_100%)] px-2.5 py-3.5 text-white transition-opacity duration-300 active:opacity-90 min-[360px]:gap-2.5 min-[360px]:px-3"
           >
             <span
               aria-hidden="true"
-              className="blueprint-light pointer-events-none absolute inset-0 opacity-70"
+              className="blueprint-dark pointer-events-none absolute inset-0 opacity-60"
             />
             <span
               aria-hidden="true"
-              className="pointer-events-none absolute inset-x-0 top-0 h-1/2 bg-[linear-gradient(to_bottom,rgba(255,255,255,0.3),transparent)]"
+              className="pointer-events-none absolute inset-x-0 top-0 h-1/2 bg-[linear-gradient(to_bottom,rgba(255,255,255,0.26),transparent)]"
             />
             <Icon
               name="phone"
               className="relative h-[19px] w-[19px] shrink-0"
             />
             <span className="relative min-w-0">
-              <span className="block text-[10px] font-semibold uppercase tracking-[0.2em] text-ink/70">
+              <span className="block text-[10px] font-semibold uppercase tracking-[0.2em] text-white/80">
                 Hemen ara
               </span>
               <span className="mt-1 block truncate font-display text-[14px] leading-none tabular-nums min-[360px]:text-[15px]">
@@ -104,7 +105,7 @@ export function MobileCtaBar() {
             href={waHref}
             target="_blank"
             rel="noopener noreferrer"
-            className="relative flex items-center gap-2 overflow-hidden border-l border-paper/15 px-2.5 py-3.5 text-paper transition-colors duration-300 active:bg-ink-soft min-[360px]:gap-2.5 min-[360px]:px-3"
+            className="relative flex items-center gap-2 overflow-hidden border-l border-[#60a5fa]/30 px-2.5 py-3.5 text-white transition-colors duration-300 active:bg-[#132a52] min-[360px]:gap-2.5 min-[360px]:px-3"
           >
             <span
               aria-hidden="true"
@@ -112,16 +113,16 @@ export function MobileCtaBar() {
             />
             <span
               aria-hidden="true"
-              className="pointer-events-none absolute -left-8 top-1/2 h-28 w-28 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgba(177,131,63,0.34),transparent_68%)]"
+              className="pointer-events-none absolute -left-8 top-1/2 h-28 w-28 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgba(59,130,246,0.42),transparent_68%)]"
             />
-            <span className="relative grid h-8 w-8 shrink-0 place-items-center rounded-full bg-brass text-ink shadow-[0_8px_18px_-8px_rgba(0,0,0,0.95)] ring-1 ring-brass-soft/40 min-[360px]:h-9 min-[360px]:w-9">
+            <span className="relative grid h-8 w-8 shrink-0 place-items-center rounded-full bg-[#2f6fe4] text-white shadow-[0_8px_18px_-8px_rgba(0,0,0,0.95)] ring-1 ring-[#9dc0ff]/45 min-[360px]:h-9 min-[360px]:w-9">
               <Icon
                 name="whatsapp"
                 className="h-[17px] w-[17px] min-[360px]:h-[19px] min-[360px]:w-[19px]"
               />
             </span>
             <span className="relative min-w-0">
-              <span className="block text-[10px] font-semibold uppercase tracking-[0.2em] text-brass-soft">
+              <span className="block text-[10px] font-semibold uppercase tracking-[0.2em] text-[#9dc0ff]">
                 WhatsApp
               </span>
               <span className="mt-1 block truncate text-[13px] font-semibold leading-none">

@@ -13,7 +13,7 @@ import { Icon } from "@/components/Icon";
 export const metadata: Metadata = {
   title: "Hizmetler | Kentsel Dönüşüm ve İnşaat Çözümleri",
   description:
-    "Kentsel dönüşüm, kat karşılığı inşaat, anahtar teslim yapım, tadilat, villa ve deprem güçlendirme hizmetleri. Bakırköy, Yeşilköy, Ataköy, Yeşilyurt ve Florya.",
+    "Kentsel dönüşüm, kat karşılığı inşaat, anahtar teslim yapım, endüstriyel yapı, villa ve deprem güçlendirme hizmetleri. Bakırköy, Yeşilköy, Ataköy, Yeşilyurt ve Florya.",
   alternates: { canonical: "/hizmetler" },
 };
 

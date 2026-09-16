@@ -3,7 +3,13 @@
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { homeNav, nav, site, telHref } from "@/lib/site";
+import {
+  homeNav,
+  homeNavSpotlightHref,
+  nav,
+  site,
+  telHref,
+} from "@/lib/site";
 import { waLinkFor } from "@/lib/wa";
 import { services } from "@/lib/services";
 import { Icon } from "./Icon";
@@ -160,27 +166,37 @@ export function Header() {
             onLight ? "divide-ink/10" : "divide-paper/10"
           }`}
         >
-          {menuNav.map((item) => (
-            <li key={item.href}>
-              <Link
-                href={item.href}
-                onClick={() => setOpen(false)}
-                className="flex min-h-11 items-center justify-between py-4"
-              >
-                <span
-                  className={`font-display text-2xl ${
-                    onLight ? "" : "text-paper"
-                  }`}
+          {menuNav.map((item) => {
+            const spotlight = item.href === homeNavSpotlightHref;
+
+            return (
+              <li key={item.href}>
+                <Link
+                  href={item.href}
+                  onClick={() => setOpen(false)}
+                  className="flex min-h-11 items-center justify-between py-4"
                 >
-                  {item.label}
-                </span>
-                <Icon
-                  name="arrowUpRight"
-                  className={`h-5 w-5 ${onLight ? "text-muted" : "text-paper/50"}`}
-                />
-              </Link>
-            </li>
-          ))}
+                  <span
+                    className={`font-display text-2xl ${
+                      spotlight
+                        ? onLight
+                          ? "nav-glow-ink"
+                          : "nav-glow"
+                        : onLight
+                          ? ""
+                          : "text-paper"
+                    }`}
+                  >
+                    {item.label}
+                  </span>
+                  <Icon
+                    name="arrowUpRight"
+                    className={`h-5 w-5 ${onLight ? "text-muted" : "text-paper/50"}`}
+                  />
+                </Link>
+              </li>
+            );
+          })}
         </ul>
 
         <div className="mt-6 grid gap-3">
@@ -266,19 +282,28 @@ export function Header() {
               className="hidden items-center gap-9 lg:flex"
               aria-label="Ana menü"
             >
-              {homeNav.map((item) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className={`link-underline text-[13px] font-medium tracking-wide transition-colors [text-shadow:0_1px_14px_rgba(18,16,10,0.55)] ${
-                    onLight
-                      ? "text-ink/80 hover:text-ink [text-shadow:none]"
-                      : "text-paper hover:text-paper"
-                  }`}
-                >
-                  {item.label}
-                </Link>
-              ))}
+              {homeNav.map((item) => {
+                /* Yalnizca Kentsel Donusum bagi isikli vurguyu tasir. */
+                const spotlight = item.href === homeNavSpotlightHref;
+
+                return (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    className={`link-underline text-[13px] font-medium tracking-wide transition-colors ${
+                      spotlight
+                        ? onLight
+                          ? "nav-glow-ink"
+                          : "nav-glow"
+                        : onLight
+                          ? "text-ink/80 hover:text-ink [text-shadow:none]"
+                          : "text-paper hover:text-paper [text-shadow:0_1px_14px_rgba(18,16,10,0.55)]"
+                    }`}
+                  >
+                    {item.label}
+                  </Link>
+                );
+              })}
               <Link
                 href="/iletisim"
                 className={`inline-flex items-center gap-2.5 rounded-full border px-6 py-3 text-[13px] font-medium tracking-wide transition-colors duration-300 ${

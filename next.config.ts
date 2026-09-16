@@ -12,6 +12,12 @@ const retiredProjectSlugs = [
   "bakirkoy-deprem-guclendirme",
 ];
 
+/* Tadilat ve Renovasyon hizmeti kaldırıldı; yerini Endüstriyel Yapı aldı.
+   Eski adres arama motorlarında kaldığı için kalıcı olarak yeni adrese taşınır. */
+const retiredServiceSlugs = [
+  { from: "tadilat-renovasyon", to: "endustriyel-yapi" },
+];
+
 const nextConfig: NextConfig = {
   poweredByHeader: false,
   /* Projedeki gorseller 1536px'e kadar; 2048/3840 varyantlari bosa uretiliyordu. */
@@ -20,11 +26,18 @@ const nextConfig: NextConfig = {
     imageSizes: [128, 256, 384],
   },
   async redirects() {
-    return retiredProjectSlugs.map((slug) => ({
-      source: `/projeler/${slug}`,
-      destination: "/projeler",
-      permanent: true,
-    }));
+    return [
+      ...retiredProjectSlugs.map((slug) => ({
+        source: `/projeler/${slug}`,
+        destination: "/projeler",
+        permanent: true,
+      })),
+      ...retiredServiceSlugs.map(({ from, to }) => ({
+        source: `/hizmetler/${from}`,
+        destination: `/hizmetler/${to}`,
+        permanent: true,
+      })),
+    ];
   },
 };
 

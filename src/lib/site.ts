@@ -68,12 +68,16 @@ export const footerNav = [
   { label: "Teknik Standartlar", href: "/teknik-standartlar" },
 ];
 
+/* Ana sayfa menusu: musteri geri bildirimiyle Kentsel Donusum ilk siraya alindi.
+   Vurgu yalnizca bu baglantida kullanilir (bkz. `homeNavSpotlightHref`). */
 export const homeNav = [
-  { label: "Projeler", href: "/projeler" },
   { label: "Kentsel Dönüşüm", href: "/hizmetler/kentsel-donusum" },
+  { label: "Projeler", href: "/projeler" },
   { label: "Hakkımızda", href: "/hakkimizda" },
   { label: "İletişim", href: "/iletisim" },
 ];
+
+export const homeNavSpotlightHref = "/hizmetler/kentsel-donusum";
 
 /* Yalnızca sunumla doğrulanabilen göstergeler.
    "150+ proje", "900+ konut" gibi sayaçlar PDF ile doğrulanmadığı için

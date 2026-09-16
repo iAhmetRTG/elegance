@@ -264,6 +264,58 @@ body {
   background-size: 100% 1px;
 }
 
+/* Ana sayfa menusundeki "Kentsel Donusum" bagi: premium, hafif isikli vurgu.
+   Koyu hero uzerinde sicak altin; header acik zemine gectiginde daha koyu ve
+   dusuk yogunluklu pirinc karsiligi kullanilir. Nabiz cok yavas ve dusuk
+   genliklidir; azaltilmis harekette tamamen kapanir. */
+.nav-glow {
+  color: #f6e8c8;
+  text-shadow:
+    0 0 10px rgb(224 196 140 / 0.42),
+    0 0 26px rgb(177 131 63 / 0.24);
+  animation: nav-glow-pulse 11s ease-in-out infinite;
+}
+
+.nav-glow:hover,
+.nav-glow:focus-visible {
+  animation: none;
+  color: #fffaf0;
+  text-shadow:
+    0 0 12px rgb(246 231 197 / 0.62),
+    0 0 30px rgb(177 131 63 / 0.4);
+}
+
+.nav-glow-ink {
+  color: var(--color-brass-deep);
+  text-shadow: 0 0 9px rgb(177 131 63 / 0.26);
+}
+
+.nav-glow-ink:hover,
+.nav-glow-ink:focus-visible {
+  color: #5f4316;
+  text-shadow: 0 0 11px rgb(177 131 63 / 0.44);
+}
+
+@keyframes nav-glow-pulse {
+  0%,
+  100% {
+    text-shadow:
+      0 0 10px rgb(224 196 140 / 0.36),
+      0 0 26px rgb(177 131 63 / 0.2);
+  }
+  50% {
+    text-shadow:
+      0 0 13px rgb(240 216 168 / 0.56),
+      0 0 32px rgb(177 131 63 / 0.32);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nav-glow {
+    animation: none;
+  }
+}
+
 .vertical-rl {
   writing-mode: vertical-rl;
 }
