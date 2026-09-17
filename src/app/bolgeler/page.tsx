@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { districts } from "@/lib/districts";
-import { site, telHref, waLink } from "@/lib/site";
+import { coverage, site, telHref, waLink } from "@/lib/site";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { Button } from "@/components/Button";
 import { Reveal } from "@/components/Reveal";
@@ -10,7 +10,7 @@ import { Icon } from "@/components/Icon";
 export const metadata: Metadata = {
   title: "Hizmet Bölgeleri | Bakırköy, Yeşilköy, Ataköy, Yeşilyurt, Florya",
   description:
-    "Elegance İnşaat; Bakırköy, Yeşilköy, Ataköy, Yeşilyurt ve Florya'da kentsel dönüşüm, kat karşılığı ve anahtar teslim inşaat hizmeti verir. Aynı gün keşif.",
+    "Elegance İnşaat; Bakırköy, Yeşilköy, Ataköy, Yeşilyurt ve Florya'da aynı gün keşif yapar. İstanbul'un diğer ilçelerinde ve şehir dışında da kentsel dönüşüm, kat karşılığı ve özel taahhüt projeleri üstlenir.",
   alternates: { canonical: "/bolgeler" },
 };
 
@@ -36,7 +36,9 @@ export default function DistrictsPage() {
           <p className="mt-6 max-w-[var(--measure)] text-[15px] leading-relaxed text-muted sm:text-base">
             Merkezimiz Bakırköy&apos;de; ekiplerimiz beş bölgede aynı gün keşfe
             gelir. Her bölgenin imar koşullarını, yapı stokunu ve
-            beklentilerini ayrı ayrı biliyoruz.
+            beklentilerini ayrı ayrı biliyoruz. Bu beş ilçe yoğunlaştığımız
+            çalışma alanlarıdır; İstanbul&apos;un diğer ilçelerinde ve şehir
+            dışında da proje üstleniyoruz.
           </p>
         </div>
       </section>
@@ -79,7 +81,7 @@ export default function DistrictsPage() {
           </ul>
 
           <p className="mt-6 text-[11px] leading-relaxed text-muted">
-            Bu beş bölge güncel hizmet kapsamımızdır. Arşivdeki proje
+            {coverage.coreNote} {coverage.widerNote} Arşivdeki proje
             fotoğrafları Etiler (İstanbul) ve Karaburun (İzmir) konumlarına
             aittir; bu bölgelerde yürütülmüş iş olarak gösterilmez.
           </p>
@@ -115,6 +117,13 @@ export default function DistrictsPage() {
               {"WhatsApp'tan yaz"}
             </Button>
           </div>
+
+          <p className="mt-7 border-t border-ink/10 pt-6 text-[13px] leading-relaxed text-muted">
+            <span className="eyebrow block text-brass-deep">
+              {coverage.promptLabel}
+            </span>
+            <span className="mt-3 block">{coverage.promptText}</span>
+          </p>
         </aside>
       </section>
     </>

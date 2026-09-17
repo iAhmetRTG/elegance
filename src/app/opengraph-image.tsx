@@ -31,10 +31,10 @@ export default function OpengraphImage() {
 
         <div style={{ display: "flex", flexDirection: "column", gap: 26 }}>
           <div style={{ fontSize: 66, lineHeight: 1.08, maxWidth: 920 }}>
-            Bakırköy ve çevresinde kentsel dönüşüm
+            İstanbul&apos;da kentsel dönüşüm ve özel taahhüt projeleri
           </div>
-          <div style={{ fontSize: 26, color: "#f4efe3aa" }}>
-            Bakırköy · Yeşilköy · Ataköy · Yeşilyurt · Florya
+          <div style={{ fontSize: 24, color: "#f4efe3aa" }}>
+            Aynı gün keşif: Bakırköy · Yeşilköy · Ataköy · Yeşilyurt · Florya
           </div>
         </div>
 

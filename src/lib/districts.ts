@@ -1,9 +1,10 @@
-/* Hizmet bölgeleri: Bakırköy, Yeşilköy, Ataköy, Yeşilyurt ve Florya.
+/* Aynı gün keşif bölgeleri: Bakırköy, Yeşilköy, Ataköy, Yeşilyurt, Florya.
 
-   Bu bölgeler pazarlama ve hizmet kapsamıdır; geçmiş projelerin gerçek
-   konumları (Etiler, Karaburun) değildir. Bölge sayfalarında temsili yapı
-   görseli kullanılmaz: elde gerçek bir bölge fotoğrafı olmadığı için
-   görsel yerine tipografik ve harita tabanlı anlatım tercih edilir. */
+   Bu bölgeler pazarlama odağı ve aynı gün keşif alanıdır, hizmet sınırı
+   değildir; geçmiş projelerin gerçek konumları (Etiler, Karaburun) değildir.
+   Bölge sayfalarında temsili yapı görseli kullanılmaz: elde gerçek bir bölge
+   fotoğrafı olmadığı için görsel yerine tipografik ve harita tabanlı anlatım
+   tercih edilir. */
 export const districts = [
   {
     slug: "bakirkoy",

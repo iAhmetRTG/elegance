@@ -214,8 +214,9 @@ export function HeroCarousel() {
       onClickCapture={onClickCapture}
     >
       <h1 className="sr-only">
-        Elegance İnşaat · Bakırköy, Yeşilköy, Ataköy, Yeşilyurt ve Florya&apos;da
-        kentsel dönüşüm projeleri
+        Elegance İnşaat · İstanbul&apos;da kentsel dönüşüm ve özel taahhüt
+        projeleri. Aynı gün keşif: Bakırköy, Yeşilköy, Ataköy, Yeşilyurt ve
+        Florya; şehrin diğer ilçelerinde ve şehir dışında da proje üstleniyoruz.
       </h1>
 
       {heroProjects.map((project, i) => {

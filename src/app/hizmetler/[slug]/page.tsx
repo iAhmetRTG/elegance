@@ -31,7 +31,7 @@ export async function generateMetadata({
   }
 
   return {
-    title: `${service.name} | Bakırköy, Yeşilköy, Ataköy`,
+    title: `${service.name} | Bakırköy ve İstanbul`,
     description: service.summary,
     alternates: { canonical: `/hizmetler/${service.slug}` },
     openGraph: {

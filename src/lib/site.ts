@@ -4,9 +4,9 @@ export const site = {
   legalName: "Elegance İnşaat",
   url: "https://www.eleganceinsaat.com",
   title:
-    "Elegance İnşaat | Bakırköy Kentsel Dönüşüm ve Özel Taahhüt Projeleri",
+    "Elegance İnşaat | İstanbul Kentsel Dönüşüm ve Özel Taahhüt Projeleri",
   description:
-    "Bakırköy, Yeşilköy, Ataköy, Yeşilyurt ve Florya'da kentsel dönüşüm, kat karşılığı ve özel taahhüt projeleri. Ücretsiz keşif ve şeffaf teklif için hemen arayın.",
+    "İstanbul'da kentsel dönüşüm, kat karşılığı ve özel taahhüt projeleri. Bakırköy, Yeşilköy, Ataköy, Yeşilyurt ve Florya'da aynı gün keşif; İstanbul'un diğer ilçelerinde ve şehir dışında da proje üstleniyoruz.",
   phoneDisplay: "0500 000 00 00",
   phone: "+905000000000",
   whatsappNumber: "905000000000",
@@ -22,8 +22,9 @@ export const site = {
   districts: ["Bakırköy", "Yeşilköy", "Ataköy", "Yeşilyurt", "Florya"],
 };
 
-/* Hedef hizmet bölgeleri pazarlama odağıdır. Geçmiş projelerin gerçek
-   konumları (Etiler, Karaburun) bu listenin yerine geçmez. */
+/* Pazarlama odağı bu beş ilçedir; liste hizmet sınırı değildir. Geçmiş
+   projelerin gerçek konumları (Etiler, Karaburun) bu listenin yerine geçmez,
+   kapsam cümleleri için `coverage` kaydı kullanılır. */
 export const serviceAreas = [
   { slug: "bakirkoy", name: "Bakırköy" },
   { slug: "yesilkoy", name: "Yeşilköy" },
@@ -31,6 +32,21 @@ export const serviceAreas = [
   { slug: "yesilyurt", name: "Yeşilyurt" },
   { slug: "florya", name: "Florya" },
 ];
+
+/* Bölge kapsamı: bu beş ilçe hizmet sınırı değil, merkeze yakın olduğu için
+   aynı gün keşif yapılan yoğun çalışma alanlarıdır. Bölge bloğunun geçtiği
+   her yerde bu cümleler tek kaynaktan kullanılır; aksi halde liste dışında
+   kalan ziyaretçi "burada iş yapmıyorlar" sonucuna varıyor. */
+export const coverage = {
+  sameDayLabel: "Aynı gün keşif yaptığımız bölgeler",
+  coreNote:
+    "Bu beş ilçe, merkezimize yakın olduğu için aynı gün keşfe geldiğimiz yoğun çalışma alanlarımız.",
+  widerNote:
+    "Kapsamımız bu listeyle sınırlı değil: İstanbul'un diğer ilçelerinde ve şehir dışında da proje üstleniyoruz.",
+  promptLabel: "Bölgeniz listede yok mu?",
+  promptText:
+    "Listede olmayan ilçe ve illerden gelen talepleri de değerlendiriyoruz. Yapınızı veya arsanızı anlatın; kapsamı keşifle birlikte netleştirelim.",
+};
 
 /* Sunum sayfa 3 kurumsal profili; anlam korunarak web metnine uyarlandı. */
 export const corporateProfile = {
@@ -93,7 +109,7 @@ export const footerNav: NavItem[] = [
 export const proofPoints = [
   { value: "Çeyrek asır", label: "İnşaat deneyimi" },
   { value: "7", label: "Belgelenen geçmiş proje" },
-  { value: "5", label: "Hedef hizmet bölgesi" },
+  { value: "5", label: "Aynı gün keşif bölgesi" },
   { value: "2", label: "Referans verilen il" },
 ];
 

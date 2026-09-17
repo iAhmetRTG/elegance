@@ -13,7 +13,7 @@ import { Icon } from "@/components/Icon";
 export const metadata: Metadata = {
   title: "Hizmetler | Kentsel Dönüşüm ve İnşaat Çözümleri",
   description:
-    "Kentsel dönüşüm, endüstriyel yapılar, özel taahhüt projeleri, villa ve müstakil yapılar, deprem güçlendirme ve kat karşılığı inşaat hizmetleri. Bakırköy, Yeşilköy, Ataköy, Yeşilyurt ve Florya.",
+    "Kentsel dönüşüm, endüstriyel yapılar, özel taahhüt projeleri, villa ve müstakil yapılar, deprem güçlendirme ve kat karşılığı inşaat hizmetleri. Aynı gün keşif: Bakırköy, Yeşilköy, Ataköy, Yeşilyurt ve Florya.",
   alternates: { canonical: "/hizmetler" },
 };
 
@@ -110,10 +110,11 @@ export default function ServicesPage() {
               ))}
             </ul>
             <p className="mt-6 max-w-[var(--measure)] text-[13px] leading-relaxed text-muted">
-              Hizmet bölgelerimiz Bakırköy, Yeşilköy, Ataköy, Yeşilyurt ve
-              Florya&apos;dır. Arşivdeki projelerin konumları Etiler (İstanbul)
-              ve Karaburun (İzmir) olup bu bölgelerde yürütülmüş iş olarak
-              gösterilmez.
+              Aynı gün keşif yaptığımız bölgeler Bakırköy, Yeşilköy, Ataköy,
+              Yeşilyurt ve Florya&apos;dır; İstanbul&apos;un diğer ilçelerinde
+              ve şehir dışında da proje üstleniyoruz. Arşivdeki projelerin
+              konumları Etiler (İstanbul) ve Karaburun (İzmir) olup bu
+              bölgelerde yürütülmüş iş olarak gösterilmez.
             </p>
           </div>
         </div>

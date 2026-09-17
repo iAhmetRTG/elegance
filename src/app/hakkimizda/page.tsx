@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import {
+  coverage,
   corporateProfile,
   processSteps,
   proofPoints,
@@ -106,7 +107,9 @@ export default function AboutPage() {
               </ul>
 
               <div className="mt-8 border border-ink/15 bg-ivory p-6">
-                <p className="eyebrow text-brass-deep">Güncel hizmet bölgeleri</p>
+                <p className="eyebrow text-brass-deep">
+                  {coverage.sameDayLabel}
+                </p>
                 <ul className="mt-5 flex flex-wrap gap-2.5">
                   {site.districts.map((district) => (
                     <li
@@ -118,8 +121,10 @@ export default function AboutPage() {
                   ))}
                 </ul>
                 <p className="mt-5 text-[12px] leading-relaxed text-muted">
-                  Hedef hizmet bölgelerimiz bu beş bölgedir. Arşivdeki projelerin
-                  konumları farklıdır ve aşağıda ayrıca belirtilir.
+                  Merkezimize yakın bu beş bölgede aynı gün keşif yapıyoruz;
+                  İstanbul&apos;un diğer ilçelerinde ve şehir dışında da proje
+                  üstleniyoruz. Arşivdeki projelerin konumları farklıdır ve
+                  aşağıda ayrıca belirtilir.
                 </p>
               </div>
             </div>
@@ -205,7 +210,8 @@ export default function AboutPage() {
 
           <p className="mt-6 max-w-[var(--measure)] text-[13px] leading-relaxed text-muted">
             Proje kayıtları İstanbul, İzmir ve Kocaeli&apos;deki gerçek uygulama
-            konumlarıyla gösterilir; hedef hizmet bölgeleriyle karıştırılmaz.
+            konumlarıyla gösterilir; aynı gün keşif yaptığımız bölgelerle
+            karıştırılmaz.
           </p>
         </div>
       </section>

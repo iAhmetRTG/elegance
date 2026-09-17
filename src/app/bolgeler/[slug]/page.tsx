@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { districts, getDistrict } from "@/lib/districts";
 import { projects } from "@/lib/projects";
-import { site, telHref, waLink } from "@/lib/site";
+import { coverage, site, telHref, waLink } from "@/lib/site";
 import { PageHeader } from "@/components/PageHeader";
 import { Button } from "@/components/Button";
 import { SectionLabel } from "@/components/SectionLabel";
@@ -125,7 +125,8 @@ export default async function DistrictPage({
             </h2>
             <p className="mt-6 max-w-md leading-relaxed text-muted">
               Merkezimiz Bakırköy&apos;de; {district.name} dahil beş bölgeye aynı
-              gün keşfe geliyoruz. Haritada {district.name} işaretli.
+              gün keşfe geliyoruz. Haritada {district.name} işaretli.{" "}
+              {coverage.widerNote}
             </p>
             <ul className="mt-8 flex flex-wrap gap-2.5">
               {district.landmarks.map((landmark) => (
@@ -250,6 +251,14 @@ export default async function DistrictPage({
               </Link>
             ))}
           </div>
+
+          <p className="mt-8 text-[13px] leading-relaxed text-muted">
+            {coverage.promptLabel}{" "}
+            <Link href="/iletisim" className="link-underline text-ink">
+              Kapsamı birlikte değerlendirelim
+            </Link>
+            .
+          </p>
         </div>
       </section>
 

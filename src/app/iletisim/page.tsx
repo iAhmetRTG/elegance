@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { site, telHref, waLink } from "@/lib/site";
+import { coverage, site, telHref, waLink } from "@/lib/site";
 import { waTopicLink, waTopics } from "@/lib/wa";
 import { districts } from "@/lib/districts";
 import { PageHeader } from "@/components/PageHeader";
@@ -12,7 +12,7 @@ import { CornerTicks } from "@/components/CornerTicks";
 export const metadata: Metadata = {
   title: "İletişim | Ücretsiz Keşif ve Teklif",
   description:
-    "Elegance İnşaat ile iletişime geçin: telefon, WhatsApp ve adres bilgileri. Bakırköy, Yeşilköy, Ataköy, Yeşilyurt ve Florya'da aynı gün keşif.",
+    "Elegance İnşaat ile iletişime geçin: telefon, WhatsApp ve adres bilgileri. Bakırköy, Yeşilköy, Ataköy, Yeşilyurt ve Florya'da aynı gün keşif; İstanbul genelinde ve şehir dışında proje üstleniyoruz.",
   alternates: { canonical: "/iletisim" },
 };
 
@@ -167,7 +167,7 @@ export default function ContactPage() {
 
                 <div className="mt-10 border-t border-paper/15 pt-7">
                   <span className="eyebrow text-paper/45">
-                    Keşif yaptığımız bölgeler
+                    {coverage.sameDayLabel}
                   </span>
                   <ul className="mt-4 flex flex-wrap gap-2.5">
                     {districts.map((district) => (
@@ -179,6 +179,9 @@ export default function ContactPage() {
                       </li>
                     ))}
                   </ul>
+                  <p className="mt-4 text-[12px] leading-relaxed text-paper/60">
+                    {coverage.widerNote}
+                  </p>
                 </div>
               </div>
             </div>

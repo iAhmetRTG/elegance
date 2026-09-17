@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { districts } from "@/lib/districts";
-import { site } from "@/lib/site";
+import { coverage, site, waLink } from "@/lib/site";
 import { AreaMap } from "@/components/AreaMap";
 import { SectionLabel } from "@/components/SectionLabel";
 import { CornerTicks } from "@/components/CornerTicks";
@@ -25,10 +25,16 @@ export function DistrictAtlas({ no = "09" }: { no?: string }) {
               Bakırköy ve çevresinde, yerinde hizmet
             </h2>
           </div>
-          <p className="max-w-sm text-[15px] leading-relaxed text-muted">
-            Merkezimiz Bakırköy&apos;de; ekiplerimiz beş ilçede aynı gün keşfe
-            gelir. Haritada bir bölgeye dokunarak çalışma alanını görün.
-          </p>
+          <div className="max-w-sm">
+            <p className="text-[15px] leading-relaxed text-muted">
+              Merkezimiz Bakırköy&apos;de; ekiplerimiz bu beş ilçede aynı gün
+              keşfe gelir. Haritada bir bölgeye dokunarak çalışma alanını
+              görün.
+            </p>
+            <p className="mt-3 text-[13px] leading-relaxed text-muted">
+              {coverage.widerNote}
+            </p>
+          </div>
         </div>
 
         <div className="mt-14 grid gap-10 lg:grid-cols-12 lg:gap-8">
@@ -42,7 +48,9 @@ export function DistrictAtlas({ no = "09" }: { no?: string }) {
               />
 
               <div className="flex flex-wrap items-center justify-between gap-3 border-t border-ink/10 px-1 pb-1 pt-3">
-                <span className="eyebrow text-muted">Hizmet alanı · 5 ilçe</span>
+                <span className="eyebrow text-muted">
+                  Aynı gün keşif · 5 ilçe
+                </span>
                 <span className="eyebrow text-brass-deep">
                   Merkez: Bakırköy
                 </span>
@@ -144,9 +152,40 @@ export function DistrictAtlas({ no = "09" }: { no?: string }) {
             </ul>
 
             <p className="mt-3 text-[10px] uppercase leading-relaxed tracking-[0.16em] text-muted">
-              Bölge listesi güncel hizmet alanlarını gösterir; temsili yapı
-              görseli kullanılmaz
+              Bu beş ilçe, aynı gün keşif yaptığımız yoğun çalışma alanlarıdır;
+              hizmet kapsamı bu listeyle sınırlı değildir
             </p>
+
+            <div className="mt-8 border border-brass/40 bg-ivory px-5 py-4">
+              <p className="eyebrow text-brass-deep">
+                {coverage.promptLabel}
+              </p>
+              <p className="mt-3 text-[13px] leading-relaxed text-muted">
+                {coverage.promptText}
+              </p>
+              <div className="mt-4 flex flex-wrap items-center gap-x-6 gap-y-3">
+                <Link
+                  href="/iletisim"
+                  className="group inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.2em]"
+                >
+                  Kapsamı konuşalım
+                  <Icon
+                    name="arrowRight"
+                    className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1.5"
+                  />
+                </Link>
+                <a
+                  href={waLink(
+                    "Merhaba, listelenen bölgeler dışındaki yapım için bilgi almak istiyorum.",
+                  )}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="link-underline text-[11px] font-semibold uppercase tracking-[0.2em] text-muted"
+                >
+                  {"WhatsApp'tan yaz"}
+                </a>
+              </div>
+            </div>
 
             <div className="mt-8 flex flex-wrap items-center justify-between gap-4 border border-ink/12 px-5 py-4">
               <div>
