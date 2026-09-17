@@ -12,6 +12,9 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Local working artifacts (see .gitignore), not site source:
+    "tmp/**",
+    "screenshots/**",
   ]),
 ]);
 

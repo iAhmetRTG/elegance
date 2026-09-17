@@ -47,3 +47,5 @@ next-env.d.ts
 # large handoff binaries; the copies used by the site live in public/
 /handoff/elegance-pdf-site-package/assets/
 /handoff/elegance-pdf-site-package/source-document/
+
+.vercel
