@@ -73,7 +73,7 @@ export const MEDIA_LABELS: Record<MediaKind, string> = {
   "enhanced-photo": "Proje fotoğrafı",
 };
 
-export const projects: Project[] = [
+const projectArchive: Project[] = [
   {
     slug: "cem-erel",
     name: "Cem Erel",
@@ -115,12 +115,10 @@ export const projects: Project[] = [
     duration: "32 ay",
     status: "completed",
     area: "120.000 m²",
-    cover: original(
-      "flokser-lojistik",
-      "flokser-lojistik--construction-01.webp",
-    ),
-    coverAlt: "Flokser Lojistik Depo şantiyesinin genel görünümü",
-    coverKind: "construction",
+    cover: original("flokser-lojistik", "flokser-lojistik--render-01.webp"),
+    coverAlt:
+      "Flokser Lojistik Depo tamamlanmış tasarımını gösteren ön cephe mimari renderı",
+    coverKind: "render",
     media: [
       {
         src: original(
@@ -473,38 +471,41 @@ export const projects: Project[] = [
     coverAlt: "Proje Kuvars bloklarının tamamlanmış dış cephesi",
     coverKind: "enhanced-photo",
     media: [
-      {
-        src: original("proje-kuvars", "proje-kuvars--facade-02--p17.webp"),
-        alt: "Proje Kuvars blokları, tamamlanmış bina fotoğrafı",
-        caption: "Dış cephe · 01",
-        kind: "photo",
-        sourcePage: 17,
-      },
-      {
-        src: original("proje-kuvars", "proje-kuvars--facade-01--p17.webp"),
-        alt: "Proje Kuvars blokları, tamamlanmış bina fotoğrafı",
-        caption: "Dış cephe · 02",
-        kind: "photo",
-        sourcePage: 17,
-      },
-      /* Proje arşivinden eklenen saha fotoğrafları. */
+      /* Proje arşivinden eklenen güncel dış mekân fotoğrafları. */
       {
         src: original("proje-kuvars", "proje-kuvars--facade-03.webp"),
         alt: "Proje Kuvars bloklarının dış cephesi, tamamlanmış yapı fotoğrafı",
-        caption: "Dış cephe · 03",
+        caption: "Dış cephe · 01",
         kind: "photo",
+        sourceAsset: "1789594049837.jpg",
       },
       {
         src: original("proje-kuvars", "proje-kuvars--facade-04.webp"),
         alt: "Proje Kuvars bloklarının cephesinden detay fotoğrafı",
-        caption: "Dış cephe · 04",
+        caption: "Dış cephe · 02",
         kind: "photo",
+        sourceAsset: "1789594049858.jpg",
       },
       {
         src: original("proje-kuvars", "proje-kuvars--bahce-01.webp"),
         alt: "Proje Kuvars bloklarının bahçesi ve çevre düzenlemesi fotoğrafı",
         caption: "Bahçe ve yerleşke",
         kind: "photo",
+        sourceAsset: "1789594049882.jpg",
+      },
+      {
+        src: original("proje-kuvars", "proje-kuvars--facade-02--p17.webp"),
+        alt: "Proje Kuvars blokları, tamamlanmış bina fotoğrafı",
+        caption: "Dış cephe · 03",
+        kind: "photo",
+        sourcePage: 17,
+      },
+      {
+        src: original("proje-kuvars", "proje-kuvars--facade-01--p17.webp"),
+        alt: "Proje Kuvars blokları, tamamlanmış bina fotoğrafı",
+        caption: "Dış cephe · 04",
+        kind: "photo",
+        sourcePage: 17,
       },
       {
         src: original(
@@ -563,6 +564,42 @@ export const projects: Project[] = [
     coverAlt: "Proje Topaz şantiye fotoğrafı, uygulama aşaması",
     coverKind: "construction",
     media: [
+      /* Proje arşivinden eklenen tamamlanmış iç mekân fotoğrafları. */
+      {
+        src: original("proje-topaz", "proje-topaz--salon-01.webp"),
+        alt: "Proje Topaz iç mekânı, salon fotoğrafı",
+        caption: "Salon",
+        kind: "photo",
+        sourceAsset: "1789594109730.jpg",
+      },
+      {
+        src: original("proje-topaz", "proje-topaz--giris-01.webp"),
+        alt: "Proje Topaz iç mekânı, giriş holü ve merdiven fotoğrafı",
+        caption: "Giriş holü",
+        kind: "photo",
+        sourceAsset: "1789594109768.jpg",
+      },
+      {
+        src: original("proje-topaz", "proje-topaz--mutfak-01.webp"),
+        alt: "Proje Topaz iç mekânı, mutfak fotoğrafı",
+        caption: "Mutfak",
+        kind: "photo",
+        sourceAsset: "1789594109807.jpg",
+      },
+      {
+        src: original("proje-topaz", "proje-topaz--banyo-01.webp"),
+        alt: "Proje Topaz iç mekânı, banyo fotoğrafı",
+        caption: "Banyo",
+        kind: "photo",
+        sourceAsset: "1789594109749.jpg",
+      },
+      {
+        src: original("proje-topaz", "proje-topaz--balkon-01.webp"),
+        alt: "Proje Topaz balkonundan çevre görünümü",
+        caption: "Balkon ve çevre",
+        kind: "photo",
+        sourceAsset: "1789594109787.jpg",
+      },
       {
         src: original(
           "proje-topaz",
@@ -582,37 +619,6 @@ export const projects: Project[] = [
         caption: "Şantiye · 02",
         kind: "construction",
         sourcePage: 19,
-      },
-      /* Proje arşivinden eklenen iç mekân fotoğrafları. */
-      {
-        src: original("proje-topaz", "proje-topaz--salon-01.webp"),
-        alt: "Proje Topaz iç mekânı, salon fotoğrafı",
-        caption: "Salon",
-        kind: "photo",
-      },
-      {
-        src: original("proje-topaz", "proje-topaz--giris-01.webp"),
-        alt: "Proje Topaz iç mekânı, giriş holü ve merdiven fotoğrafı",
-        caption: "Giriş holü",
-        kind: "photo",
-      },
-      {
-        src: original("proje-topaz", "proje-topaz--mutfak-01.webp"),
-        alt: "Proje Topaz iç mekânı, mutfak fotoğrafı",
-        caption: "Mutfak",
-        kind: "photo",
-      },
-      {
-        src: original("proje-topaz", "proje-topaz--banyo-01.webp"),
-        alt: "Proje Topaz iç mekânı, banyo fotoğrafı",
-        caption: "Banyo",
-        kind: "photo",
-      },
-      {
-        src: original("proje-topaz", "proje-topaz--balkon-01.webp"),
-        alt: "Proje Topaz balkonundan çevre görünümü",
-        caption: "Balkon ve çevre",
-        kind: "photo",
       },
     ],
   },
@@ -675,19 +681,13 @@ export const projects: Project[] = [
     coverAlt: "Hill Stone yerleşkesinin tamamlanmış hâli",
     coverKind: "enhanced-photo",
     media: [
+      /* Proje arşivinden eklenen dış ve iç mekân fotoğrafları. */
       {
-        src: original("hill-stone", "hill-stone--render-01--p22.webp"),
-        alt: "Hill Stone yerleşkesi mimari render görseli",
-        caption: "Mimari render · 01",
-        kind: "render",
-        sourcePage: 22,
-      },
-      {
-        src: original("hill-stone", "hill-stone--render-02--p22.webp"),
-        alt: "Hill Stone yerleşkesi mimari render görseli",
-        caption: "Mimari render · 02",
-        kind: "render",
-        sourcePage: 22,
+        src: original("hill-stone", "hill-stone--bahce-01.webp"),
+        alt: "Hill Stone villasının bahçesi ve avlusu fotoğrafı",
+        caption: "Bahçe ve avlu",
+        kind: "photo",
+        sourceAsset: "1789594194675.jpg",
       },
       {
         src: original("hill-stone", "hill-stone--photo-01--p23.webp"),
@@ -703,30 +703,40 @@ export const projects: Project[] = [
         kind: "photo",
         sourcePage: 23,
       },
-      /* Proje arşivinden eklenen saha ve iç mekân fotoğrafları. */
-      {
-        src: original("hill-stone", "hill-stone--bahce-01.webp"),
-        alt: "Hill Stone villasının bahçesi ve avlusu fotoğrafı",
-        caption: "Bahçe ve avlu",
-        kind: "photo",
-      },
       {
         src: original("hill-stone", "hill-stone--salon-01.webp"),
         alt: "Hill Stone villa iç mekânı, salon ve mutfak fotoğrafı",
         caption: "Salon ve mutfak",
         kind: "photo",
+        sourceAsset: "1789594194654.jpg",
       },
       {
         src: original("hill-stone", "hill-stone--merdiven-01.webp"),
         alt: "Hill Stone villa iç mekânı, merdiven ve hol fotoğrafı",
         caption: "Merdiven ve hol",
         kind: "photo",
+        sourceAsset: "1789594194639.jpg",
       },
       {
         src: original("hill-stone", "hill-stone--banyo-01.webp"),
         alt: "Hill Stone villa iç mekânı, banyo fotoğrafı",
         caption: "Banyo",
         kind: "photo",
+        sourceAsset: "1789594194623.jpg",
+      },
+      {
+        src: original("hill-stone", "hill-stone--render-01--p22.webp"),
+        alt: "Hill Stone yerleşkesi mimari render görseli",
+        caption: "Mimari render · 01",
+        kind: "render",
+        sourcePage: 22,
+      },
+      {
+        src: original("hill-stone", "hill-stone--render-02--p22.webp"),
+        alt: "Hill Stone yerleşkesi mimari render görseli",
+        caption: "Mimari render · 02",
+        kind: "render",
+        sourcePage: 22,
       },
     ],
   },
@@ -741,9 +751,22 @@ export const projects: Project[] = [
     duration: "10 ay",
     /* Sunum sayfa 2'deki dört görselden hangisinin bu projeye ait olduğu kesin
        olmadığı için tekil görsel atanmaz; kart tipografik kalır. Görselsiz
-       kayıt, listede en sonda tutulur. */
+       kayıt tipografik kapakla gösterilir. */
     media: [],
   },
+];
+
+/* Yeni arşiv kayıtları, mevcut referans sırasını bozmadan listenin sonunda
+   gösterilir. Detay sayfaları ve sitemap aynı tekil veri kaynağını kullanır. */
+const tailProjectSlugs = ["flokser-lojistik", "cem-erel"];
+
+export const projects: Project[] = [
+  ...projectArchive.filter(
+    (project) => !tailProjectSlugs.includes(project.slug),
+  ),
+  ...tailProjectSlugs.flatMap((slug) =>
+    projectArchive.filter((project) => project.slug === slug),
+  ),
 ];
 
 export const projectLocations: ProjectLocation[] = [
