@@ -12,10 +12,12 @@ const retiredProjectSlugs = [
   "bakirkoy-deprem-guclendirme",
 ];
 
-/* Tadilat ve Renovasyon hizmeti kaldırıldı; yerini Endüstriyel Yapı aldı.
-   Eski adres arama motorlarında kaldığı için kalıcı olarak yeni adrese taşınır. */
+/* Kaldırılan hizmet adları: Tadilat ve Renovasyon yerini Endüstriyel Yapılar,
+   Anahtar Teslim İnşaat yerini Özel Taahhüt Projeleri aldı. Eski adresler arama
+   motorlarında kaldığı için kalıcı olarak yeni adreslerine taşınır. */
 const retiredServiceSlugs = [
   { from: "tadilat-renovasyon", to: "endustriyel-yapi" },
+  { from: "anahtar-teslim-insaat", to: "ozel-taahhut-projeleri" },
 ];
 
 const nextConfig: NextConfig = {

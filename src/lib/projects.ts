@@ -1,11 +1,12 @@
 /* Geçmiş proje arşivi.
 
    İçerik kaynağı: handoff/elegance-pdf-site-package/CONTENT_INVENTORY.md
-   (ELEGANCE-SUNUM-DOSYASI.pdf sayfa 4-5 tablosu) ve ASSET_MANIFEST.json.
+   (ELEGANCE-SUNUM-DOSYASI.pdf sayfa 4-5 tablosu), ASSET_MANIFEST.json ve
+   şirket proje arşivinden 2026'da iletilen yeni proje klasörleri.
 
-   İki coğrafya ayrı tutulur:
+   Proje coğrafyası ve hizmet bölgeleri ayrı tutulur:
    - serviceAreas: Bakırköy, Yeşilköy, Ataköy, Yeşilyurt, Florya (hedef bölgeler)
-   - location: geçmiş projenin gerçek yeri (Etiler veya Karaburun)
+   - location: projenin gerçek yeri
    Proje konumları hizmet bölgesi listesine eklenmez.
 
    Medya kuralları:
@@ -28,25 +29,30 @@ export type ProjectMedia = {
   alt: string;
   caption: string;
   kind: MediaKind;
-  sourcePage: number;
+  /** Yalnızca şirket sunum dosyasından gelen karelerde bulunur; proje
+      arşivinden eklenen fotoğraflarda tanımsızdır. */
+  sourcePage?: number;
   sourceAsset?: string;
 };
 
-export type ProjectLocation = "Etiler" | "Karaburun";
+export type ProjectLocation = "Etiler" | "Karaburun" | "Hadımköy" | "Pelitli";
+
+export type ProjectStatus = "completed" | "ongoing";
 
 export type Project = {
   slug: string;
   name: string;
   buildingName: string;
   location: ProjectLocation;
-  city: "İstanbul" | "İzmir";
+  city: "İstanbul" | "İzmir" | "Kocaeli";
   contractYear: string;
-  occupancyYear: string;
-  duration: string;
+  occupancyYear?: string;
+  duration?: string;
+  status?: ProjectStatus;
   /** Sunum tablosunda alanı belirtilmeyen projelerde tanımsızdır. */
   area?: string;
-  /* Durum bilgisi (tamamlandı / devam ediyor) bilinçli olarak taşınmaz:
-     sunum dosyasındaki kayıtlarla çelişiyor ve arayüzde gösterilmez. */
+  /** Yalnızca kaynak kayıtta açıkça belirtilmişse kullanılır. Eski sunum
+      kayıtlarında durum alanı çelişkili olduğu için tanımsız bırakılır. */
   cover?: string;
   coverAlt?: string;
   coverKind?: MediaKind;
@@ -68,6 +74,244 @@ export const MEDIA_LABELS: Record<MediaKind, string> = {
 };
 
 export const projects: Project[] = [
+  {
+    slug: "cem-erel",
+    name: "Cem Erel",
+    buildingName: "Cem Erel Kalıp Teknolojileri",
+    location: "Pelitli",
+    city: "Kocaeli",
+    contractYear: "2026",
+    status: "ongoing",
+    area: "15.000 m²",
+    cover: original("cem-erel", "cem-erel--construction-01.webp"),
+    coverAlt:
+      "Cem Erel Kalıp Teknolojileri tesisinin betonarme yapı uygulaması",
+    coverKind: "construction",
+    media: [
+      {
+        src: original("cem-erel", "cem-erel--construction-01.webp"),
+        alt: "Cem Erel Kalıp Teknolojileri tesisinin betonarme taşıyıcı sistemi",
+        caption: "Betonarme yapı uygulaması",
+        kind: "construction",
+        sourceAsset: "1789594259041.jpeg",
+      },
+      {
+        src: original("cem-erel", "cem-erel--construction-02.webp"),
+        alt: "Cem Erel Kalıp Teknolojileri tesisinin çelik çatı montajı",
+        caption: "Çelik çatı montajı",
+        kind: "construction",
+        sourceAsset: "1789594259079.jpg",
+      },
+    ],
+  },
+  {
+    slug: "flokser-lojistik",
+    name: "Flokser Lojistik",
+    buildingName: "Flokser Lojistik Depo",
+    location: "Hadımköy",
+    city: "İstanbul",
+    contractYear: "2021",
+    occupancyYear: "2024",
+    duration: "32 ay",
+    status: "completed",
+    area: "120.000 m²",
+    cover: original(
+      "flokser-lojistik",
+      "flokser-lojistik--construction-01.webp",
+    ),
+    coverAlt: "Flokser Lojistik Depo şantiyesinin genel görünümü",
+    coverKind: "construction",
+    media: [
+      {
+        src: original(
+          "flokser-lojistik",
+          "flokser-lojistik--construction-01.webp",
+        ),
+        alt: "Flokser Lojistik Depo şantiyesinin genel görünümü",
+        caption: "Şantiye genel görünümü",
+        kind: "construction",
+        sourceAsset: "1789594365874.JPG",
+      },
+      {
+        src: original(
+          "flokser-lojistik",
+          "flokser-lojistik--construction-02.webp",
+        ),
+        alt: "Flokser Lojistik Depo betonarme perde ve kolon kalıp uygulaması",
+        caption: "Perde ve kolon kalıbı · 01",
+        kind: "construction",
+        sourceAsset: "1789594449676.jpg",
+      },
+      {
+        src: original(
+          "flokser-lojistik",
+          "flokser-lojistik--construction-03.webp",
+        ),
+        alt: "Flokser Lojistik Depo temel ve bodrum kat imalatı",
+        caption: "Temel ve bodrum kat",
+        kind: "construction",
+        sourceAsset: "1789594449693.jpg",
+      },
+      {
+        src: original(
+          "flokser-lojistik",
+          "flokser-lojistik--construction-04.webp",
+        ),
+        alt: "Flokser Lojistik Depo kolon ve perde kalıp montajı",
+        caption: "Perde ve kolon kalıbı · 02",
+        kind: "construction",
+        sourceAsset: "1789594449711.jpg",
+      },
+      {
+        src: original(
+          "flokser-lojistik",
+          "flokser-lojistik--construction-05.webp",
+        ),
+        alt: "Flokser Lojistik Depo bodrum kat donatı çalışmaları",
+        caption: "Bodrum kat donatısı",
+        kind: "construction",
+        sourceAsset: "1789594449727.jpg",
+      },
+      {
+        src: original(
+          "flokser-lojistik",
+          "flokser-lojistik--construction-06.webp",
+        ),
+        alt: "Flokser Lojistik Depo perde donatısı uygulaması",
+        caption: "Perde donatısı",
+        kind: "construction",
+        sourceAsset: "1789594449746.jpg",
+      },
+      {
+        src: original(
+          "flokser-lojistik",
+          "flokser-lojistik--construction-07.webp",
+        ),
+        alt: "Flokser Lojistik Depo kolon kalıbı montajı",
+        caption: "Kolon kalıbı · 01",
+        kind: "construction",
+        sourceAsset: "1789594449766.jpg",
+      },
+      {
+        src: original(
+          "flokser-lojistik",
+          "flokser-lojistik--construction-08.webp",
+        ),
+        alt: "Flokser Lojistik Depo perde kalıbı saha çalışması",
+        caption: "Perde kalıbı",
+        kind: "construction",
+        sourceAsset: "1789594449808.jpg",
+      },
+      {
+        src: original(
+          "flokser-lojistik",
+          "flokser-lojistik--construction-09.webp",
+        ),
+        alt: "Flokser Lojistik Depo kolon donatısı vinçle montajı",
+        caption: "Kolon donatısı montajı",
+        kind: "construction",
+        sourceAsset: "1789594449829.jpg",
+      },
+      {
+        src: original(
+          "flokser-lojistik",
+          "flokser-lojistik--construction-10.webp",
+        ),
+        alt: "Flokser Lojistik Depo temel döşemesi ve kolon filizleri",
+        caption: "Temel döşemesi",
+        kind: "construction",
+        sourceAsset: "1789594449848.jpg",
+      },
+      {
+        src: original(
+          "flokser-lojistik",
+          "flokser-lojistik--construction-11.webp",
+        ),
+        alt: "Flokser Lojistik Depo kolon donatısı imalatı",
+        caption: "Kolon donatısı",
+        kind: "construction",
+        sourceAsset: "1789594449871.jpg",
+      },
+      {
+        src: original(
+          "flokser-lojistik",
+          "flokser-lojistik--construction-12.webp",
+        ),
+        alt: "Flokser Lojistik Depo istinat perdesi yalıtım uygulaması",
+        caption: "İstinat perdesi ve yalıtım",
+        kind: "construction",
+        sourceAsset: "1789594449895.jpg",
+      },
+      {
+        src: original(
+          "flokser-lojistik",
+          "flokser-lojistik--construction-13.webp",
+        ),
+        alt: "Flokser Lojistik Depo kolon beton dökümü",
+        caption: "Kolon beton dökümü",
+        kind: "construction",
+        sourceAsset: "1789594449931.jpg",
+      },
+      {
+        src: original(
+          "flokser-lojistik",
+          "flokser-lojistik--construction-14.webp",
+        ),
+        alt: "Flokser Lojistik Depo istinat duvarı kalıp uygulaması",
+        caption: "İstinat duvarı kalıbı",
+        kind: "construction",
+        sourceAsset: "1789594449948.jpg",
+      },
+      {
+        src: original(
+          "flokser-lojistik",
+          "flokser-lojistik--construction-15.webp",
+        ),
+        alt: "Flokser Lojistik Depo kolon kalıbı saha uygulaması",
+        caption: "Kolon kalıbı · 02",
+        kind: "construction",
+        sourceAsset: "1789594449965.jpg",
+      },
+      {
+        src: original(
+          "flokser-lojistik",
+          "flokser-lojistik--construction-16.webp",
+        ),
+        alt: "Flokser Lojistik Depo gece beton dökümü",
+        caption: "Gece beton dökümü",
+        kind: "construction",
+        sourceAsset: "1789594449984.jpg",
+      },
+      {
+        src: original("flokser-lojistik", "flokser-lojistik--render-01.webp"),
+        alt: "Flokser Lojistik Depo ön cephe mimari renderı",
+        caption: "Mimari render · 01",
+        kind: "render",
+        sourceAsset: "1789594450002.jpg",
+      },
+      {
+        src: original("flokser-lojistik", "flokser-lojistik--render-02.webp"),
+        alt: "Flokser Lojistik Depo giriş yapısı mimari renderı",
+        caption: "Mimari render · 02",
+        kind: "render",
+        sourceAsset: "1789594450025.jpg",
+      },
+      {
+        src: original("flokser-lojistik", "flokser-lojistik--render-03.webp"),
+        alt: "Flokser Lojistik Depo yükleme cephesi mimari renderı",
+        caption: "Mimari render · 03",
+        kind: "render",
+        sourceAsset: "1789594450045.jpg",
+      },
+      {
+        src: original("flokser-lojistik", "flokser-lojistik--render-04.webp"),
+        alt: "Flokser Lojistik Depo yerleşkesi kuşbakışı mimari renderı",
+        caption: "Mimari render · 04",
+        kind: "render",
+        sourceAsset: "1789594450063.jpg",
+      },
+    ],
+  },
   {
     slug: "proje-mercan",
     name: "Proje Mercan",
@@ -243,6 +487,25 @@ export const projects: Project[] = [
         kind: "photo",
         sourcePage: 17,
       },
+      /* Proje arşivinden eklenen saha fotoğrafları. */
+      {
+        src: original("proje-kuvars", "proje-kuvars--facade-03.webp"),
+        alt: "Proje Kuvars bloklarının dış cephesi, tamamlanmış yapı fotoğrafı",
+        caption: "Dış cephe · 03",
+        kind: "photo",
+      },
+      {
+        src: original("proje-kuvars", "proje-kuvars--facade-04.webp"),
+        alt: "Proje Kuvars bloklarının cephesinden detay fotoğrafı",
+        caption: "Dış cephe · 04",
+        kind: "photo",
+      },
+      {
+        src: original("proje-kuvars", "proje-kuvars--bahce-01.webp"),
+        alt: "Proje Kuvars bloklarının bahçesi ve çevre düzenlemesi fotoğrafı",
+        caption: "Bahçe ve yerleşke",
+        kind: "photo",
+      },
       {
         src: original(
           "proje-kuvars",
@@ -319,6 +582,37 @@ export const projects: Project[] = [
         caption: "Şantiye · 02",
         kind: "construction",
         sourcePage: 19,
+      },
+      /* Proje arşivinden eklenen iç mekân fotoğrafları. */
+      {
+        src: original("proje-topaz", "proje-topaz--salon-01.webp"),
+        alt: "Proje Topaz iç mekânı, salon fotoğrafı",
+        caption: "Salon",
+        kind: "photo",
+      },
+      {
+        src: original("proje-topaz", "proje-topaz--giris-01.webp"),
+        alt: "Proje Topaz iç mekânı, giriş holü ve merdiven fotoğrafı",
+        caption: "Giriş holü",
+        kind: "photo",
+      },
+      {
+        src: original("proje-topaz", "proje-topaz--mutfak-01.webp"),
+        alt: "Proje Topaz iç mekânı, mutfak fotoğrafı",
+        caption: "Mutfak",
+        kind: "photo",
+      },
+      {
+        src: original("proje-topaz", "proje-topaz--banyo-01.webp"),
+        alt: "Proje Topaz iç mekânı, banyo fotoğrafı",
+        caption: "Banyo",
+        kind: "photo",
+      },
+      {
+        src: original("proje-topaz", "proje-topaz--balkon-01.webp"),
+        alt: "Proje Topaz balkonundan çevre görünümü",
+        caption: "Balkon ve çevre",
+        kind: "photo",
       },
     ],
   },
@@ -409,6 +703,31 @@ export const projects: Project[] = [
         kind: "photo",
         sourcePage: 23,
       },
+      /* Proje arşivinden eklenen saha ve iç mekân fotoğrafları. */
+      {
+        src: original("hill-stone", "hill-stone--bahce-01.webp"),
+        alt: "Hill Stone villasının bahçesi ve avlusu fotoğrafı",
+        caption: "Bahçe ve avlu",
+        kind: "photo",
+      },
+      {
+        src: original("hill-stone", "hill-stone--salon-01.webp"),
+        alt: "Hill Stone villa iç mekânı, salon ve mutfak fotoğrafı",
+        caption: "Salon ve mutfak",
+        kind: "photo",
+      },
+      {
+        src: original("hill-stone", "hill-stone--merdiven-01.webp"),
+        alt: "Hill Stone villa iç mekânı, merdiven ve hol fotoğrafı",
+        caption: "Merdiven ve hol",
+        kind: "photo",
+      },
+      {
+        src: original("hill-stone", "hill-stone--banyo-01.webp"),
+        alt: "Hill Stone villa iç mekânı, banyo fotoğrafı",
+        caption: "Banyo",
+        kind: "photo",
+      },
     ],
   },
   {
@@ -427,7 +746,12 @@ export const projects: Project[] = [
   },
 ];
 
-export const projectLocations: ProjectLocation[] = ["Etiler", "Karaburun"];
+export const projectLocations: ProjectLocation[] = [
+  "Etiler",
+  "Karaburun",
+  "Hadımköy",
+  "Pelitli",
+];
 
 export function getProject(slug: string) {
   return projects.find((project) => project.slug === slug);

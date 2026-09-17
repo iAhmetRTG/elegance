@@ -39,10 +39,10 @@ export const waTopics: WaTopic[] = [
       "Merhaba, arsamız için kat karşılığı inşaat teklifi almak istiyorum.",
   },
   {
-    id: "anahtar-teslim",
-    label: "Anahtar teslim inşaat",
+    id: "ozel-taahhut",
+    label: "Özel taahhüt projeleri",
     message:
-      "Merhaba, anahtar teslim inşaat hakkında bilgi almak istiyorum.",
+      "Merhaba, özel taahhüt projesi kapsamında teklif almak istiyorum.",
   },
   {
     id: "guclendirme",

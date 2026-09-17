@@ -22,54 +22,10 @@ export const services = [
     ],
   },
   {
-    slug: "kat-karsiligi-insaat",
-    icon: "key",
-    cover: "/photos/after-2.jpg",
-    name: "Kat Karşılığı İnşaat",
-    tagline: "Arsanız, bizimle gerçek değerinin karşılığını alır.",
-    summary:
-      "Arsa sahibine nakit yükü olmadan, pay karşılığında yeni ve değerli bir yapı kazandırıyoruz.",
-    featured: false,
-    description: [
-      "Arsanızın imar durumunu ve parsel verimini analiz ederek en yüksek daire verimini sağlayan mimari çözümü kurguluyoruz. Kat karşılığı oranını; konum, imar hakları ve güncel inşaat maliyetlerine göre şeffaf biçimde hesaplıyor, noter onaylı sözleşmeyle güvence altına alıyoruz.",
-      "İnşaat süresince nakit akışını ve malzeme kalitesini biz yönetiyoruz. Teslimde daire seçimi, iskan ve tapu işlemleri dahil tüm süreç tarafımızdan tamamlanır.",
-    ],
-    features: [
-      "Parsel ve imar durumu analizi",
-      "Kat karşılığı oran hesaplama ve müzakere",
-      "Noter onaylı sözleşme güvencesi",
-      "İnşaat maliyeti ve nakit akışı yönetimi",
-      "Daire seçimi ve teslim planı",
-      "Zemin iyileştirme dahil anahtar teslim",
-    ],
-  },
-  {
-    slug: "anahtar-teslim-insaat",
-    icon: "door",
-    cover: "/photos/project-ofis.jpg",
-    name: "Anahtar Teslim İnşaat",
-    tagline: "Tek sözleşme, tek muhatap, eksiksiz teslim.",
-    summary:
-      "Projeden son temizliğe kadar tüm işleri tek çatı altında topluyor, bütçe ve takvim taahhüdüyle teslim ediyoruz.",
-    featured: false,
-    description: [
-      "Konut, ofis ve ticari yapılarda; mimari projeden elektrik, sıhhi tesisat ve ince işlere kadar tüm kalemleri tek sözleşmede birleştiriyoruz. Böylece farklı yükleniciler arasında kaybolan zaman ve bütçe kontrolünü ortadan kaldırıyoruz.",
-      "Malzeme seçiminden iş programına kadar her adımı haftalık ilerleme raporlarıyla paylaşıyor; teslimde eksik listesi kapatılmadan süreci sonlandırmıyoruz.",
-    ],
-    features: [
-      "Mimari ve uygulama projeleri",
-      "İnşaat, elektrik, tesisat ve ısıtma",
-      "İnce işler, cephe ve peyzaj",
-      "Marka ve malzeme seçim yönetimi",
-      "Haftalık ilerleme raporu",
-      "Teslim sonrası işçilik garantisi",
-    ],
-  },
-  {
     slug: "endustriyel-yapi",
     icon: "factory",
     cover: "/photos/gallery-guclendirme.jpg",
-    name: "Endüstriyel Yapı",
+    name: "Endüstriyel Yapılar",
     tagline: "Üretim, depolama ve lojistik yapıları anahtar teslim kurulur.",
     summary:
       "Fabrika, üretim tesisi ve depo yapılarında taşıyıcı sistemi; saha altyapısı, MEP koordinasyonu ve ruhsat süreçleriyle birlikte uçtan uca yürütüyoruz.",
@@ -88,10 +44,32 @@ export const services = [
     ],
   },
   {
+    slug: "ozel-taahhut-projeleri",
+    icon: "contract",
+    cover: "/photos/project-ofis.jpg",
+    name: "Özel Taahhüt Projeleri",
+    tagline: "İşverene özel kapsam; sözleşmeye bağlı bütçe, takvim ve teslim.",
+    summary:
+      "İhtiyaca göre tanımlanan projelerde keşif, kapsam ve maliyeti netleştiriyor; bütçe ve takvimi sözleşmeyle bağlayıp disiplinleri tek elden yürütüyoruz.",
+    featured: false,
+    description: [
+      "Özel taahhüt projeleri hazır bir kalıptan değil, işverenin ihtiyacından doğar. İhtiyaç programını, arsa veya mevcut yapı koşullarını ve hedefi birlikte değerlendiriyor; mimari, statik ve maliyet çalışmasını kapsam listesiyle birlikte tek dosyada netleştiriyoruz.",
+      "Sözleşmede bütçe, ödeme planı, iş programı ve teslim koşulları kalem kalem yazılır. İnşaat süresince mimari, statik, mekanik ve elektrik disiplinlerini aynı programda koordine ediyor; kalite kontrolünü ve teslim sürecini tek muhataptan yürütüyoruz.",
+    ],
+    features: [
+      "İhtiyaç programı ve kapsam tarifi",
+      "Keşif, metraj ve maliyet çalışması",
+      "Sözleşme, ödeme planı ve iş programı",
+      "Mimari, statik, mekanik ve elektrik koordinasyonu",
+      "Kalite kontrolü ve ilerleme raporları",
+      "Kabul ve teslim sürecinin yürütülmesi",
+    ],
+  },
+  {
     slug: "villa-mustakil-yapi",
     icon: "home",
     cover: "/photos/gallery-florya.jpg",
-    name: "Villa ve Müstakil Yapı",
+    name: "Villa ve Müstakil Yapılar",
     tagline: "Bahçenizde, size özel tasarlanmış bir yaşam.",
     summary:
       "Florya ve Yeşilköy hattında arsa analizinden peyzaja kadar müstakil yapı ve villa projeleri.",
@@ -129,6 +107,28 @@ export const services = [
       "Zemin iyileştirme çözümleri",
       "Belediye onaylı proje ve raporlar",
       "Minimum kesintiyle etaplı uygulama",
+    ],
+  },
+  {
+    slug: "kat-karsiligi-insaat",
+    icon: "key",
+    cover: "/photos/after-2.jpg",
+    name: "Kat Karşılığı İnşaat",
+    tagline: "Arsanız, bizimle gerçek değerinin karşılığını alır.",
+    summary:
+      "Arsa sahibine nakit yükü olmadan, pay karşılığında yeni ve değerli bir yapı kazandırıyoruz.",
+    featured: false,
+    description: [
+      "Arsanızın imar durumunu ve parsel verimini analiz ederek en yüksek daire verimini sağlayan mimari çözümü kurguluyoruz. Kat karşılığı oranını; konum, imar hakları ve güncel inşaat maliyetlerine göre şeffaf biçimde hesaplıyor, noter onaylı sözleşmeyle güvence altına alıyoruz.",
+      "İnşaat süresince nakit akışını ve malzeme kalitesini biz yönetiyoruz. Teslimde daire seçimi, iskan ve tapu işlemleri dahil tüm süreç tarafımızdan tamamlanır.",
+    ],
+    features: [
+      "Parsel ve imar durumu analizi",
+      "Kat karşılığı oran hesaplama ve müzakere",
+      "Noter onaylı sözleşme güvencesi",
+      "İnşaat maliyeti ve nakit akışı yönetimi",
+      "Daire seçimi ve teslim planı",
+      "Zemin iyileştirme dahil anahtar teslim",
     ],
   },
 ] as const;

@@ -3,7 +3,7 @@ import type { ReactElement } from "react";
 export type ServiceSheetVariant =
   | "kentsel-donusum"
   | "kat-karsiligi-insaat"
-  | "anahtar-teslim-insaat"
+  | "ozel-taahhut-projeleri"
   | "endustriyel-yapi"
   | "villa-mustakil-yapi"
   | "deprem-guclendirme";
@@ -230,7 +230,7 @@ function KentselDonusum() {
   );
 }
 
-/* 02 · Kat karsiligi: parsel, pay oranlari ve blok izi. */
+/* 06 · Kat karsiligi: parsel, pay oranlari ve blok izi. */
 function KatKarsiligi() {
   return (
     <>
@@ -356,112 +356,99 @@ function KatKarsiligi() {
   );
 }
 
-/* 03 · Anahtar teslim: bina kesiti, teslim listesi ve anahtar plakasi. */
-function AnahtarTeslim() {
+/* 03 · Ozel taahhut projeleri: kesif ve sozlesme dosyasi, koordine edilen
+   disiplinler ve is programi. Solda pafta tomarina vurulmus onay muhru,
+   sagda kapsam listesi ile teslimi isaretlenen takvim seridi. */
+function OzelTaahhut() {
+  const disciplines = ["MİMARİ", "STATİK", "MEKANİK", "ELEKTRİK"];
+
   return (
     <>
+      {/* Zemin hatti dosyanin altinda kalir. */}
       <line
         x1={48}
         y1={300}
-        x2={512}
+        x2={300}
         y2={300}
         {...ink}
         strokeWidth={1}
         opacity={0.4}
       />
 
+      {/* Proje dosyasi: arkada iki kopya, onde kesif paftasi. */}
       <rect
-        x={70}
-        y={148}
-        width={206}
-        height={152}
+        x={96}
+        y={134}
+        width={196}
+        height={166}
+        {...ink}
+        strokeWidth={1}
+        opacity={0.2}
+      />
+      <rect
+        x={78}
+        y={126}
+        width={196}
+        height={166}
+        {...ink}
+        strokeWidth={1}
+        opacity={0.4}
+      />
+      <rect
+        x={60}
+        y={118}
+        width={196}
+        height={166}
         {...ink}
         strokeWidth={1.5}
       />
-      <line x1={60} y1={148} x2={286} y2={148} {...ink} strokeWidth={1.5} />
-      <line x1={70} y1={140} x2={276} y2={140} {...ink} opacity={0.5} />
-      <line x1={70} y1={198} x2={276} y2={198} {...ink} opacity={0.3} />
-      <line x1={70} y1={248} x2={276} y2={248} {...ink} opacity={0.3} />
 
-      {[0, 1, 2].map((floor) =>
-        [0, 1].map((col) => (
-          <rect
-            key={`win-${floor}-${col}`}
-            x={88 + col * 42}
-            y={164 + floor * 50}
-            width={26}
-            height={22}
-            {...ink}
-            opacity={0.4}
-          />
-        )),
-      )}
-
-      <polyline
-        points="186,300 186,264 214,264 214,228 242,228 242,300"
+      {/* Paftadaki kesif: parsel siniri ve yapi oturmasi. */}
+      <polygon
+        points="76,152 206,144 234,206 152,258 74,232"
         {...ink}
-        strokeWidth={1}
-        opacity={0.5}
+        strokeWidth={1.1}
+        strokeDasharray="7 5"
+        opacity={0.75}
       />
+      <rect x={110} y={176} width={58} height={44} {...ink} strokeWidth={1.2} />
+      <line x1={110} y1={198} x2={168} y2={198} {...ink} opacity={0.35} />
+      <line x1={139} y1={176} x2={139} y2={220} {...ink} opacity={0.35} />
 
-      <rect
-        x={92}
-        y={272}
-        width={26}
-        height={28}
-        {...brass}
-        strokeWidth={1.3}
-      />
+      {/* Onay muhru. */}
+      <circle cx={230} cy={250} r={22} {...brass} strokeWidth={1.2} />
+      <circle cx={230} cy={250} r={14} {...brass} strokeWidth={0.9} opacity={0.7} />
       <path
         pathLength={1}
         className="draw"
-        d="M118 272 A 26 26 0 0 0 92 246"
+        d="M220 250 l7 7 l13 -15"
         {...brass}
-        strokeWidth={1.1}
+        strokeWidth={1.3}
       />
-      <g {...brass} strokeWidth={1} opacity={0.7}>
-        <line x1={118} y1={286} x2={166} y2={286} />
-        <line x1={166} y1={286} x2={166} y2={276} />
-      </g>
-      <Label x={172} y={282} tone="brass">
-        TESLİM
-      </Label>
 
-      <rect
-        x={396}
-        y={54}
-        width={104}
-        height={62}
-        {...brass}
-        strokeWidth={1}
-        strokeDasharray="5 5"
-        opacity={0.7}
-      />
-      <g {...brass} strokeWidth={1.4}>
-        <circle cx={424} cy={76} r={9} />
-        <line x1={433} y1={76} x2={478} y2={76} />
-        <line x1={466} y1={76} x2={466} y2={86} />
-        <line x1={474} y1={76} x2={474} y2={84} />
+      {/* Olcu hatti: paftanin eni. */}
+      <g {...ink} opacity={0.45}>
+        <line x1={60} y1={296} x2={256} y2={296} />
+        <line x1={60} y1={290} x2={60} y2={300} />
+        <line x1={256} y1={290} x2={256} y2={300} />
       </g>
-      <Label x={448} y={106} anchor="middle" tone="brass">
-        ANAHTAR
-      </Label>
 
-      <Label x={396} y={148}>
-        TESLİM LİSTESİ
+      {/* Kapsam listesi: ayni programda koordine edilen disiplinler. */}
+      <Label x={318} y={132}>
+        KAPSAM VE DİSİPLİNLER
       </Label>
-      <g opacity={0.75}>
-        {["MİMARİ", "ELEKTRİK", "TESİSAT", "İNCE İŞLER"].map((item, index) => (
+      <g opacity={0.8}>
+        {disciplines.map((item, index) => (
           <g key={item}>
-            <CheckMark x={396} y={168 + index * 32} />
-            <Label x={420} y={174 + index * 32} size={9}>
+            <CheckMark x={318} y={150 + index * 28} />
+            <Label x={342} y={156 + index * 28} size={9}>
               {item}
             </Label>
             <line
-              x1={392}
-              y1={186 + index * 32}
-              x2={506}
-              y2={186 + index * 32}
+              x1={314}
+              y1={168 + index * 28}
+              x2={510}
+              y2={168 + index * 28}
               {...ink}
               strokeWidth={0.75}
               opacity={0.2}
@@ -470,28 +457,45 @@ function AnahtarTeslim() {
         ))}
       </g>
 
-      <g {...ink} opacity={0.45}>
-        <line x1={52} y1={148} x2={52} y2={300} />
-        <line x1={46} y1={148} x2={58} y2={148} />
-        <line x1={46} y1={300} x2={58} y2={300} />
-      </g>
-      <text
-        x={40}
-        y={224}
-        fontSize={8}
-        letterSpacing={1.7}
-        fill="currentColor"
-        opacity={0.68}
-        transform="rotate(-90 40 224)"
-        textAnchor="middle"
-      >
-        9.60 m
-      </text>
+      {/* Is programi: sozlesmeden teslime isaretlenen kilometre taslari. */}
+      <Label x={318} y={276}>
+        İŞ PROGRAMI
+      </Label>
+      <line
+        x1={318}
+        y1={290}
+        x2={504}
+        y2={290}
+        {...ink}
+        strokeWidth={1}
+        opacity={0.5}
+      />
+      {[322, 383, 444, 499].map((x, index) => {
+        const handedOver = index === 3;
+
+        return (
+          <circle
+            key={x}
+            cx={x}
+            cy={290}
+            r={handedOver ? 5 : 3.5}
+            {...(handedOver ? brass : ink)}
+            strokeWidth={1.2}
+            opacity={handedOver ? 1 : 0.6}
+          />
+        );
+      })}
+      <Label x={318} y={310}>
+        SÖZLEŞME
+      </Label>
+      <Label x={504} y={310} anchor="end" tone="brass">
+        TESLİM
+      </Label>
     </>
   );
 }
 
-/* 04 · Endustriyel yapi: celik portal cerceve kesiti ve depo akslari.
+/* 02 · Endustriyel yapi: celik portal cerceve kesiti ve depo akslari.
    Iki ayri disiplin yan yana gosterilir: solda tasiyici sistem kesiti,
    sagda depolama hacminin aks yerlesimi. */
 function EndustriyelYapi() {
@@ -651,7 +655,7 @@ function EndustriyelYapi() {
   );
 }
 
-/* 05 · Villa: vaziyet plani, havuz ve bahce. */
+/* 04 · Villa: vaziyet plani, havuz ve bahce. */
 function Villa() {
   const trees = [
     [92, 100],
@@ -766,7 +770,7 @@ function Villa() {
   );
 }
 
-/* 06 · Guclendirme: karkas, perde ve kapasite egrisi. */
+/* 05 · Guclendirme: karkas, perde ve kapasite egrisi. */
 function Guclendirme() {
   const columns = [70, 170, 270, 370];
   const beams = [90, 160, 230, 300];
@@ -879,7 +883,7 @@ function Guclendirme() {
 const variants: Record<ServiceSheetVariant, () => ReactElement> = {
   "kentsel-donusum": KentselDonusum,
   "kat-karsiligi-insaat": KatKarsiligi,
-  "anahtar-teslim-insaat": AnahtarTeslim,
+  "ozel-taahhut-projeleri": OzelTaahhut,
   "endustriyel-yapi": EndustriyelYapi,
   "villa-mustakil-yapi": Villa,
   "deprem-guclendirme": Guclendirme,

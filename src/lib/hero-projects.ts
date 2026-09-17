@@ -12,9 +12,11 @@
    Slayt sırası iki coğrafyayı gruplar: önce Etiler (İstanbul) projeleri,
    ardından Karaburun (İzmir) yerleşkeleri.
 
-   Proje Kuvars ve Hill Stone için pakette yalnızca geniş desktop varyantı
-   vardır; ayrı bir 4:5 mobil kırpım üretilmediği için aynı dosya iki
-   kırılımda da kullanılır ve mobil kadraj `mobilePosition` ile ayarlanır. */
+   Hill Stone için pakette yalnızca geniş desktop varyantı vardır; ayrı bir
+   4:5 mobil kırpım üretilmediği için aynı dosya iki kırılımda da kullanılır
+   ve mobil kadraj `mobilePosition` ile ayarlanır. Proje Kuvars'ta cephe
+   fotoğrafı 2026'da yenilendi; desktop ve 4:5 mobil varyantları birlikte
+   üretildi (bkz. IMAGEGEN_LOG.md). */
 
 export type HeroProject = {
   id: string;
@@ -71,11 +73,11 @@ export const heroProjects: HeroProject[] = [
     name: "Proje Kuvars",
     location: "Etiler, İstanbul",
     note: "Tamamlanmış proje · 2017 — 2019",
-    desktopImage: enhanced("proje-kuvars--hero-enhanced.webp"),
-    mobileImage: enhanced("proje-kuvars--hero-enhanced.webp"),
+    desktopImage: enhanced("proje-kuvars--hero-facade-enhanced.webp"),
+    mobileImage: enhanced("proje-kuvars--hero-facade-mobile-enhanced.webp"),
     desktopPosition: "center center",
     mobilePosition: "center center",
-    alt: "Proje Kuvars bloklarının tamamlanmış dış cephesi",
+    alt: "Proje Kuvars bloğunun tamamlanmış cephesi, önden görünüm",
     href: "/projeler/proje-kuvars",
   },
   {

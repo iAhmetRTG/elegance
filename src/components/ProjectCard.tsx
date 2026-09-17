@@ -19,6 +19,7 @@ export type ProjectCardData = Pick<
   | "cover"
   | "coverAlt"
   | "coverKind"
+  | "status"
 >;
 
 export function toProjectCardData(project: Project): ProjectCardData {
@@ -76,7 +77,17 @@ export function ProjectCard({ project }: { project: ProjectCardData }) {
             ) : null}
           </p>
           <p className="mt-1.5 text-[11px] uppercase tracking-[0.14em] text-muted">
-            {`Sözleşme ${project.contractYear} · İskân ${project.occupancyYear} · ${project.duration}`}
+            {project.status === "ongoing"
+              ? `Sözleşme ${project.contractYear} · Devam ediyor`
+              : [
+                  `Sözleşme ${project.contractYear}`,
+                  project.occupancyYear
+                    ? `İskân ${project.occupancyYear}`
+                    : null,
+                  project.duration,
+                ]
+                  .filter(Boolean)
+                  .join(" · ")}
           </p>
         </div>
         <Icon

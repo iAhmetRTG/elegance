@@ -1,16 +1,19 @@
 import { ProjectCard, type ProjectCardData } from "./ProjectCard";
+import type { ProjectLocation } from "@/lib/projects";
 import { Reveal } from "./Reveal";
 
 export type { ProjectCardData };
 
 /* Filtreler geçmiş projelerin gerçek konumlarıdır; kayıtlarda yayınlanan
    başka bir kırılım (durum, tip) bulunmaz. */
-export type ProjectFilter = "all" | "Etiler" | "Karaburun";
+export type ProjectFilter = "all" | ProjectLocation;
 
 const FILTERS: { key: ProjectFilter; label: string }[] = [
   { key: "all", label: "Tümü" },
   { key: "Etiler", label: "Etiler" },
   { key: "Karaburun", label: "Karaburun" },
+  { key: "Hadımköy", label: "Hadımköy" },
+  { key: "Pelitli", label: "Pelitli" },
 ];
 
 export function projectMatches(

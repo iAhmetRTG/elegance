@@ -6,17 +6,25 @@ import { Reveal } from "@/components/Reveal";
 import { Icon } from "@/components/Icon";
 
 /* İç mekân seçkisi yalnızca gerçek proje fotoğraflarından oluşur.
-   Her kare kendi projesinin adını taşır; başka projeye atanamaz. */
-const selection: { slug: string; index: number; label: string }[] = [
-  { slug: "proje-ametist", index: 4, label: "İç mekân" },
-  { slug: "proje-kuvars", index: 2, label: "Salon ve mutfak" },
-  { slug: "proje-mercan", index: 3, label: "İç mekân" },
-  { slug: "proje-kuvars", index: 4, label: "Banyo" },
+   Her kare kendi projesinin adını taşır; başka projeye atanamaz.
+   Kareler galeri sırasına göre değil, dosya adındaki konu etiketiyle seçilir;
+   galeriye yeni fotoğraf eklendiğinde seçki kaymaz. */
+const selection: { slug: string; match: string; label: string }[] = [
+  { slug: "proje-ametist", match: "interior-01", label: "İç mekân" },
+  {
+    slug: "proje-kuvars",
+    match: "interior-living-01",
+    label: "Salon ve mutfak",
+  },
+  { slug: "proje-mercan", match: "interior-01", label: "İç mekân" },
+  { slug: "proje-kuvars", match: "interior-bathroom-01", label: "Banyo" },
 ];
 
 const items = selection.flatMap((entry) => {
   const project = getProject(entry.slug);
-  const media: ProjectMedia | undefined = project?.media[entry.index];
+  const media: ProjectMedia | undefined = project?.media.find((item) =>
+    item.src.includes(entry.match),
+  );
   if (!project || !media) return [];
   return [
     {

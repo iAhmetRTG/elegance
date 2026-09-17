@@ -159,9 +159,9 @@ export default function AboutPage() {
         <div className="mx-auto max-w-7xl px-5 py-20 lg:px-8 lg:py-28">
           <div className="flex flex-wrap items-end justify-between gap-6">
             <div>
-              <SectionLabel no="03">Geçmiş projeler</SectionLabel>
+              <SectionLabel no="03">Projeler</SectionLabel>
               <h2 className="mt-5 font-display text-4xl leading-tight lg:text-5xl">
-                Sunum dosyasındaki kayıtlar
+                Şirket arşivindeki kayıtlar
               </h2>
             </div>
             <Link
@@ -192,7 +192,11 @@ export default function AboutPage() {
                     </span>
                   </span>
                   <span className="text-[12px] uppercase tracking-[0.14em] text-muted sm:text-right">
-                    {project.contractYear}—{project.occupancyYear}
+                    {project.status === "ongoing"
+                      ? `${project.contractYear}—devam ediyor`
+                      : [project.contractYear, project.occupancyYear]
+                          .filter(Boolean)
+                          .join("—")}
                   </span>
                 </Link>
               </li>
@@ -200,9 +204,8 @@ export default function AboutPage() {
           </ul>
 
           <p className="mt-6 max-w-[var(--measure)] text-[13px] leading-relaxed text-muted">
-            Bu kayıtlar Etiler (İstanbul) ve Karaburun (İzmir) konumlarındadır;
-            yukarıdaki hizmet bölgelerinde yürütülmüş işler olarak
-            gösterilmez.
+            Proje kayıtları İstanbul, İzmir ve Kocaeli&apos;deki gerçek uygulama
+            konumlarıyla gösterilir; hedef hizmet bölgeleriyle karıştırılmaz.
           </p>
         </div>
       </section>

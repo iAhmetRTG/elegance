@@ -113,7 +113,8 @@ export function Footer() {
             © {new Date().getFullYear()} {site.legalName}. Tüm hakları saklıdır.
           </p>
           <p>
-            {site.serviceRegion} · Kentsel dönüşüm ve anahtar teslim inşaat
+            {site.serviceRegion} · Kentsel dönüşüm, kat karşılığı ve özel
+            taahhüt projeleri
           </p>
         </div>
       </div>

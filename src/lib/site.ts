@@ -4,9 +4,9 @@ export const site = {
   legalName: "Elegance İnşaat",
   url: "https://www.eleganceinsaat.com",
   title:
-    "Elegance İnşaat | Bakırköy Kentsel Dönüşüm ve Anahtar Teslim İnşaat",
+    "Elegance İnşaat | Bakırköy Kentsel Dönüşüm ve Özel Taahhüt Projeleri",
   description:
-    "Bakırköy, Yeşilköy, Ataköy, Yeşilyurt ve Florya'da kentsel dönüşüm, kat karşılığı ve anahtar teslim inşaat. Ücretsiz keşif ve şeffaf teklif için hemen arayın.",
+    "Bakırköy, Yeşilköy, Ataköy, Yeşilyurt ve Florya'da kentsel dönüşüm, kat karşılığı ve özel taahhüt projeleri. Ücretsiz keşif ve şeffaf teklif için hemen arayın.",
   phoneDisplay: "0500 000 00 00",
   phone: "+905000000000",
   whatsappNumber: "905000000000",
@@ -54,30 +54,38 @@ export function waLink(
   return `https://wa.me/${site.whatsappNumber}?text=${encodeURIComponent(message)}`;
 }
 
-export const nav = [
+export type NavItem = {
+  label: string;
+  href: string;
+  /* Yalnızca Kentsel Dönüşüm bağı foy dokulu vurguyu taşır. */
+  spotlight?: boolean;
+};
+
+/* Üst menü ana sayfa ve alt sayfalarda aynı sırayı kullanır. Müşteri kararıyla
+   Kentsel Dönüşüm ilk sırada doğrudan bağlantı olarak kalır; Bölgeler üst
+   satırdan çıkarıldı, sayfaları footer ve doğrudan URL üzerinden erişilebilir. */
+export const nav: NavItem[] = [
+  {
+    label: "Kentsel Dönüşüm",
+    href: "/hizmetler/kentsel-donusum",
+    spotlight: true,
+  },
+  { label: "Hizmetler", href: "/hizmetler" },
+  { label: "Projeler", href: "/projeler" },
+  { label: "Hakkımızda", href: "/hakkimizda" },
+  { label: "İletişim", href: "/iletisim" },
+];
+
+/* Footer'da hizmet bağlantıları kendi kolonunda listelenir; bu yüzden sayfa
+   listesi ayrı tutulur. Teknik standartlar ana menüye girmez, footer'da kalır. */
+export const footerNav: NavItem[] = [
   { label: "Hizmetler", href: "/hizmetler" },
   { label: "Projeler", href: "/projeler" },
   { label: "Bölgeler", href: "/bolgeler" },
   { label: "Hakkımızda", href: "/hakkimizda" },
   { label: "İletişim", href: "/iletisim" },
-];
-
-/* Teknik standartlar ana menüye eklenmez; footer üzerinden erişilir. */
-export const footerNav = [
-  ...nav,
   { label: "Teknik Standartlar", href: "/teknik-standartlar" },
 ];
-
-/* Ana sayfa menusu: musteri geri bildirimiyle Kentsel Donusum ilk siraya alindi.
-   Vurgu yalnizca bu baglantida kullanilir (bkz. `homeNavSpotlightHref`). */
-export const homeNav = [
-  { label: "Kentsel Dönüşüm", href: "/hizmetler/kentsel-donusum" },
-  { label: "Projeler", href: "/projeler" },
-  { label: "Hakkımızda", href: "/hakkimizda" },
-  { label: "İletişim", href: "/iletisim" },
-];
-
-export const homeNavSpotlightHref = "/hizmetler/kentsel-donusum";
 
 /* Yalnızca sunumla doğrulanabilen göstergeler.
    "150+ proje", "900+ konut" gibi sayaçlar PDF ile doğrulanmadığı için

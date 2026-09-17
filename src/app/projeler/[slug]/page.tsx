@@ -29,7 +29,17 @@ export async function generateMetadata({
   }
 
   const title = `${project.name} | ${project.buildingName} · ${project.location}`;
-  const description = `${project.name} (${project.buildingName}); ${project.location}, ${project.city}. Sözleşme ${project.contractYear}, iskân ${project.occupancyYear}, süre ${project.duration}.`;
+  const timeline =
+    project.status === "ongoing"
+      ? `Sözleşme ${project.contractYear}; uygulama devam ediyor.`
+      : [
+          `Sözleşme ${project.contractYear}`,
+          project.occupancyYear ? `iskân ${project.occupancyYear}` : null,
+          project.duration ? `süre ${project.duration}` : null,
+        ]
+          .filter(Boolean)
+          .join(", ");
+  const description = `${project.name} (${project.buildingName}); ${project.location}, ${project.city}. ${timeline}`;
 
   return {
     title,
@@ -69,6 +79,10 @@ export default async function ProjectPage({
     { label: "Konum", value: `${project.location}, ${project.city}` },
     { label: "Alan", value: project.area },
     { label: "Sözleşme", value: project.contractYear },
+    {
+      label: "Durum",
+      value: project.status === "ongoing" ? "Devam ediyor" : undefined,
+    },
     { label: "İskân", value: project.occupancyYear },
     { label: "Süre", value: project.duration },
   ].filter((spec) => Boolean(spec.value));
@@ -149,7 +163,10 @@ export default async function ProjectPage({
               />
 
               <p className="eyebrow mt-7 text-paper/70">
-                Geçmiş proje ·{" "}
+                {project.status === "ongoing"
+                  ? "Devam eden proje"
+                  : "Tamamlanmış proje"}{" "}
+                ·{" "}
                 {project.coverKind
                   ? MEDIA_LABELS[project.coverKind]
                   : "Görsel eşleştirilmedi"}
@@ -161,8 +178,10 @@ export default async function ProjectPage({
                 {project.buildingName} · {project.location}, {project.city}
               </p>
               <p className="mt-2 text-[11px] uppercase tracking-[0.16em] text-paper/65">
-                Sözleşme {project.contractYear} · İskân{" "}
-                {project.occupancyYear} · {project.duration}
+                Sözleşme {project.contractYear}
+                {project.status === "ongoing"
+                  ? " · Devam ediyor"
+                  : `${project.occupancyYear ? ` · İskân ${project.occupancyYear}` : ""}${project.duration ? ` · ${project.duration}` : ""}`}
                 {project.area ? ` · ${project.area}` : ""}
               </p>
             </div>
@@ -194,15 +213,16 @@ export default async function ProjectPage({
             <div className="space-y-5 text-[15px] leading-relaxed text-muted sm:text-base">
               <p>
                 {project.name} ({project.buildingName}), {project.contractYear}{" "}
-                sözleşme yılında {project.location}&apos;de başlanan ve{" "}
-                {project.duration} süren bir {site.legalName} işidir.
-                {` Künyedeki iskân yılı ${project.occupancyYear} olarak kayıtlıdır.`}
+                sözleşme yılında {project.location}&apos;de başlanan bir{" "}
+                {site.legalName} işidir.
+                {project.status === "ongoing"
+                  ? " Uygulama kaynak kayda göre devam etmektedir."
+                  : `${project.duration ? ` Proje ${project.duration} sürmüştür.` : ""}${project.occupancyYear ? ` Künyedeki iskân yılı ${project.occupancyYear} olarak kayıtlıdır.` : ""}`}
               </p>
               {constructionCount > 0 ? (
                 <p>
-                  Bu proje için arşivde şantiye / uygulama aşaması fotoğrafları
-                  yer alır. Görseller bitmiş yapı fotoğrafı olarak
-                  sunulmaz.
+                  Galeride şantiye / uygulama aşaması fotoğrafları da yer alır;
+                  her kare kendi etiketiyle ayrılır.
                 </p>
               ) : null}
               {renderCount > 0 ? (
@@ -269,8 +289,9 @@ export default async function ProjectPage({
                 </h2>
               </div>
               <p className="max-w-sm text-sm leading-relaxed text-muted">
-                Görseller şirket sunum dosyasından alınmıştır. Her kare,
-                fotoğraf / mimari render / şantiye ayrımıyla etiketlenir.
+                Görseller şirket sunum dosyasından ve proje arşivinden
+                derlenmiştir. Her kare, fotoğraf / mimari render / şantiye
+                ayrımıyla etiketlenir.
               </p>
             </div>
             <div className="mt-12">

@@ -26,10 +26,9 @@ export function ProjectsListing({
   const [filter, setFilter] = useState<ProjectFilter>("all");
   const options = projectFilterOptions(projects);
   const visible = projects.filter((project) => projectMatches(project, filter));
-  const years = projects.flatMap((project) => [
-    project.contractYear,
-    project.occupancyYear,
-  ]);
+  const years = projects
+    .flatMap((project) => [project.contractYear, project.occupancyYear])
+    .filter((year): year is string => Boolean(year));
   const archiveRange = years.length
     ? `${Math.min(...years.map(Number))} — ${Math.max(...years.map(Number))}`
     : null;
@@ -74,8 +73,8 @@ export function ProjectsListing({
             </div>
 
             <p className="max-w-[46ch] text-[15px] leading-relaxed text-muted lg:pb-2">
-              Etiler ve Karaburun&apos;daki geçmiş proje kayıtları. Künyeler
-              şirket sunum dosyasındaki tablodan alınmıştır.
+              İstanbul, İzmir ve Kocaeli&apos;deki tamamlanmış ve devam eden
+              proje kayıtları. Künyeler şirket arşivinden derlenmiştir.
             </p>
           </div>
 

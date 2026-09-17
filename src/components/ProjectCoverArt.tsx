@@ -15,6 +15,7 @@ export function ProjectCoverArt({
     | "contractYear"
     | "occupancyYear"
     | "duration"
+    | "status"
   >;
   className?: string;
 }) {
@@ -35,7 +36,11 @@ export function ProjectCoverArt({
           {project.location} · {project.city}
         </p>
         <p className="mt-1.5 text-[11px] uppercase tracking-[0.16em] text-brass-deep">
-          {project.contractYear} — {project.occupancyYear} · {project.duration}
+          {project.status === "ongoing"
+            ? `${project.contractYear} · Devam ediyor`
+            : [project.contractYear, project.occupancyYear, project.duration]
+                .filter(Boolean)
+                .join(" · ")}
         </p>
       </div>
       <p className="text-[10px] uppercase leading-relaxed tracking-[0.16em] text-muted">

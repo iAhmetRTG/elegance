@@ -7,9 +7,9 @@ import { CtaBand } from "@/components/CtaBand";
 import { JsonLd } from "@/components/JsonLd";
 
 export const metadata: Metadata = {
-  title: "Geçmiş Projeler | Etiler ve Karaburun Referansları",
+  title: "Projeler | İstanbul, İzmir ve Kocaeli Referansları",
   description:
-    "Elegance İnşaat'ın sunum dosyasında belgelenen geçmiş projeleri: Proje Çiçek, Mercan, Ametist, Kuvars, Topaz, Terrace House ve Hill Stone. Etiler (İstanbul) ve Karaburun (İzmir) konumlarıyla.",
+    "Elegance İnşaat'ın İstanbul, İzmir ve Kocaeli'deki tamamlanmış ve devam eden proje kayıtları; konut, endüstriyel yapı ve lojistik tesis referansları.",
   alternates: { canonical: "/projeler" },
 };
 
