@@ -4,14 +4,11 @@ import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { site, telHref } from "@/lib/site";
 import { waContextFor, waLinkFor } from "@/lib/wa";
-import { CornerTicks } from "./CornerTicks";
 import { Icon } from "./Icon";
 
 /**
- * Mobilde ekranın altına oturan hızlı iletişim plakası.
- * Masaüstü paneliyle aynı dili taşır: koyu lacivert plaka, mavi hat,
- * köşe tırnakları ve pafta tipografisi. Mavi vurgu yalnızca bu plakaya
- * aittir; sitenin geri kalan pirinç kimliği değişmez.
+ * Mobilde başparmakla erişilen hızlı iletişim barı.
+ * Marka yüzeyi üzerinde arama ve öncelikli WhatsApp eylemini bir araya getirir.
  * Ana sayfada hero görünürken gizli kalır; hero geçildikten sonra belirir,
  * böylece ilk ekranda fotoğrafın üzerine ikinci bir katman binmez.
  */
@@ -26,7 +23,7 @@ export function MobileCtaBar() {
   const waNote =
     context?.short && context.short.length <= 16
       ? `${context.short} için yaz`
-      : "Hemen yaz";
+      : "Ücretsiz keşif";
 
   useEffect(() => {
     /* Yalnızca ana sayfada hero vardır; diğer sayfalarda panel hemen görünür. */
@@ -59,43 +56,28 @@ export function MobileCtaBar() {
     <nav
       aria-label="Hızlı iletişim"
       aria-hidden={visible ? undefined : true}
-      className={`fixed inset-x-0 bottom-0 z-50 mx-auto w-full max-w-md px-3 pb-[calc(env(safe-area-inset-bottom)+0.75rem)] transition-[opacity,translate] duration-500 ease-out motion-reduce:transition-none lg:hidden ${
+      className={`fixed inset-x-0 bottom-0 z-40 mx-auto w-full max-w-md px-3 pb-[calc(env(safe-area-inset-bottom)+0.75rem)] transition-[opacity,transform] duration-300 ease-out motion-reduce:transition-none lg:hidden ${
         visible
           ? "visible translate-y-0 opacity-100"
           : "invisible translate-y-4 opacity-0"
       }`}
     >
-      <div className="relative border border-[#3b82f6]/45 bg-[#08182f] shadow-[0_24px_60px_-26px_rgba(4,14,33,0.95)] backdrop-blur-md">
-        <span
-          aria-hidden="true"
-          className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#60a5fa]/85 to-transparent"
-        />
-        <CornerTicks className="text-[#3b82f6]/55" />
-
-        {/* 360px altındaki dar ekranlarda ara tarafı biraz daha pay alır,
-            böylece numara kırpılmadan tek satırda kalır. */}
-        <div className="grid grid-cols-[1.16fr_1fr] items-stretch min-[360px]:grid-cols-[1.06fr_1fr]">
+      <div className="rounded-2xl bg-ivory p-1.5 shadow-[0_6px_32px_-8px_rgba(18,16,10,0.3)]">
+        <div className="grid grid-cols-[1fr_1.15fr] items-stretch gap-1.5">
           <a
             href={telHref}
-            className="relative flex items-center gap-2 overflow-hidden bg-[linear-gradient(152deg,#1d4ed8_0%,#1e40af_52%,#172554_100%)] px-2.5 py-3.5 text-white transition-opacity duration-300 active:opacity-90 min-[360px]:gap-2.5 min-[360px]:px-3"
+            aria-label={`Hemen ara: ${site.phoneDisplay}`}
+            className="flex min-h-14 min-w-0 items-center justify-center gap-2 rounded-xl px-1.5 py-2 text-ink transition-colors duration-200 hover:bg-paper-deep active:bg-paper-deep focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brass-deep motion-reduce:transition-none min-[360px]:gap-2.5 min-[360px]:px-2.5"
           >
-            <span
-              aria-hidden="true"
-              className="blueprint-dark pointer-events-none absolute inset-0 opacity-60"
-            />
-            <span
-              aria-hidden="true"
-              className="pointer-events-none absolute inset-x-0 top-0 h-1/2 bg-[linear-gradient(to_bottom,rgba(255,255,255,0.26),transparent)]"
-            />
             <Icon
               name="phone"
-              className="relative h-[19px] w-[19px] shrink-0"
+              className="h-[18px] w-[18px] shrink-0 text-brass-deep"
             />
-            <span className="relative min-w-0">
-              <span className="block text-[10px] font-semibold uppercase tracking-[0.2em] text-white/80">
+            <span className="min-w-0">
+              <span className="block text-sm font-semibold leading-5">
                 Hemen ara
               </span>
-              <span className="mt-1 block truncate font-display text-[14px] leading-none tabular-nums min-[360px]:text-[15px]">
+              <span className="mt-0.5 block whitespace-nowrap text-[11px] leading-4 tabular-nums text-muted min-[360px]:text-xs">
                 {site.phoneDisplay}
               </span>
             </span>
@@ -105,27 +87,15 @@ export function MobileCtaBar() {
             href={waHref}
             target="_blank"
             rel="noopener noreferrer"
-            className="relative flex items-center gap-2 overflow-hidden border-l border-[#60a5fa]/30 px-2.5 py-3.5 text-white transition-colors duration-300 active:bg-[#132a52] min-[360px]:gap-2.5 min-[360px]:px-3"
+            aria-label={`WhatsApp'tan yaz: ${waNote}`}
+            className="flex min-h-14 min-w-0 items-center justify-center gap-2.5 rounded-xl bg-[#175c45] px-2.5 py-2 text-white transition-colors duration-200 hover:bg-[#104b38] active:bg-[#0c3d2d] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#175c45] motion-reduce:transition-none"
           >
-            <span
-              aria-hidden="true"
-              className="blueprint-dark pointer-events-none absolute inset-0 opacity-45"
-            />
-            <span
-              aria-hidden="true"
-              className="pointer-events-none absolute -left-8 top-1/2 h-28 w-28 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgba(59,130,246,0.42),transparent_68%)]"
-            />
-            <span className="relative grid h-8 w-8 shrink-0 place-items-center rounded-full bg-[#2f6fe4] text-white shadow-[0_8px_18px_-8px_rgba(0,0,0,0.95)] ring-1 ring-[#9dc0ff]/45 min-[360px]:h-9 min-[360px]:w-9">
-              <Icon
-                name="whatsapp"
-                className="h-[17px] w-[17px] min-[360px]:h-[19px] min-[360px]:w-[19px]"
-              />
-            </span>
-            <span className="relative min-w-0">
-              <span className="block text-[10px] font-semibold uppercase tracking-[0.2em] text-[#9dc0ff]">
+            <Icon name="whatsapp" className="h-6 w-6 shrink-0" />
+            <span className="min-w-0">
+              <span className="block text-[15px] font-semibold leading-5">
                 WhatsApp
               </span>
-              <span className="mt-1 block truncate text-[13px] font-semibold leading-none">
+              <span className="mt-0.5 block text-xs leading-4 text-[#d9eee4] [overflow-wrap:anywhere]">
                 {waNote}
               </span>
             </span>
