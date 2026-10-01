@@ -39,7 +39,7 @@ export async function generateMetadata({
     description: district.summary,
     alternates: { canonical: `/bolgeler/${district.slug}` },
     openGraph: {
-      title: `${district.name} İnşaat ve Kentsel Dönüşüm | ${site.legalName}`,
+      title: `${district.name} İnşaat ve Kentsel Dönüşüm | ${site.displayName}`,
       description: district.summary,
       url: `${site.url}/bolgeler/${district.slug}`,
     },

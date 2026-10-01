@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { coverage, site, telHref, waLink } from "@/lib/site";
 import { waTopicLink, waTopics } from "@/lib/wa";
 import { districts } from "@/lib/districts";
@@ -18,7 +19,7 @@ export const metadata: Metadata = {
 
 export default function ContactPage() {
   const mapsHref = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
-    `${site.address.street}, ${site.address.postalCode} ${site.address.district} ${site.address.city}`,
+    `${site.address.street}, ${site.address.district}, ${site.address.city}`,
   )}`;
 
   return (
@@ -66,26 +67,15 @@ export default function ContactPage() {
                 </span>
               </a>
 
-              <a href={`mailto:${site.email}`} className="group block">
-                <span className="eyebrow flex items-center gap-2.5 text-muted">
-                  <Icon name="mail" className="h-4 w-4 text-brass" />
-                  E-posta
-                </span>
-                <span className="mt-2 block text-lg transition-colors group-hover:text-brass-deep">
-                  {site.email}
-                </span>
-              </a>
-
               <div>
                 <span className="eyebrow flex items-center gap-2.5 text-muted">
                   <Icon name="pin" className="h-4 w-4 text-brass" />
-                  Adres
+                  İş adresi
                 </span>
                 <p className="mt-2 text-lg leading-relaxed">
                   {site.address.street}
                   <br />
-                  {site.address.postalCode} {site.address.district} /{" "}
-                  {site.address.city}
+                  {site.address.district} / {site.address.city}
                 </p>
               </div>
 
@@ -97,6 +87,17 @@ export default function ContactPage() {
                 <p className="mt-2 text-lg">{site.hours}</p>
               </div>
             </div>
+
+            <p className="mt-8 max-w-md text-sm leading-relaxed text-muted">
+              Telefon ve WhatsApp üzerinden ilettiğiniz taleplerin
+              işlenmesine ilişkin bilgi için{" "}
+              <Link
+                href="/kvkk-aydinlatma-metni"
+                className="underline decoration-brass/60 underline-offset-4 transition-colors hover:text-ink"
+              >
+                Aydınlatma Metni’ni inceleyin.
+              </Link>
+            </p>
 
             <div className="sheet mt-10 p-6">
               <div className="flex items-center justify-between gap-4">
@@ -194,23 +195,21 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* Konum: ofis ve hizmet alani haritasi. */}
+      {/* Doğrulanmış iş adresi ve hizmet alanı haritası. */}
       <section className="border-b border-ink/10 bg-paper-deep/40">
         <div className="mx-auto grid max-w-7xl gap-14 px-5 py-20 lg:grid-cols-12 lg:items-center lg:px-8 lg:py-28">
           <div className="lg:col-span-5">
             <SectionLabel no="02">Konum</SectionLabel>
             <h2 className="mt-5 font-display text-4xl leading-tight lg:text-5xl">
-              Ofisimiz Bakırköy merkezde.
+              İş adresimiz Bakırköy&apos;de.
             </h2>
             <p className="mt-6 max-w-md leading-relaxed text-muted">
               {site.address.street}
               <br />
-              {site.address.postalCode} {site.address.district} /{" "}
-              {site.address.city}
+              {site.address.district} / {site.address.city}
             </p>
             <p className="mt-5 max-w-md text-[15px] leading-relaxed text-muted">
-              Ofise gelmek isterseniz önceden bir telefon yeterli; şantiyede
-              olduğumuz günlerde de aynı gün dönüş yapıyoruz.
+              {coverage.coreNote} {coverage.widerNote}
             </p>
             <Button
               href={mapsHref}

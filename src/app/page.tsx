@@ -30,7 +30,7 @@ const faqJsonLd = {
 const websiteJsonLd = {
   "@context": "https://schema.org",
   "@type": "WebSite",
-  name: site.legalName,
+  name: site.displayName,
   url: site.url,
   inLanguage: "tr-TR",
 };

@@ -52,7 +52,7 @@ export function CompanyProfile({ no = "02" }: { no?: string }) {
                 ))}
               </ul>
               <p className="mt-5 text-[12px] leading-relaxed text-muted">
-                {site.legalName}; {site.districts.join(", ")} bölgelerinde
+                {site.displayName}; {site.districts.join(", ")} bölgelerinde
                 kentsel dönüşüm, kat karşılığı ve anahtar teslim inşaat
                 hizmeti verir.
               </p>

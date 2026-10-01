@@ -1,21 +1,20 @@
 export const site = {
   brand: "Elegance",
   brandSuffix: "İnşaat",
-  legalName: "Elegance İnşaat",
-  url: "https://www.eleganceinsaat.com",
+  displayName: "Elegance İnşaat",
+  legalName: "Elegans Mimarlık İnşaat Sanayi ve Ticaret Limited Şirketi",
+  url: "https://www.elegancemimarlik.com",
   title:
     "Elegance İnşaat | İstanbul Kentsel Dönüşüm ve Özel Taahhüt Projeleri",
   description:
     "İstanbul'da kentsel dönüşüm, kat karşılığı ve özel taahhüt projeleri. Bakırköy, Yeşilköy, Ataköy, Yeşilyurt ve Florya'da aynı gün keşif; İstanbul'un diğer ilçelerinde ve şehir dışında da proje üstleniyoruz.",
-  phoneDisplay: "0500 000 00 00",
-  phone: "+905000000000",
-  whatsappNumber: "905000000000",
-  email: "info@eleganceinsaat.com",
+  phoneDisplay: "0535 505 01 14",
+  phone: "+905355050114",
+  whatsappNumber: "905355050114",
   address: {
-    street: "Zuhuratbaba Mah. İnci Sok. No: 1",
+    street: "Zuhuratbaba Mah. Zuhuratbaba Cad. No: 5 İç Kapı No: 2",
     district: "Bakırköy",
     city: "İstanbul",
-    postalCode: "34147",
   },
   hours: "Pazartesi – Cumartesi · 09:00 – 19:00",
   serviceRegion: "İstanbul, Bakırköy ve çevresi",

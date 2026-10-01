@@ -16,7 +16,7 @@ export const metadata: Metadata = {
 const projectsJsonLd = {
   "@context": "https://schema.org",
   "@type": "ItemList",
-  name: `${site.legalName} geçmiş projeleri`,
+  name: `${site.displayName} geçmiş projeleri`,
   itemListElement: projects.map((project, index) => ({
     "@type": "ListItem",
     position: index + 1,

@@ -46,7 +46,7 @@ export async function generateMetadata({
     description,
     alternates: { canonical: `/projeler/${project.slug}` },
     openGraph: {
-      title: `${project.name} | ${site.legalName}`,
+      title: `${project.name} | ${site.displayName}`,
       description,
       url: `${site.url}/projeler/${project.slug}`,
       images: project.cover ? [{ url: project.cover }] : undefined,
@@ -214,7 +214,7 @@ export default async function ProjectPage({
               <p>
                 {project.name} ({project.buildingName}), {project.contractYear}{" "}
                 sözleşme yılında {project.location}&apos;de başlanan bir{" "}
-                {site.legalName} işidir.
+                {site.displayName} işidir.
                 {project.status === "ongoing"
                   ? " Uygulama kaynak kayda göre devam etmektedir."
                   : `${project.duration ? ` Proje ${project.duration} sürmüştür.` : ""}${project.occupancyYear ? ` Künyedeki iskân yılı ${project.occupancyYear} olarak kayıtlıdır.` : ""}`}

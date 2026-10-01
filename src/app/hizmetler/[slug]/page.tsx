@@ -35,7 +35,7 @@ export async function generateMetadata({
     description: service.summary,
     alternates: { canonical: `/hizmetler/${service.slug}` },
     openGraph: {
-      title: `${service.name} | ${site.legalName}`,
+      title: `${service.name} | ${site.displayName}`,
       description: service.summary,
       url: `${site.url}/hizmetler/${service.slug}`,
     },

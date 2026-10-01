@@ -41,16 +41,11 @@ export function Footer() {
                 <Icon name="whatsapp" className="h-4 w-4 text-brass" />
                 WhatsApp
               </a>
-              <a
-                href={`mailto:${site.email}`}
-                className="flex items-center gap-3 text-paper/80 transition-colors hover:text-paper"
-              >
-                <Icon name="mail" className="h-4 w-4 text-brass" />
-                {site.email}
-              </a>
-              <p className="flex items-center gap-3 text-paper/80">
-                <Icon name="pin" className="h-4 w-4 text-brass" />
-                {site.address.street}, {site.address.district}
+              <p className="flex items-start gap-3 text-paper/80">
+                <Icon name="pin" className="mt-0.5 h-4 w-4 shrink-0 text-brass" />
+                <span>
+                  {site.address.street}, {site.address.district}/{site.address.city}
+                </span>
               </p>
               <p className="flex items-center gap-3 text-paper/80">
                 <Icon name="clock" className="h-4 w-4 text-brass" />
@@ -117,6 +112,17 @@ export function Footer() {
             taahhüt projeleri
           </p>
         </div>
+        <nav
+          aria-label="Yasal bilgiler"
+          className="mt-5 flex flex-wrap gap-x-6 gap-y-2 text-xs text-paper/60"
+        >
+          <Link href="/kvkk-aydinlatma-metni" className="hover:text-paper">
+            KVKK Aydınlatma Metni
+          </Link>
+          <Link href="/cerez-politikasi" className="hover:text-paper">
+            Çerez ve Dış Bağlantılar
+          </Link>
+        </nav>
       </div>
     </footer>
   );

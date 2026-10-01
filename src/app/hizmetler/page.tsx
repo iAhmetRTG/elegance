@@ -29,7 +29,7 @@ export default function ServicesPage() {
             <em className="italic text-brass-deep">tek muhatap</em>.
           </>
         }
-        intro={`${site.legalName}; planlamadan ruhsata, inşaattan teslime kadar tüm süreci tek çatı altında yürütür. Hizmet kapsamınızı seçin, gerisini bize bırakın.`}
+        intro={`${site.displayName}; planlamadan ruhsata, inşaattan teslime kadar tüm süreci tek çatı altında yürütür. Hizmet kapsamınızı seçin, gerisini bize bırakın.`}
       />
 
       <section className="mx-auto max-w-7xl px-5 py-20 lg:px-8 lg:py-28">

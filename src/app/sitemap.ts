@@ -50,6 +50,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "yearly",
       priority: 0.7,
     },
+    {
+      url: `${site.url}/kvkk-aydinlatma-metni`,
+      lastModified,
+      changeFrequency: "yearly",
+      priority: 0.3,
+    },
+    {
+      url: `${site.url}/cerez-politikasi`,
+      lastModified,
+      changeFrequency: "yearly",
+      priority: 0.3,
+    },
     ...services.map((service) => ({
       url: `${site.url}/hizmetler/${service.slug}`,
       lastModified,

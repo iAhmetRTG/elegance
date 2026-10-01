@@ -201,13 +201,14 @@ export function DistrictAtlas({ no = "09" }: { no?: string }) {
                 href="/iletisim"
                 className="group inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.2em]"
               >
-                Yol tarifi
+                İletişim bilgileri
                 <Icon
                   name="arrowRight"
                   className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1.5"
                 />
               </Link>
             </div>
+
           </div>
         </div>
       </div>
