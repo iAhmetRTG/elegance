@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import {
   coverage,
   corporateProfile,
@@ -9,7 +8,6 @@ import {
   telHref,
   workProfile,
 } from "@/lib/site";
-import { projects } from "@/lib/projects";
 import { PageHeader } from "@/components/PageHeader";
 import { Button } from "@/components/Button";
 import { SectionLabel } from "@/components/SectionLabel";
@@ -59,34 +57,19 @@ export default function AboutPage() {
         intro={corporateProfile.lead}
       />
 
-      <section className="border-b border-ink/10">
-        <div className="mx-auto grid max-w-7xl gap-14 px-5 py-20 lg:grid-cols-12 lg:px-8 lg:py-28">
-          <div className="lg:col-span-5">
-            <SectionLabel no="01">Kurumsal profil</SectionLabel>
-            <h2 className="mt-6 font-display text-4xl leading-tight lg:text-5xl">
-              Kente ve kentliye saygılı projeler.
-            </h2>
-          </div>
-          <div className="space-y-6 text-base leading-relaxed text-muted sm:text-lg lg:col-span-6 lg:col-start-7">
-            <p className="text-ink/85">{corporateProfile.lead}</p>
-            <p>{corporateProfile.body}</p>
-          </div>
-        </div>
-      </section>
-
       <section className="border-b border-ink/10 bg-paper-deep/40">
         <div className="mx-auto max-w-7xl px-5 py-20 lg:px-8 lg:py-28">
           <div className="grid gap-12 lg:grid-cols-12 lg:gap-10">
             <div className="lg:col-span-4">
-              <SectionLabel no="02">Çalışma profili</SectionLabel>
+              <SectionLabel no="01">Çalışma profili</SectionLabel>
               <h2 className="mt-5 font-display text-4xl leading-tight">
                 Hangi işlerde
                 <br />
                 çalışıyoruz?
               </h2>
               <p className="mt-5 max-w-sm text-[15px] leading-relaxed text-muted">
-                Sunum dosyasında tanımlanan çalışma profili; konuttan ticari
-                yapıya uzanan bir yelpazeyi kapsar.
+                Konut, otel, endüstriyel tesis ve ticari yapı projelerinde
+                hizmet veriyoruz.
               </p>
             </div>
 
@@ -123,8 +106,7 @@ export default function AboutPage() {
                 <p className="mt-5 text-[12px] leading-relaxed text-muted">
                   Merkezimize yakın bu beş bölgede aynı gün keşif yapıyoruz;
                   İstanbul&apos;un diğer ilçelerinde ve şehir dışında da proje
-                  üstleniyoruz. Arşivdeki projelerin konumları farklıdır ve
-                  aşağıda ayrıca belirtilir.
+                  üstleniyoruz.
                 </p>
               </div>
             </div>
@@ -134,7 +116,7 @@ export default function AboutPage() {
 
       <section
         data-tone="dark"
-        className="relative overflow-hidden bg-ink text-paper"
+        className="relative overflow-hidden bg-brand text-paper"
       >
         <div
           className="blueprint-dark absolute inset-0 opacity-60"
@@ -160,65 +142,9 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="border-b border-ink/10">
-        <div className="mx-auto max-w-7xl px-5 py-20 lg:px-8 lg:py-28">
-          <div className="flex flex-wrap items-end justify-between gap-6">
-            <div>
-              <SectionLabel no="03">Projeler</SectionLabel>
-              <h2 className="mt-5 font-display text-4xl leading-tight lg:text-5xl">
-                Şirket arşivindeki kayıtlar
-              </h2>
-            </div>
-            <Link
-              href="/projeler"
-              className="link-underline text-[11px] font-semibold uppercase tracking-[0.2em] text-brass-deep"
-            >
-              Proje arşivi
-            </Link>
-          </div>
-
-          <ul className="mt-12 border-t border-ink/15">
-            {projects.map((project, index) => (
-              <li key={project.slug} className="border-b border-ink/10">
-                <Link
-                  href={`/projeler/${project.slug}`}
-                  className="group grid gap-3 py-5 sm:grid-cols-[auto_minmax(0,1fr)_auto] sm:items-baseline sm:gap-8"
-                >
-                  <span className="eyebrow text-muted">
-                    {String(index + 1).padStart(2, "0")}
-                  </span>
-                  <span className="min-w-0">
-                    <span className="block font-display text-xl leading-snug transition-colors duration-300 group-hover:text-brass-deep lg:text-2xl">
-                      {project.name}
-                    </span>
-                    <span className="mt-1.5 block text-[13px] leading-relaxed text-muted">
-                      {project.buildingName} · {project.location},{" "}
-                      {project.city}
-                    </span>
-                  </span>
-                  <span className="text-[12px] uppercase tracking-[0.14em] text-muted sm:text-right">
-                    {project.status === "ongoing"
-                      ? `${project.contractYear}—devam ediyor`
-                      : [project.contractYear, project.occupancyYear]
-                          .filter(Boolean)
-                          .join("—")}
-                  </span>
-                </Link>
-              </li>
-            ))}
-          </ul>
-
-          <p className="mt-6 max-w-[var(--measure)] text-[13px] leading-relaxed text-muted">
-            Proje kayıtları İstanbul, İzmir ve Kocaeli&apos;deki gerçek uygulama
-            konumlarıyla gösterilir; aynı gün keşif yaptığımız bölgelerle
-            karıştırılmaz.
-          </p>
-        </div>
-      </section>
-
       <section className="border-b border-ink/10 bg-paper-deep/40">
         <div className="mx-auto max-w-7xl px-5 py-20 lg:px-8 lg:py-28">
-          <SectionLabel no="04">Çalışma ilkelerimiz</SectionLabel>
+          <SectionLabel no="02">Çalışma ilkelerimiz</SectionLabel>
           <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
             {values.map((value, index) => (
               <Reveal key={value.title} delay={index * 70}>
@@ -237,7 +163,7 @@ export default function AboutPage() {
 
       <section className="border-b border-ink/10">
         <div className="mx-auto max-w-7xl px-5 py-20 lg:px-8 lg:py-28">
-          <SectionLabel no="05">Nasıl çalışırız</SectionLabel>
+          <SectionLabel no="03">Nasıl çalışırız</SectionLabel>
           <h2 className="mt-5 max-w-xl font-display text-4xl leading-tight lg:text-5xl">
             İlk görüşmeden teslim gününe
           </h2>

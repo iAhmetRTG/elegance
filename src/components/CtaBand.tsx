@@ -18,7 +18,7 @@ export function CtaBand({
     <section
       data-tone="dark"
       data-fab-hide
-      className="relative overflow-hidden bg-ink text-paper"
+      className="relative overflow-hidden bg-brand text-paper"
     >
       <div className="absolute inset-0 overflow-hidden" aria-hidden="true">
         <Image
@@ -28,17 +28,10 @@ export function CtaBand({
           sizes="100vw"
           className="object-cover opacity-25"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-ink/85 via-ink/70 to-ink" />
+        <div className="absolute inset-0 bg-gradient-to-b from-brand/85 via-brand/70 to-brand" />
       </div>
       <div className="blueprint-dark absolute inset-0" aria-hidden="true" />
       <div className="vignette absolute inset-0 opacity-70" aria-hidden="true" />
-      <span
-        aria-hidden="true"
-        className="ghost pointer-events-none absolute -bottom-[0.24em] left-1/2 -translate-x-1/2 select-none whitespace-nowrap font-display italic text-[24vw] leading-none"
-      >
-        Elegance
-      </span>
-
       <div className="relative mx-auto max-w-7xl px-5 py-24 lg:px-8 lg:py-32">
         <div className="flex flex-wrap items-center justify-between gap-6">
           <SectionLabel no="—" tone="light">

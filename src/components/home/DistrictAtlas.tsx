@@ -4,9 +4,8 @@ import { useState } from "react";
 import Link from "next/link";
 import { districts } from "@/lib/districts";
 import { coverage, site, waLink } from "@/lib/site";
-import { AreaMap } from "@/components/AreaMap";
+import { LocationMap } from "@/components/LocationMap";
 import { SectionLabel } from "@/components/SectionLabel";
-import { CornerTicks } from "@/components/CornerTicks";
 import { Reveal } from "@/components/Reveal";
 import { Icon } from "@/components/Icon";
 
@@ -27,9 +26,8 @@ export function DistrictAtlas({ no = "09" }: { no?: string }) {
           </div>
           <div className="max-w-sm">
             <p className="text-[15px] leading-relaxed text-muted">
-              Merkezimiz Bakırköy&apos;de; ekiplerimiz bu beş ilçede aynı gün
-              keşfe gelir. Haritada bir bölgeye dokunarak çalışma alanını
-              görün.
+              Merkezimiz Bakırköy&apos;de; ekiplerimiz bu beş bölgede aynı gün
+              keşfe gelir. Bölgenizi seçin, çalışma alanımızı tanıyın.
             </p>
             <p className="mt-3 text-[13px] leading-relaxed text-muted">
               {coverage.widerNote}
@@ -39,49 +37,9 @@ export function DistrictAtlas({ no = "09" }: { no?: string }) {
 
         <div className="mt-14 grid gap-10 lg:grid-cols-12 lg:gap-8">
           <Reveal className="lg:col-span-7">
-            <div className="relative border border-ink/15 bg-ivory p-3">
-              <CornerTicks className="text-brass/60" />
+            <LocationMap highlight={activeSlug} name={active?.name ?? "Bakırköy"} />
 
-              <AreaMap
-                highlight={activeSlug}
-                className="h-[300px] w-full text-ink/70 sm:h-[400px] lg:h-[440px]"
-              />
-
-              <div className="flex flex-wrap items-center justify-between gap-3 border-t border-ink/10 px-1 pb-1 pt-3">
-                <span className="eyebrow text-muted">
-                  Aynı gün keşif · 5 ilçe
-                </span>
-                <span className="eyebrow text-brass-deep">
-                  Merkez: Bakırköy
-                </span>
-              </div>
-
-              <div className="pointer-events-none absolute bottom-16 right-6 hidden w-60 border border-ink/12 bg-paper/95 p-4 sm:block">
-                <p className="eyebrow text-muted">Seçili bölge</p>
-                <p className="mt-2 font-display text-2xl leading-none">
-                  {active?.name ?? "—"}
-                </p>
-                <p className="mt-2 text-[12px] tracking-wide text-brass-deep">
-                  {active?.role}
-                </p>
-                <ul className="mt-3 space-y-1.5">
-                  {active?.highlights.slice(0, 2).map((item) => (
-                    <li
-                      key={item}
-                      className="flex items-start gap-2 text-[12px] leading-relaxed text-muted"
-                    >
-                      <span
-                        aria-hidden="true"
-                        className="mt-1.5 h-1 w-1 shrink-0 rotate-45 bg-brass"
-                      />
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-
-            <div className="mt-4 border border-ink/12 px-5 py-4 sm:hidden">
+            <div className="mt-4 border border-ink/12 px-5 py-4">
               <p className="eyebrow text-muted">Seçili bölge</p>
               <p className="mt-2 font-display text-2xl leading-none">
                 {active?.name ?? "—"}
@@ -106,7 +64,6 @@ export function DistrictAtlas({ no = "09" }: { no?: string }) {
                       href={`/bolgeler/${district.slug}`}
                       onMouseEnter={() => setSelected(district.slug)}
                       onFocus={() => setSelected(district.slug)}
-                      onBlur={() => setSelected(district.slug)}
                       className="group relative flex items-center justify-between gap-5 py-5"
                     >
                       <span

@@ -18,6 +18,9 @@ const fontPreloads = [
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
+  verification: {
+    google: "KGGatlvloQzvpgIXTSdfqcRno8QxrLW3rUqXbi-laOo",
+  },
   title: {
     default: site.title,
     template: `%s | ${site.brand} ${site.brandSuffix}`,
@@ -55,7 +58,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#12100a",
+  themeColor: "#0c377b",
 };
 
 const organizationJsonLd = {

@@ -2,7 +2,10 @@ export const services = [
   {
     slug: "kentsel-donusum",
     icon: "building",
-    cover: "/photos/after-1.jpg",
+    cover:
+      "/media/elegance-projects/enhanced/proje-kuvars--hero-facade-enhanced.webp",
+    coverAlt: "Çağdaş bir apartman yapısının açık renkli cephesi ve balkonları.",
+    coverCaption: "Konut projesinden cephe görünümü.",
     name: "Kentsel Dönüşüm",
     tagline: "Riskli yapınızı güvenli ve değerli bir yaşam alanına dönüştürüyoruz.",
     summary:
@@ -24,7 +27,11 @@ export const services = [
   {
     slug: "endustriyel-yapi",
     icon: "factory",
-    cover: "/photos/gallery-guclendirme.jpg",
+    cover:
+      "/media/elegance-projects/originals/flokser-lojistik/flokser-lojistik--render-03.webp",
+    coverAlt:
+      "Flokser Kimya lojistik tesisinin mavi ve gri panelli dış cephesi.",
+    coverCaption: "Flokser Kimya tesisi için hazırlanan mimari render.",
     name: "Endüstriyel Yapılar",
     tagline: "Üretim, depolama ve lojistik yapıları anahtar teslim kurulur.",
     summary:
@@ -46,7 +53,10 @@ export const services = [
   {
     slug: "ozel-taahhut-projeleri",
     icon: "contract",
-    cover: "/photos/project-ofis.jpg",
+    cover: "/photos/services/ozel-taahhut-toplu-konut.webp",
+    coverAlt:
+      "Yeşil ortak alanları çevreleyen modern toplu konut yerleşimi.",
+    coverCaption: "Temsili toplu konut görseli",
     name: "Özel Taahhüt Projeleri",
     tagline: "İşverene özel kapsam; sözleşmeye bağlı bütçe, takvim ve teslim.",
     summary:
@@ -68,7 +78,10 @@ export const services = [
   {
     slug: "villa-mustakil-yapi",
     icon: "home",
-    cover: "/photos/gallery-florya.jpg",
+    cover: "/media/elegance-projects/enhanced/hill-stone--hero-enhanced.webp",
+    coverAlt:
+      "Hill Stone projesinde taş duvarlı, teraslı müstakil ev ve bahçesi.",
+    coverCaption: "Hill Stone müstakil konut projesi.",
     name: "Villa ve Müstakil Yapılar",
     tagline: "Bahçenizde, size özel tasarlanmış bir yaşam.",
     summary:
@@ -91,6 +104,9 @@ export const services = [
     slug: "deprem-guclendirme",
     icon: "shield",
     cover: "/photos/project-guclendirme.jpg",
+    coverAlt:
+      "Çelik taşıyıcı kirişlerin montajında çalışan bir inşaat işçisi.",
+    coverCaption: "Çelik taşıyıcı sistem montajı.",
     name: "Deprem Güçlendirme",
     tagline: "Yıkmadan önce, mühendislikle güçlendirme.",
     summary:
@@ -112,7 +128,11 @@ export const services = [
   {
     slug: "kat-karsiligi-insaat",
     icon: "key",
-    cover: "/photos/after-2.jpg",
+    cover:
+      "/media/elegance-projects/enhanced/proje-mercan--hero-enhanced.webp",
+    coverAlt:
+      "Modern bir apartman binasının koyu gri ve kiremit tonlarındaki cephesi.",
+    coverCaption: "Konut projesinden cephe görünümü.",
     name: "Kat Karşılığı İnşaat",
     tagline: "Arsanız, bizimle gerçek değerinin karşılığını alır.",
     summary:

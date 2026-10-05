@@ -13,7 +13,7 @@ const totalItems = standardGroups.reduce(
 
 export function StandardsBrief({ no = "04" }: { no?: string }) {
   return (
-    <section className="cv-auto relative border-b border-ink/10 bg-ink text-paper">
+    <section className="cv-auto relative border-b border-ink/10 bg-brand text-paper">
       <div
         className="blueprint-dark pointer-events-none absolute inset-0"
         aria-hidden="true"
@@ -72,7 +72,7 @@ export function StandardsBrief({ no = "04" }: { no?: string }) {
         {/* Masaüstü: dört kolonlu pafta ızgarası. */}
         <ol className="mt-14 hidden gap-px overflow-hidden border border-paper/15 bg-paper/10 sm:grid sm:grid-cols-2 lg:grid-cols-4">
           {standardGroups.map((group, index) => (
-            <li key={group.id} className="bg-ink">
+            <li key={group.id} className="bg-brand">
               <Reveal delay={(index % 4) * 70}>
                 <Link
                   href={`/teknik-standartlar#${group.id}`}

@@ -2,9 +2,9 @@
 
    Bu bölgeler pazarlama odağı ve aynı gün keşif alanıdır, hizmet sınırı
    değildir; geçmiş projelerin gerçek konumları (Etiler, Karaburun) değildir.
-   Bölge sayfalarında temsili yapı görseli kullanılmaz: elde gerçek bir bölge
-   fotoğrafı olmadığı için görsel yerine tipografik ve harita tabanlı anlatım
-   tercih edilir. */
+   Bakırköy konum bölümünde, kullanıcının talebiyle hazırlanmış temsili bir
+   sahil ve bölge illüstrasyonu kullanılır; gerçek fotoğraf veya navigasyon
+   haritası olarak sunulmaz. Diğer bölgelerde şematik harita kullanılır. */
 export const districts = [
   {
     slug: "bakirkoy",

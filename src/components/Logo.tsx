@@ -49,6 +49,17 @@ export function Logo({
     />
   ));
 
+  // Use the original alpha silhouette to apply brand gold without redrawing
+  // the mark or changing the wordmark's proportions.
+  const goldMask = {
+    maskImage: `url(${asset.src})`,
+    WebkitMaskImage: `url(${asset.src})`,
+    maskSize: "100% 100%",
+    WebkitMaskSize: "100% 100%",
+    maskRepeat: "no-repeat",
+    WebkitMaskRepeat: "no-repeat",
+  };
+
   return (
     <Link
       href="/"
@@ -57,6 +68,21 @@ export function Logo({
     >
       <span className={`relative inline-flex items-center ${sizing}`}>
         {layers}
+        <span
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 bg-brass"
+          style={{
+            ...goldMask,
+            clipPath: variant === "stacked" ? "inset(0 0 65% 0)" : "inset(0 83.5% 0 0)",
+          }}
+        />
+        {variant === "stacked" ? (
+          <span
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-0 bg-brass"
+            style={{ ...goldMask, clipPath: "inset(85% 0 0 0)" }}
+          />
+        ) : null}
       </span>
     </Link>
   );

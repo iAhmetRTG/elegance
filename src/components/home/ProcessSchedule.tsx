@@ -5,7 +5,7 @@ export function ProcessSchedule({ no = "08" }: { no?: string }) {
   return (
     <section
       data-tone="dark"
-      className="relative overflow-hidden bg-ink text-paper"
+      className="relative overflow-hidden bg-brand text-paper"
     >
       <div
         className="blueprint-dark absolute inset-0 opacity-50"
@@ -29,7 +29,7 @@ export function ProcessSchedule({ no = "08" }: { no?: string }) {
 
         <ol className="mt-16 grid gap-px overflow-hidden border border-paper/12 bg-paper/10 sm:grid-cols-2 lg:grid-cols-4">
           {processSteps.map((step) => (
-            <li key={step.no} className="bg-ink p-7 lg:p-8">
+            <li key={step.no} className="bg-brand p-7 lg:p-8">
               <span className="font-display text-4xl text-brass">
                 {step.no}
               </span>

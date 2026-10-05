@@ -113,10 +113,10 @@ export default async function ServicePage({
           <Reveal variant="mask">
             <div className="relative border border-ink/15 bg-ivory p-3">
               <CornerTicks className="text-brass/60" />
-              <div className="relative aspect-[16/9] overflow-hidden sm:aspect-[21/9]">
+              <div className="relative aspect-[4/3] overflow-hidden sm:aspect-[16/9]">
                 <Image
                   src={service.cover}
-                  alt={`${service.name} hizmeti için temsili görsel`}
+                  alt={service.coverAlt}
                   fill
                   sizes="(max-width: 1280px) 100vw, 1200px"
                   className="object-cover"
@@ -124,10 +124,10 @@ export default async function ServicePage({
               </div>
               <div className="flex flex-wrap items-center justify-between gap-3 border-t border-ink/10 px-1 pb-1 pt-3">
                 <span className="eyebrow text-muted">
-                  {service.name} · Temsili görsel
+                  {service.name}
                 </span>
                 <span className="eyebrow text-brass-deep">
-                  Kendi sahamızdan fotoğraf değildir
+                  {service.coverCaption}
                 </span>
               </div>
             </div>

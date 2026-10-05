@@ -1,203 +1,45 @@
-const pins = [
-  { name: "FLORYA", x: 96, y: 300, anchor: "start" as const, dx: 18, dy: 4 },
-  { name: "YEŞİLKÖY", x: 188, y: 282, anchor: "start" as const, dx: 18, dy: 4 },
-  { name: "ATAKÖY", x: 316, y: 264, anchor: "end" as const, dx: -18, dy: -10 },
-  {
-    name: "YEŞİLYURT",
-    x: 236,
-    y: 208,
-    anchor: "start" as const,
-    dx: 18,
-    dy: 4,
-  },
+const regions = [
+  { slug: "florya", name: "Florya", x: 110, y: 217, labelY: 186 },
+  { slug: "yesilkoy", name: "Yeşilköy", x: 226, y: 290, labelY: 335 },
+  { slug: "yesilyurt", name: "Yeşilyurt", x: 347, y: 255, labelY: 224 },
+  { slug: "atakoy", name: "Ataköy", x: 465, y: 200, labelY: 245 },
+  { slug: "bakirkoy", name: "Bakırköy", x: 592, y: 149, labelY: 113 },
 ];
 
-const office = { x: 420, y: 190 };
-
-/* Bolge slug'i -> haritadaki pin adi. Bakirkoy merkez (ofis) ayri isaretlenir. */
-const pinBySlug: Record<string, string> = {
-  florya: "FLORYA",
-  yesilkoy: "YEŞİLKÖY",
-  atakoy: "ATAKÖY",
-  yesilyurt: "YEŞİLYURT",
-};
-
-export function AreaMap({
-  className = "",
-  highlight,
-}: {
-  className?: string;
-  highlight?: string;
-}) {
-  const activeName = highlight ? pinBySlug[highlight] : undefined;
-  const centreActive = highlight === "bakirkoy";
-
+/** A schematic of the coastal service corridor, not a navigational map. */
+export function AreaMap({ className = "", highlight = "bakirkoy" }: { className?: string; highlight?: string }) {
   return (
-    <svg
-      viewBox="0 0 640 420"
-      fill="none"
-      className={className}
-      aria-hidden="true"
-    >
-      <g stroke="currentColor" strokeWidth={0.75} opacity={0.14}>
-        {[80, 160, 240, 320, 400, 480, 560].map((x) => (
-          <line key={`v-${x}`} x1={x} y1={0} x2={x} y2={420} />
-        ))}
-        {[70, 140, 210, 280, 350].map((y) => (
-          <line key={`h-${y}`} x1={0} y1={y} x2={640} y2={y} />
-        ))}
+    <svg viewBox="0 0 720 420" fill="none" className={className} aria-hidden="true">
+      <rect width="720" height="420" fill="var(--color-brand)" />
+      <path d="M0 250 C60 252 90 255 130 284 S196 341 254 328 S356 295 417 274 S515 244 568 233 S659 230 720 210 V420 H0Z" fill="var(--color-brand-soft)" />
+      <g stroke="var(--color-paper)" strokeWidth="1" opacity="0.07">
+        {[80, 160, 240, 320, 400, 480, 560, 640].map((x) => <path key={x} d={`M${x} 0V420`} />)}
+        {[60, 120, 180, 240, 300, 360].map((y) => <path key={y} d={`M0 ${y}H720`} />)}
       </g>
-
-      <path
-        pathLength={1}
-        className="draw"
-        d="M0 318 C 120 306 210 290 320 272 C 430 254 540 262 640 246"
-        stroke="currentColor"
-        strokeWidth={1.75}
-        opacity={0.85}
-      />
-
-      <g stroke="currentColor" strokeWidth={1} opacity={0.28}>
-        <path pathLength={1} className="draw" d="M24 352 q22 -8 44 0 t44 0" />
-        <path pathLength={1} className="draw" d="M150 372 q22 -8 44 0 t44 0" />
-        <path pathLength={1} className="draw" d="M330 388 q22 -8 44 0 t44 0" />
-        <path pathLength={1} className="draw" d="M470 362 q22 -8 44 0 t44 0" />
-        <path pathLength={1} className="draw" d="M540 396 q22 -8 44 0 t44 0" />
-        <path pathLength={1} className="draw" d="M60 398 q22 -8 44 0 t44 0" />
+      <g stroke="var(--color-paper)" strokeWidth="2" opacity="0.13">
+        <path d="M0 98C140 74 259 145 420 108S578 71 720 53" />
+        <path d="M56 0L126 206M194 0L226 281M316 0L352 249M451 0L471 194M621 0L590 149" />
+        <path d="M0 167C135 140 259 208 413 172S577 121 720 105" />
       </g>
-
-      <g stroke="var(--color-brass)" strokeWidth={1} opacity={0.6}>
-        {pins.map((pin) => {
-          const active = pin.name === activeName;
-          const dimmed = Boolean(activeName) && !active;
-          return (
-            <line
-              key={pin.name}
-              x1={office.x}
-              y1={office.y}
-              x2={pin.x}
-              y2={pin.y}
-              strokeDasharray="3 6"
-              opacity={dimmed ? 0.25 : active ? 1 : 0.6}
-              strokeWidth={active ? 1.6 : 1}
-            />
-          );
-        })}
-        <line
-          x1={office.x}
-          y1={office.y}
-          x2={office.x}
-          y2={office.y}
-          strokeDasharray="3 6"
-        />
+      <path d="M0 250 C60 252 90 255 130 284 S196 341 254 328 S356 295 417 274 S515 244 568 233 S659 230 720 210" stroke="var(--color-paper)" strokeWidth="1.5" opacity="0.4" />
+      <path d="M110 217C155 219 181 291 226 290S305 267 347 255S423 218 465 200S551 164 592 149" stroke="var(--color-brass-soft)" strokeWidth="2" strokeDasharray="5 7" opacity="0.65" />
+      <text x="487" y="367" fill="var(--color-paper)" opacity="0.55" fontSize="17" letterSpacing="5">MARMARA DENİZİ</text>
+      <g transform="translate(680 20)" stroke="var(--color-paper)" opacity="0.65">
+        <path d="M0 35V0M-5 9L0 0L5 9" strokeWidth="1.5" />
+        <text x="0" y="54" textAnchor="middle" fill="var(--color-paper)" stroke="none" fontSize="12">K</text>
       </g>
-
-      {pins.map((pin) => {
-        const active = pin.name === activeName;
-        const dimmed = Boolean(activeName) && !active;
+      {regions.map((region) => {
+        const active = region.slug === highlight;
         return (
-          <g key={pin.name} opacity={dimmed ? 0.32 : 1}>
-            {active ? (
-              <circle
-                cx={pin.x}
-                cy={pin.y}
-                r={19}
-                stroke="var(--color-brass)"
-                strokeWidth={1}
-                opacity={0.55}
-              />
-            ) : null}
-            <circle
-              cx={pin.x}
-              cy={pin.y}
-              r={active ? 12 : 9}
-              stroke="currentColor"
-              strokeWidth={active ? 1.4 : 1}
-              opacity={active ? 0.9 : 0.35}
-            />
-            <circle
-              cx={pin.x}
-              cy={pin.y}
-              r={active ? 5 : 3.5}
-              fill="var(--color-brass)"
-            />
-            <text
-              x={pin.x + pin.dx}
-              y={pin.y + pin.dy}
-              textAnchor={pin.anchor}
-              fontSize={11}
-              fontWeight={active ? 600 : 400}
-              letterSpacing={2.4}
-              fill="currentColor"
-              opacity={active ? 1 : 0.85}
-            >
-              {pin.name}
-            </text>
+          <g key={region.slug}>
+            {active ? <circle cx={region.x} cy={region.y} r="25" fill="var(--color-brass)" fillOpacity="0.12" stroke="var(--color-brass-soft)" strokeOpacity="0.5" /> : null}
+            <circle cx={region.x} cy={region.y} r={active ? 11 : 6} fill={active ? "var(--color-brass-soft)" : "var(--color-paper)"} />
+            <circle cx={region.x} cy={region.y} r="3" fill="var(--color-brand)" />
+            <text x={region.x} y={region.labelY} textAnchor="middle" fill={active ? "var(--color-brass-soft)" : "var(--color-paper)"} fontSize={active ? 22 : 18} fontWeight={active ? 600 : 400}>{region.name}</text>
+            {region.slug === "bakirkoy" ? <text x={region.x} y="87" textAnchor="middle" fill="var(--color-brass-soft)" fontSize="10" letterSpacing="2">ELEGANCE · MERKEZ</text> : null}
           </g>
         );
       })}
-
-      <g opacity={activeName && !centreActive ? 0.45 : 1}>
-        {centreActive ? (
-          <circle
-            cx={office.x}
-            cy={office.y}
-            r={30}
-            stroke="var(--color-brass)"
-            strokeWidth={1.2}
-            opacity={0.6}
-          />
-        ) : null}
-        <rect
-          x={office.x - 6}
-          y={office.y - 6}
-          width={12}
-          height={12}
-          fill="var(--color-brass)"
-        />
-        <rect
-          x={office.x - 12}
-          y={office.y - 12}
-          width={24}
-          height={24}
-          stroke="currentColor"
-          strokeWidth={1}
-          opacity={0.4}
-        />
-        <text
-          x={office.x}
-          y={office.y - 26}
-          textAnchor="middle"
-          fontSize={11}
-          letterSpacing={2.4}
-          fill="currentColor"
-          opacity={0.9}
-        >
-          BAKIRKÖY · MERKEZ
-        </text>
-      </g>
-
-      <g stroke="currentColor" strokeWidth={1} opacity={0.65}>
-        <line x1={576} y1={86} x2={576} y2={34} />
-        <path d="M576 34 L570 48 L582 48 Z" fill="currentColor" opacity={0.8} />
-        <text
-          x={576}
-          y={106}
-          textAnchor="middle"
-          fontSize={11}
-          letterSpacing={2}
-          fill="currentColor"
-        >
-          K
-        </text>
-      </g>
-
-      <g stroke="currentColor" strokeWidth={1} opacity={0.5}>
-        <line x1={40} y1={396} x2={152} y2={396} />
-        {[40, 68, 96, 124, 152].map((x) => (
-          <line key={x} x1={x} y1={392} x2={x} y2={400} />
-        ))}
-      </g>
     </svg>
   );
 }

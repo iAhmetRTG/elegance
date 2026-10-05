@@ -43,15 +43,14 @@ export default function ServicesPage() {
                 <span className="relative block aspect-[4/3] overflow-hidden">
                   <Image
                     src={service.cover}
-                    alt=""
+                    alt={service.coverAlt}
                     fill
-                    sizes="(max-width: 768px) 100vw, 33vw"
+                    sizes="(max-width: 767px) calc(100vw - 2.5rem), (max-width: 1023px) calc(50vw - 2rem), (max-width: 1311px) calc(33.333vw - 2.25rem), 24.25rem"
                     className="object-cover transition-transform duration-[900ms] ease-out group-hover:scale-[1.04]"
                   />
-                  <span
-                    aria-hidden="true"
-                    className="absolute inset-0 bg-brass/20 mix-blend-multiply transition-opacity duration-500 group-hover:opacity-0"
-                  />
+                  <span className="absolute inset-x-0 bottom-0 bg-ink/75 px-3 py-2 text-[11px] leading-snug text-paper/90">
+                    {service.coverCaption}
+                  </span>
                   <span className="absolute left-3 top-3 flex items-center gap-2.5">
                     <span className="bg-ink/85 px-2.5 py-1.5 text-[10px] font-semibold uppercase tracking-[0.2em] text-paper backdrop-blur-sm">
                       {String(index + 1).padStart(2, "0")}
@@ -91,7 +90,8 @@ export default function ServicesPage() {
               Deneyim alanlarımız
             </h2>
             <p className="mt-5 max-w-sm text-[15px] leading-relaxed text-muted">
-              Şirket sunum dosyasında tanımlanan çalışma profili.
+              Konut, otel, endüstriyel tesis ve ticari yapı projelerinde
+              deneyimli ekibimizle hizmet veriyoruz.
             </p>
             <Button href="/teknik-standartlar" variant="outline" className="mt-8">
               Teknik standartlar
@@ -110,11 +110,9 @@ export default function ServicesPage() {
               ))}
             </ul>
             <p className="mt-6 max-w-[var(--measure)] text-[13px] leading-relaxed text-muted">
-              Aynı gün keşif yaptığımız bölgeler Bakırköy, Yeşilköy, Ataköy,
-              Yeşilyurt ve Florya&apos;dır; İstanbul&apos;un diğer ilçelerinde
-              ve şehir dışında da proje üstleniyoruz. Arşivdeki projelerin
-              konumları Etiler (İstanbul) ve Karaburun (İzmir) olup bu
-              bölgelerde yürütülmüş iş olarak gösterilmez.
+              Bakırköy, Yeşilköy, Ataköy, Yeşilyurt ve Florya&apos;da aynı gün
+              keşif yapıyoruz. İstanbul&apos;un diğer ilçelerinde ve şehir
+              dışında da proje üstleniyoruz.
             </p>
           </div>
         </div>

@@ -124,6 +124,8 @@
 
 @theme {
   --color-ink: #12100a;
+  --color-brand: #0c377b;
+  --color-brand-soft: #16458a;
   --color-ink-soft: #1c1911;
   --color-ink-line: #322c1d;
   --color-paper: #f4efe3;
@@ -131,9 +133,9 @@
   --color-paper-deep: #e9e1cf;
   --color-sand: #d6cbb2;
   --color-muted: #57503c;
-  --color-brass: #b1833f;
-  --color-brass-deep: #7a571f;
-  --color-brass-soft: #e0c48c;
+  --color-brass: #c5a15e;
+  --color-brass-deep: #765a27;
+  --color-brass-soft: #e5cb94;
   --color-brass-100: #f2e2bd;
 }
 
@@ -174,11 +176,11 @@ body {
 .foil {
   background-image: linear-gradient(
     102deg,
-    #8a642a 0%,
-    #d9b97e 26%,
-    #f6e7c1 46%,
-    #b1833f 64%,
-    #8a642a 100%
+    #b99454 0%,
+    #e4c588 26%,
+    #fff0c9 46%,
+    #c5a15e 64%,
+    #b99454 100%
   );
   -webkit-background-clip: text;
   background-clip: text;
@@ -204,8 +206,8 @@ body {
   height: 1px;
   background-image: linear-gradient(
     90deg,
-    rgb(177 131 63 / 0.95) 0%,
-    rgb(177 131 63 / 0.3) 38%,
+    rgb(197 161 94 / 0.95) 0%,
+    rgb(197 161 94 / 0.3) 38%,
     transparent 100%
   );
 }
@@ -313,11 +315,11 @@ body {
   margin-inline: -5px;
   padding: 6px 14px;
   border-radius: 999px;
-  border: 1px solid rgb(177 131 63 / 0.42);
+  border: 1px solid rgb(197 161 94 / 0.42);
   background-image: linear-gradient(
     180deg,
-    rgb(177 131 63 / 0.14),
-    rgb(177 131 63 / 0.07)
+    rgb(197 161 94 / 0.14),
+    rgb(197 161 94 / 0.07)
   );
   color: var(--color-brass-deep);
   transition:
@@ -332,7 +334,7 @@ body {
 .nav-glow-ink:focus-visible {
   border-color: rgb(122 87 31 / 0.68);
   color: #5f4316;
-  box-shadow: 0 0 14px -4px rgb(177 131 63 / 0.45);
+  box-shadow: 0 0 14px -4px rgb(197 161 94 / 0.45);
 }
 
 .vertical-rl {
@@ -400,8 +402,8 @@ body {
    Renkler projedeki tasarım sistemi token'larından gelir:
    --seq-bg zemini, --seq-ink metni, --seq-accent vurguyu taşır. */
 .sequence-section {
-  --seq-bg: var(--color-ink);
-  --seq-bg-soft: color-mix(in oklab, var(--color-ink) 94%, var(--color-paper));
+  --seq-bg: var(--color-brand);
+  --seq-bg-soft: color-mix(in oklab, var(--color-brand) 94%, var(--color-paper));
   --seq-ink: var(--color-paper);
   --seq-muted: rgb(244 239 227 / 0.58);
   --seq-accent: var(--color-brass);
@@ -477,7 +479,7 @@ body {
   transform: translateX(-50%);
   background: radial-gradient(
     50% 50% at 50% 50%,
-    rgb(177 131 63 / 0.16) 0%,
+    rgb(197 161 94 / 0.16) 0%,
     transparent 72%
   );
   pointer-events: none;
@@ -723,7 +725,7 @@ html:not(.js) .sequence-section__frames > :last-child img {
 .hero-spotlight {
   background: radial-gradient(
     340px circle at var(--mx, 72%) var(--my, 24%),
-    rgb(177 131 63 / 0.2),
+    rgb(197 161 94 / 0.2),
     transparent 68%
   );
   opacity: 0;

@@ -7,8 +7,7 @@ import { PageHeader } from "@/components/PageHeader";
 import { Button } from "@/components/Button";
 import { SectionLabel } from "@/components/SectionLabel";
 import { Icon } from "@/components/Icon";
-import { AreaMap } from "@/components/AreaMap";
-import { CornerTicks } from "@/components/CornerTicks";
+import { LocationMap, officeMapsHref } from "@/components/LocationMap";
 
 export const metadata: Metadata = {
   title: "İletişim | Ücretsiz Keşif ve Teklif",
@@ -18,9 +17,7 @@ export const metadata: Metadata = {
 };
 
 export default function ContactPage() {
-  const mapsHref = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
-    `${site.address.street}, ${site.address.district}, ${site.address.city}`,
-  )}`;
+
 
   return (
     <>
@@ -135,7 +132,7 @@ export default function ContactPage() {
           </div>
 
           <div className="lg:col-span-6 lg:col-start-7">
-            <div className="relative overflow-hidden border border-ink/15 bg-ink p-8 text-paper lg:p-10">
+            <div className="relative overflow-hidden border border-ink/15 bg-brand p-8 text-paper lg:p-10">
               <div
                 className="blueprint-dark absolute inset-0 opacity-70"
                 aria-hidden="true"
@@ -212,7 +209,7 @@ export default function ContactPage() {
               {coverage.coreNote} {coverage.widerNote}
             </p>
             <Button
-              href={mapsHref}
+              href={officeMapsHref}
               variant="outline"
               icon="pin"
               external
@@ -223,19 +220,7 @@ export default function ContactPage() {
           </div>
 
           <div className="lg:col-span-7">
-            <div className="relative border border-ink/15 bg-ivory p-3">
-              <CornerTicks className="text-brass/60" />
-              <AreaMap
-                highlight="bakirkoy"
-                className="h-72 w-full text-ink/70 sm:h-80"
-              />
-              <div className="flex items-center justify-between border-t border-ink/10 px-1 pb-1 pt-3">
-                <span className="eyebrow text-muted">Hizmet alanı · 5 ilçe</span>
-                <span className="eyebrow text-brass-deep">
-                  Merkez: Bakırköy
-                </span>
-              </div>
-            </div>
+            <LocationMap />
           </div>
         </div>
       </section>

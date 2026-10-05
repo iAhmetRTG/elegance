@@ -7,16 +7,7 @@ import { Icon } from "./Icon";
 
 export function Footer() {
   return (
-    <footer data-fab-hide className="border-t border-paper/10 bg-ink text-paper">
-      <div className="relative h-20 overflow-hidden border-b border-paper/10 lg:h-36">
-        <span
-          aria-hidden="true"
-          className="ghost absolute -bottom-[0.22em] left-1/2 -translate-x-1/2 select-none whitespace-nowrap font-display italic text-[26vw] leading-none"
-        >
-          Elegance
-        </span>
-      </div>
-
+    <footer data-fab-hide className="border-t border-paper/10 bg-brand text-paper">
       <div className="mx-auto max-w-7xl px-5 pb-[calc(7rem_+_env(safe-area-inset-bottom))] pt-16 lg:px-8 lg:pb-16 lg:pt-20">
         <div className="grid gap-12 lg:grid-cols-12 lg:gap-8">
           <div className="lg:col-span-4">

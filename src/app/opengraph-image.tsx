@@ -15,14 +15,14 @@ export default function OpengraphImage() {
           display: "flex",
           flexDirection: "column",
           justifyContent: "space-between",
-          backgroundColor: "#131109",
+          backgroundColor: "#0c377b",
           color: "#f4efe3",
           padding: 72,
           fontFamily: "sans-serif",
         }}
       >
         <div style={{ display: "flex", alignItems: "center", gap: 18 }}>
-          <div style={{ width: 18, height: 18, backgroundColor: "#b1833f" }} />
+          <div style={{ width: 18, height: 18, backgroundColor: "#c5a15e" }} />
           <div style={{ fontSize: 36, fontStyle: "italic" }}>Elegance</div>
           <div style={{ fontSize: 18, letterSpacing: 10, color: "#f4efe3aa" }}>
             İNŞAAT

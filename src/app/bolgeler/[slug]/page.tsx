@@ -12,8 +12,8 @@ import { JsonLd } from "@/components/JsonLd";
 import { ProjectCard } from "@/components/ProjectCard";
 import { Reveal } from "@/components/Reveal";
 import { CtaBand } from "@/components/CtaBand";
-import { AreaMap } from "@/components/AreaMap";
-import { CornerTicks } from "@/components/CornerTicks";
+import { LocationMap } from "@/components/LocationMap";
+import { NeighborhoodIllustration } from "@/components/NeighborhoodIllustration";
 
 /* Hizmet bölgesi sayfalarında gösterilen geçmiş iş kanıtı. Bu projeler
    Etiler (İstanbul) ve Karaburun (İzmir) konumlarındadır; sayfanın
@@ -121,13 +121,27 @@ export default async function DistrictPage({
           <div className="lg:col-span-5">
             <SectionLabel no="—">Konum</SectionLabel>
             <h2 className="mt-5 font-display text-4xl leading-tight lg:text-5xl">
-              {district.name} nerede?
+              {district.slug === "bakirkoy" ? <>Bakırköy&apos;de,<br />size yakınız.</> : `${district.name} için yerinde keşif.`}
             </h2>
             <p className="mt-6 max-w-md leading-relaxed text-muted">
-              Merkezimiz Bakırköy&apos;de; {district.name} dahil beş bölgeye aynı
-              gün keşfe geliyoruz. Haritada {district.name} işaretli.{" "}
-              {coverage.widerNote}
+              {district.slug === "bakirkoy" ? (
+                <>Merkezimiz Zuhuratbaba&apos;da. Bakırköy ve çevresindeki yapınız
+                  için aynı gün keşif planlıyor, ilk değerlendirmeyi yerinde yapıyoruz.</>
+              ) : (
+                <>Bakırköy&apos;deki merkezimizden {district.name} ve çevresine aynı
+              gün keşfe geliyoruz. Yapınızı yerinde inceleyip projenizin
+              ilk adımını birlikte planlıyoruz.{" "}
+              {coverage.widerNote}</>
+              )}
             </p>
+            {district.slug === "bakirkoy" ? (
+              <div className="mt-8 border-l border-brass/60 pl-5">
+                <p className="text-xs font-semibold uppercase tracking-[0.16em] text-brass-deep">Merkez ofis</p>
+                <p className="mt-3 max-w-sm text-sm leading-relaxed text-muted">
+                  {site.address.street}<br />{site.address.district} / {site.address.city}
+                </p>
+              </div>
+            ) : (
             <ul className="mt-8 flex flex-wrap gap-2.5">
               {district.landmarks.map((landmark) => (
                 <li
@@ -138,23 +152,18 @@ export default async function DistrictPage({
                 </li>
               ))}
             </ul>
+            )}
             <Button href="/iletisim" variant="outline" className="mt-9">
               Keşif için iletişime geçin
             </Button>
           </div>
 
           <div className="lg:col-span-7">
-            <div className="relative border border-ink/15 bg-ivory p-3">
-              <CornerTicks className="text-brass/60" />
-              <AreaMap
-                highlight={district.slug}
-                className="h-72 w-full text-ink/70 sm:h-80"
-              />
-              <div className="flex items-center justify-between border-t border-ink/10 px-1 pb-1 pt-3">
-                <span className="eyebrow text-muted">Hizmet alanı</span>
-                <span className="eyebrow text-brass-deep">{district.name}</span>
-              </div>
-            </div>
+            {district.slug === "bakirkoy" ? (
+              <NeighborhoodIllustration />
+            ) : (
+              <LocationMap highlight={district.slug} name={district.name} />
+            )}
           </div>
         </div>
       </section>
