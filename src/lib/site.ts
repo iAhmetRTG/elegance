@@ -10,6 +10,7 @@ export const site = {
     "İstanbul'da kentsel dönüşüm, kat karşılığı ve özel taahhüt projeleri. Bakırköy, Yeşilköy, Ataköy, Yeşilyurt ve Florya'da aynı gün keşif; İstanbul'un diğer ilçelerinde ve şehir dışında da proje üstleniyoruz.",
   phoneDisplay: "0535 505 01 14",
   phone: "+905355050114",
+  email: "info@elegancemimarlik.com",
   whatsappNumber: "905355050114",
   address: {
     street: "Zuhuratbaba Mah. Zuhuratbaba Cad. No: 5 İç Kapı No: 2",
@@ -62,6 +63,7 @@ export const workProfile = [
 ];
 
 export const telHref = `tel:${site.phone}`;
+export const mailHref = `mailto:${site.email}`;
 
 export function waLink(
   message = "Merhabalar",

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { footerNav, site, telHref, waLink } from "@/lib/site";
+import { footerNav, site, telHref, mailHref, waLink } from "@/lib/site";
 import { services } from "@/lib/services";
 import { districts } from "@/lib/districts";
 import { Logo } from "./Logo";
@@ -31,6 +31,13 @@ export function Footer() {
               >
                 <Icon name="whatsapp" className="h-4 w-4 text-brass" />
                 WhatsApp
+              </a>
+              <a
+                href={mailHref}
+                className="flex items-center gap-3 text-paper/80 transition-colors hover:text-paper"
+              >
+                <Icon name="mail" className="h-4 w-4 shrink-0 text-brass" />
+                <span className="min-w-0 [overflow-wrap:anywhere]">{site.email}</span>
               </a>
               <p className="flex items-start gap-3 text-paper/80">
                 <Icon name="pin" className="mt-0.5 h-4 w-4 shrink-0 text-brass" />

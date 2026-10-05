@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { PageHeader } from "@/components/PageHeader";
-import { site, telHref } from "@/lib/site";
+import { site, telHref, mailHref } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "KVKK Aydınlatma Metni",
@@ -26,14 +26,14 @@ export default function KvkkNoticePage() {
             <h2 className="font-display text-2xl text-ink">Veri sorumlusu</h2>
             <p className="mt-4">
               Veri sorumlusu {site.legalName}&apos;dir. Bize <a className="text-ink underline underline-offset-4" href={telHref}>{site.phoneDisplay}</a>
-              {" "}numarasından ulaşabilirsiniz. İş adresimiz: {site.address.street}, {site.address.district}/{site.address.city}.
+              {" "}numarasından veya <a className="text-ink underline underline-offset-4 [overflow-wrap:anywhere]" href={mailHref}>{site.email}</a> adresinden ulaşabilirsiniz. İş adresimiz: {site.address.street}, {site.address.district}/{site.address.city}.
             </p>
           </section>
 
           <section>
             <h2 className="font-display text-2xl text-ink">İşlenen veriler ve toplama yöntemi</h2>
             <p className="mt-4">
-              Telefon veya WhatsApp üzerinden bizimle iletişime geçtiğinizde paylaştığınız ad, telefon numarası, proje ve taşınmaza ilişkin açıklamalar ile görüşme veya yazışma içeriği işlenebilir. Bu bilgiler, seçtiğiniz iletişim kanalı üzerinden elektronik veya sözlü olarak doğrudan sizden alınır. Lütfen ilk iletişimde gerekli olmayan kimlik belgesi, sağlık bilgisi veya başka hassas bilgileri göndermeyin.
+              Telefon, WhatsApp veya e-posta üzerinden bizimle iletişime geçtiğinizde paylaştığınız ad, telefon numarası, e-posta adresi, proje ve taşınmaza ilişkin açıklamalar ile görüşme veya yazışma içeriği işlenebilir. Bu bilgiler, seçtiğiniz iletişim kanalı üzerinden elektronik veya sözlü olarak doğrudan sizden alınır. Lütfen ilk iletişimde gerekli olmayan kimlik belgesi, sağlık bilgisi veya başka hassas bilgileri göndermeyin.
             </p>
             <p className="mt-4">
               Site ziyaretinde barındırma ve güvenlik altyapısında IP adresi, ziyaret zamanı, istenen sayfa ve teknik erişim kayıtları oluşabilir. Sitede kullanıcı hesabı veya bilgi toplayan bir iletişim formu bulunmaz.

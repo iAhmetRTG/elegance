@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { coverage, site, telHref, waLink } from "@/lib/site";
+import { coverage, site, telHref, mailHref, waLink } from "@/lib/site";
 import { waTopicLink, waTopics } from "@/lib/wa";
 import { districts } from "@/lib/districts";
 import { PageHeader } from "@/components/PageHeader";
@@ -12,7 +12,7 @@ import { LocationMap, officeMapsHref } from "@/components/LocationMap";
 export const metadata: Metadata = {
   title: "İletişim | Ücretsiz Keşif ve Teklif",
   description:
-    "Elegance İnşaat ile iletişime geçin: telefon, WhatsApp ve adres bilgileri. Bakırköy, Yeşilköy, Ataköy, Yeşilyurt ve Florya'da aynı gün keşif; İstanbul genelinde ve şehir dışında proje üstleniyoruz.",
+    "Elegance İnşaat ile iletişime geçin: telefon, WhatsApp, e-posta ve adres bilgileri. Bakırköy, Yeşilköy, Ataköy, Yeşilyurt ve Florya'da aynı gün keşif; İstanbul genelinde ve şehir dışında proje üstleniyoruz.",
   alternates: { canonical: "/iletisim" },
 };
 
@@ -30,7 +30,7 @@ export default function ContactPage() {
             <em className="italic text-brass-deep">bir adım</em> kaldı.
           </>
         }
-        intro="Telefonla arayın ya da WhatsApp'tan yazın; projenizin durumunu dinleyip en kısa sürede keşif randevusu oluşturuyoruz."
+        intro="Telefonla arayın, WhatsApp'tan yazın veya e-posta gönderin; projenizin durumunu dinleyip en kısa sürede keşif randevusu oluşturuyoruz."
       />
 
       <section className="border-b border-ink/10">
@@ -64,6 +64,16 @@ export default function ContactPage() {
                 </span>
               </a>
 
+              <a href={mailHref} className="group block">
+                <span className="eyebrow flex items-center gap-2.5 text-muted">
+                  <Icon name="mail" className="h-4 w-4 text-brass" />
+                  E-posta
+                </span>
+                <span className="mt-2 block text-xl transition-colors [overflow-wrap:anywhere] group-hover:text-brass-deep sm:text-2xl">
+                  {site.email}
+                </span>
+              </a>
+
               <div>
                 <span className="eyebrow flex items-center gap-2.5 text-muted">
                   <Icon name="pin" className="h-4 w-4 text-brass" />
@@ -86,7 +96,7 @@ export default function ContactPage() {
             </div>
 
             <p className="mt-8 max-w-md text-sm leading-relaxed text-muted">
-              Telefon ve WhatsApp üzerinden ilettiğiniz taleplerin
+              Telefon, WhatsApp ve e-posta üzerinden ilettiğiniz taleplerin
               işlenmesine ilişkin bilgi için{" "}
               <Link
                 href="/kvkk-aydinlatma-metni"
