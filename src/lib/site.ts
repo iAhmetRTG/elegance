@@ -64,7 +64,7 @@ export const workProfile = [
 export const telHref = `tel:${site.phone}`;
 
 export function waLink(
-  message = "Merhaba, inşaat projem hakkında bilgi almak istiyorum.",
+  message = "Merhabalar",
 ) {
   return `https://wa.me/${site.whatsappNumber}?text=${encodeURIComponent(message)}`;
 }
