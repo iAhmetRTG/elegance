@@ -23,7 +23,7 @@ export default function CookiePolicyPage() {
           <section>
             <h2 className="font-display text-2xl text-ink">Çerez kullanımı</h2>
             <p className="mt-4">
-              Bu sitede reklam, kişiselleştirme veya ziyaretçi analitiği amacıyla çerez yerleştiren bir araç kullanılmıyor. Site, bu amaçlarla tarayıcınızda veri saklamıyor. Bu nedenle bu amaçlara yönelik bir çerez rızası istenmiyor. Barındırma altyapısı, sitenin sunulması ve güvenliği için teknik erişim kayıtları oluşturabilir.
+              Sitenin kendi kodunda reklam, kişiselleştirme veya ziyaretçi analitiği amacıyla çerez yerleştiren bir araç kullanılmıyor. İletişim sayfasındaki gömülü Google Haritalar, Google&apos;ın kendi çerez ve veri işleme kurallarına tabidir. Barındırma altyapısı, sitenin sunulması ve güvenliği için teknik erişim kayıtları oluşturabilir.
             </p>
             <p className="mt-4">
               İleride analitik veya reklam teknolojisi eklenirse, bu sayfa güncellenecek ve gerekli durumlarda söz konusu teknoloji çalışmadan önce ayrı bir tercih mekanizması sunulacaktır.
@@ -32,7 +32,7 @@ export default function CookiePolicyPage() {
           <section>
             <h2 className="font-display text-2xl text-ink">Dış hizmetler</h2>
             <p className="mt-4">
-              WhatsApp ve Google Haritalar siteye gömülü değildir. Bu hizmetlere yalnızca ilgili bağlantıya tıkladığınızda geçersiniz; açılan hizmetin kendi gizlilik ve çerez kuralları geçerlidir. Telefon bağlantısı cihazınızın arama uygulamasını açar.
+              İletişim sayfasında merkez ofisimizin konumunu gösteren Google Haritalar yer alır. Harita yüklendiğinde tarayıcınız Google sunucularına bağlanır; Google&apos;ın gizlilik ve çerez kuralları geçerlidir. WhatsApp siteye gömülü değildir; ilgili bağlantıya tıkladığınızda bu hizmete geçersiniz. GojGoj bağlantısı ajansın web sitesini yeni sekmede açar. Telefon bağlantısı cihazınızın arama uygulamasını açar.
             </p>
           </section>
           <section>

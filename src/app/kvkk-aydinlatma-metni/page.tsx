@@ -53,7 +53,7 @@ export default function KvkkNoticePage() {
           <section>
             <h2 className="font-display text-2xl text-ink">Aktarım ve saklama</h2>
             <p className="mt-4">
-              Verileriniz, talebin yanıtlanması ve sistemlerin işletilmesi için kullanılan mesajlaşma ve barındırma hizmet sağlayıcılarıyla; kanuni zorunluluk halinde yetkili kamu kurumlarıyla, yalnızca gerekli olduğu ölçüde paylaşılabilir. WhatsApp&apos;ı seçerseniz mesajlarınız ayrıca WhatsApp hizmeti üzerinden iletilir. Google Haritalar bağlantısını açarsanız bu ayrı hizmetin veri işleme koşulları geçerli olur.
+              Verileriniz, talebin yanıtlanması ve sistemlerin işletilmesi için kullanılan mesajlaşma ve barındırma hizmet sağlayıcılarıyla; kanuni zorunluluk halinde yetkili kamu kurumlarıyla, yalnızca gerekli olduğu ölçüde paylaşılabilir. WhatsApp&apos;ı seçerseniz mesajlarınız ayrıca WhatsApp hizmeti üzerinden iletilir. İletişim sayfasındaki gömülü Google haritası yüklendiğinde veya Google Haritalar bağlantısını açtığınızda bu ayrı hizmetin veri işleme koşulları geçerli olur.
             </p>
             <p className="mt-4">
               İletişim kayıtları talebin sonuçlandırılması ve olası hukuki hakların korunması için gerekli süre boyunca; teknik kayıtlar ise güvenlik ve işletim ihtiyacı sürdüğü müddetçe tutulur. Süre sonunda ilgili kayıtlar mevzuata uygun şekilde silinir, yok edilir veya anonim hale getirilir.

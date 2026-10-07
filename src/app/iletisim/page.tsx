@@ -7,7 +7,7 @@ import { PageHeader } from "@/components/PageHeader";
 import { Button } from "@/components/Button";
 import { SectionLabel } from "@/components/SectionLabel";
 import { Icon } from "@/components/Icon";
-import { LocationMap, officeMapsHref } from "@/components/LocationMap";
+import { officeMapsHref } from "@/components/LocationMap";
 import { JsonLd } from "@/components/JsonLd";
 
 const contactTitle = "Bakırköy İletişim ve Yol Tarifi";
@@ -244,7 +244,7 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* Doğrulanmış iş adresi ve hizmet alanı haritası. */}
+      {/* Google işletme kaydındaki merkez ofis konumu. */}
       <section className="border-b border-ink/10 bg-paper-deep/40">
         <div className="mx-auto grid max-w-7xl gap-14 px-5 py-20 lg:grid-cols-12 lg:items-center lg:px-8 lg:py-28">
           <div className="lg:col-span-5">
@@ -272,7 +272,39 @@ export default function ContactPage() {
           </div>
 
           <div className="lg:col-span-7">
-            <LocationMap />
+            <figure className="overflow-hidden border border-ink/15 bg-paper">
+              <div className="flex items-center gap-3 border-b border-ink/10 px-5 py-5 sm:px-6">
+                <span className="flex h-10 w-10 shrink-0 items-center justify-center border border-brass/40 text-brass-deep">
+                  <Icon name="pin" className="h-5 w-5" />
+                </span>
+                <div>
+                  <p className="text-sm font-semibold">{site.displayName}</p>
+                  <p className="mt-1 text-xs text-muted">Zuhuratbaba · Bakırköy, İstanbul</p>
+                </div>
+              </div>
+              <iframe
+                src={site.googleMapsEmbedUrl}
+                title="Elegance İnşaat Bakırköy ofisi — Google Haritalar"
+                width="600"
+                height="450"
+                loading="lazy"
+                allowFullScreen
+                referrerPolicy="strict-origin-when-cross-origin"
+                className="block h-[340px] w-full border-0 sm:h-[420px]"
+              />
+              <figcaption className="flex flex-wrap items-center justify-between gap-3 border-t border-ink/10 px-5 py-4 sm:px-6">
+                <p className="text-xs leading-relaxed text-muted">Merkez ofisimizin Google Haritalar konumu.</p>
+                <a
+                  href={site.googleMapsUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex min-h-11 items-center gap-2 text-sm font-semibold text-brass-deep underline-offset-4 hover:underline"
+                >
+                  Google Haritalar’da aç
+                  <Icon name="arrowUpRight" className="h-4 w-4" />
+                </a>
+              </figcaption>
+            </figure>
           </div>
         </div>
       </section>

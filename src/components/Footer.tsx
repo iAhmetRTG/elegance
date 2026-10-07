@@ -8,7 +8,7 @@ import { Icon } from "./Icon";
 export function Footer() {
   return (
     <footer data-fab-hide className="border-t border-paper/10 bg-brand text-paper">
-      <div className="mx-auto max-w-7xl px-5 pb-[calc(7rem_+_env(safe-area-inset-bottom))] pt-16 lg:px-8 lg:pb-16 lg:pt-20">
+      <div className="mx-auto max-w-7xl px-5 pb-10 pt-16 lg:px-8 lg:pt-20">
         <div className="grid gap-12 lg:grid-cols-12 lg:gap-8">
           <div className="lg:col-span-4">
             <Logo tone="light" variant="stacked" />
@@ -133,18 +133,36 @@ export function Footer() {
             Çerez ve Dış Bağlantılar
           </Link>
         </nav>
-        <p className="mt-6 border-t border-paper/10 pt-5 text-xs leading-relaxed text-paper/60">
-          Bu web sitesi{" "}
+      </div>
+      <div className="border-t border-brass/40 bg-paper text-brand">
+        <div className="mx-auto flex max-w-7xl flex-col gap-6 px-5 pb-[calc(7rem_+_env(safe-area-inset-bottom))] pt-7 sm:flex-row sm:items-center sm:justify-between sm:gap-10 lg:px-8 lg:py-8">
+          <div>
+            <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-brass-deep">
+              Tasarım & geliştirme
+            </p>
+            <p className="mt-3 max-w-md text-[15px] leading-relaxed">
+              Bu web sitesi <span className="font-semibold">GojGoj</span> tarafından
+              tasarlanıp geliştirilmiştir.
+            </p>
+          </div>
           <a
             href="https://gojgoj.com.tr/"
             target="_blank"
             rel="noopener noreferrer"
-            className="font-semibold text-brass-soft underline-offset-4 transition-colors hover:text-paper hover:underline"
+            aria-label="GojGoj web sitesini ziyaret edin (yeni sekmede açılır)"
+            className="group inline-flex min-h-14 w-fit shrink-0 items-center gap-6 outline-offset-8"
           >
-            GojGoj
-          </a>{" "}
-          tarafından hazırlanmıştır.
-        </p>
+            <span>
+              <span className="block text-4xl font-semibold leading-none tracking-[-0.06em] sm:text-[44px]">
+                GojGoj<span className="text-brass-deep">.</span>
+              </span>
+              <span className="mt-2 block text-sm text-brand/75">gojgoj.com.tr</span>
+            </span>
+            <span className="flex h-12 w-12 items-center justify-center rounded-full border border-brand/25 transition-colors group-hover:border-brand group-hover:bg-brand group-hover:text-paper group-focus-visible:bg-brand group-focus-visible:text-paper">
+              <Icon name="arrowUpRight" className="h-5 w-5" />
+            </span>
+          </a>
+        </div>
       </div>
     </footer>
   );

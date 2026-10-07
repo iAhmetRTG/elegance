@@ -37,6 +37,8 @@ export const site = {
   googleBusinessName: "Kentsel Dönüşüm Ofisi - Elegance İnşaat",
   googleMapsUrl:
     "https://www.google.com/maps/place//data=!4m2!3m1!1s0x14cabd087300cf43:0x3ca618f0b33ce47a",
+  googleMapsEmbedUrl:
+    "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3011.939102543808!2d28.868163!3d40.9828143!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14cabd087300cf43%3A0x3ca618f0b33ce47a!2zS2VudHNlbCBEw7Zuw7zFn8O8bSBPZmlzaSAtIEVsZWdhbmNlIMSwbsWfYWF0!5e0!3m2!1str!2str!4v1791378850367!5m2!1str!2str",
   geo: { latitude: 40.9828143, longitude: 28.868163 },
   openingHours,
   hours: openingHours
