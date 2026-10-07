@@ -30,9 +30,11 @@ const faqJsonLd = {
 const websiteJsonLd = {
   "@context": "https://schema.org",
   "@type": "WebSite",
+  "@id": `${site.url}/#website`,
   name: site.displayName,
   url: site.url,
   inLanguage: "tr-TR",
+  publisher: { "@id": `${site.url}/#business` },
 };
 
 export default function HomePage() {

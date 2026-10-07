@@ -15,16 +15,21 @@ function istanbulOpenNow() {
     hour: "2-digit",
     minute: "2-digit",
     hour12: false,
-    weekday: "short",
+    weekday: "long",
   }).formatToParts(new Date());
   const get = (type: string) =>
     parts.find((part) => part.type === type)?.value ?? "";
   const weekday = get("weekday");
   const minutes = Number(get("hour")) * 60 + Number(get("minute"));
-  const workingDay = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].includes(
-    weekday,
+  const hours = site.openingHours.find((schedule) =>
+    schedule.dayOfWeek.includes(weekday),
   );
-  return workingDay && minutes >= 9 * 60 && minutes < 19 * 60;
+  if (!hours) return false;
+  const toMinutes = (time: string) => {
+    const [hour, minute] = time.split(":").map(Number);
+    return hour * 60 + minute;
+  };
+  return minutes >= toMinutes(hours.opens) && minutes < toMinutes(hours.closes);
 }
 
 /* Yalnizca Kentsel Donusum bagi foy vurgusunu tasir; diger baglantilar ince
@@ -271,10 +276,13 @@ export function Header() {
             aria-hidden="true"
           />
           {openNow === null
-            ? "Çalışma saatleri · 09:00 – 19:00"
+            ? "Çalışma saatleri"
             : openNow
-              ? "Şu an açık · 09:00 – 19:00"
-              : "Şu an kapalı · 09:00 – 19:00"}
+              ? "Şu an açık"
+              : "Şu an kapalı"}
+        </p>
+        <p className={`mt-2 text-xs leading-relaxed ${onLight ? "text-muted" : "text-paper/60"}`}>
+          {site.hours}
         </p>
 
         <ul

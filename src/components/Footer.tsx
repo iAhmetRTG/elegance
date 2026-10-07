@@ -39,15 +39,27 @@ export function Footer() {
                 <Icon name="mail" className="h-4 w-4 shrink-0 text-brass" />
                 <span className="min-w-0 [overflow-wrap:anywhere]">{site.email}</span>
               </a>
-              <p className="flex items-start gap-3 text-paper/80">
+              <a
+                href={site.googleMapsUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-start gap-3 text-paper/80 transition-colors hover:text-paper"
+              >
                 <Icon name="pin" className="mt-0.5 h-4 w-4 shrink-0 text-brass" />
                 <span>
-                  {site.address.street}, {site.address.district}/{site.address.city}
+                  {site.address.street}, {site.address.postalCode} {site.address.district}/{site.address.city}
+                  <span className="mt-1 block text-xs text-brass-soft">Google Haritalar’da görüntüle ↗</span>
                 </span>
-              </p>
-              <p className="flex items-center gap-3 text-paper/80">
-                <Icon name="clock" className="h-4 w-4 text-brass" />
-                {site.hours}
+              </a>
+              <p className="flex items-start gap-3 text-paper/80">
+                <Icon name="clock" className="mt-0.5 h-4 w-4 shrink-0 text-brass" />
+                <span>
+                  {site.openingHours.map((hours) => (
+                    <span key={hours.label} className="block">
+                      {hours.label} · {hours.opens} – {hours.closes}
+                    </span>
+                  ))}
+                </span>
               </p>
             </div>
           </div>
@@ -121,6 +133,18 @@ export function Footer() {
             Çerez ve Dış Bağlantılar
           </Link>
         </nav>
+        <p className="mt-6 border-t border-paper/10 pt-5 text-xs leading-relaxed text-paper/60">
+          Bu web sitesi{" "}
+          <a
+            href="https://gojgoj.com.tr/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-semibold text-brass-soft underline-offset-4 transition-colors hover:text-paper hover:underline"
+          >
+            GojGoj
+          </a>{" "}
+          tarafından hazırlanmıştır.
+        </p>
       </div>
     </footer>
   );

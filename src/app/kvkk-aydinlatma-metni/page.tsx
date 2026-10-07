@@ -26,7 +26,7 @@ export default function KvkkNoticePage() {
             <h2 className="font-display text-2xl text-ink">Veri sorumlusu</h2>
             <p className="mt-4">
               Veri sorumlusu {site.legalName}&apos;dir. Bize <a className="text-ink underline underline-offset-4" href={telHref}>{site.phoneDisplay}</a>
-              {" "}numarasından veya <a className="text-ink underline underline-offset-4 [overflow-wrap:anywhere]" href={mailHref}>{site.email}</a> adresinden ulaşabilirsiniz. İş adresimiz: {site.address.street}, {site.address.district}/{site.address.city}.
+              {" "}numarasından veya <a className="text-ink underline underline-offset-4 [overflow-wrap:anywhere]" href={mailHref}>{site.email}</a> adresinden ulaşabilirsiniz. İş adresimiz: {site.address.street}, {site.address.postalCode} {site.address.district}/{site.address.city}.
             </p>
           </section>
 

@@ -2,9 +2,7 @@ import { AreaMap } from "./AreaMap";
 import { Icon } from "./Icon";
 import { serviceAreas, site } from "@/lib/site";
 
-export const officeMapsHref = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
-  `${site.address.street}, ${site.address.district}, ${site.address.city}`,
-)}`;
+export const officeMapsHref = site.googleMapsUrl;
 
 export function LocationMap({ highlight = "bakirkoy", name = "Bakırköy" }: { highlight?: string; name?: string }) {
   return (

@@ -68,10 +68,7 @@ export default async function DistrictPage({
     description: district.summary,
     url: `${site.url}/bolgeler/${district.slug}`,
     provider: {
-      "@type": "GeneralContractor",
-      name: site.legalName,
-      telephone: site.phone,
-      url: site.url,
+      "@id": `${site.url}/#business`,
     },
     areaServed: {
       "@type": "Place",
@@ -138,7 +135,7 @@ export default async function DistrictPage({
               <div className="mt-8 border-l border-brass/60 pl-5">
                 <p className="text-xs font-semibold uppercase tracking-[0.16em] text-brass-deep">Merkez ofis</p>
                 <p className="mt-3 max-w-sm text-sm leading-relaxed text-muted">
-                  {site.address.street}<br />{site.address.district} / {site.address.city}
+                  {site.address.street}<br />{site.address.postalCode} {site.address.district} / {site.address.city}
                 </p>
               </div>
             ) : (

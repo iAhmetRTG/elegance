@@ -66,15 +66,15 @@ export default async function ServicePage({
     description: service.summary,
     url: `${site.url}/hizmetler/${service.slug}`,
     provider: {
-      "@type": "GeneralContractor",
-      name: site.legalName,
-      telephone: site.phone,
-      url: site.url,
+      "@id": `${site.url}/#business`,
     },
-    areaServed: site.districts.map((district) => ({
-      "@type": "City",
-      name: district,
-    })),
+    areaServed: [
+      { "@type": "City", name: site.address.city },
+      ...site.districts.map((district) => ({
+        "@type": "Place",
+        name: district,
+      })),
+    ],
   };
 
   return (

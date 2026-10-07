@@ -1,3 +1,18 @@
+const openingHours = [
+  {
+    label: "Pazartesi – Cumartesi",
+    dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+    opens: "09:00",
+    closes: "18:00",
+  },
+  {
+    label: "Pazar",
+    dayOfWeek: ["Sunday"],
+    opens: "12:00",
+    closes: "18:00",
+  },
+];
+
 export const site = {
   brand: "Elegance",
   brandSuffix: "İnşaat",
@@ -5,9 +20,9 @@ export const site = {
   legalName: "Elegans Mimarlık İnşaat Sanayi ve Ticaret Limited Şirketi",
   url: "https://www.elegancemimarlik.com",
   title:
-    "Elegance İnşaat | İstanbul Kentsel Dönüşüm ve Özel Taahhüt Projeleri",
+    "Bakırköy Kentsel Dönüşüm ve İnşaat | Elegance İnşaat",
   description:
-    "İstanbul'da kentsel dönüşüm, kat karşılığı ve özel taahhüt projeleri. Bakırköy, Yeşilköy, Ataköy, Yeşilyurt ve Florya'da aynı gün keşif; İstanbul'un diğer ilçelerinde ve şehir dışında da proje üstleniyoruz.",
+    "Bakırköy Zuhuratbaba merkezli Elegance İnşaat: İstanbul'da kentsel dönüşüm, kat karşılığı ve özel taahhüt. Bakırköy ve çevresinde ücretsiz keşif ve teklif.",
   phoneDisplay: "0535 505 01 14",
   phone: "+905355050114",
   email: "info@elegancemimarlik.com",
@@ -16,8 +31,17 @@ export const site = {
     street: "Zuhuratbaba Mah. Zuhuratbaba Cad. No: 5 İç Kapı No: 2",
     district: "Bakırköy",
     city: "İstanbul",
+    postalCode: "34140",
+    country: "TR",
   },
-  hours: "Pazartesi – Cumartesi · 09:00 – 19:00",
+  googleBusinessName: "Kentsel Dönüşüm Ofisi - Elegance İnşaat",
+  googleMapsUrl:
+    "https://www.google.com/maps/place//data=!4m2!3m1!1s0x14cabd087300cf43:0x3ca618f0b33ce47a",
+  geo: { latitude: 40.9828143, longitude: 28.868163 },
+  openingHours,
+  hours: openingHours
+    .map(({ label, opens, closes }) => `${label} · ${opens} – ${closes}`)
+    .join(" / "),
   serviceRegion: "İstanbul, Bakırköy ve çevresi",
   districts: ["Bakırköy", "Yeşilköy", "Ataköy", "Yeşilyurt", "Florya"],
 };

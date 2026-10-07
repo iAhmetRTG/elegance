@@ -8,12 +8,29 @@ import { Button } from "@/components/Button";
 import { SectionLabel } from "@/components/SectionLabel";
 import { Icon } from "@/components/Icon";
 import { LocationMap, officeMapsHref } from "@/components/LocationMap";
+import { JsonLd } from "@/components/JsonLd";
+
+const contactTitle = "Bakırköy İletişim ve Yol Tarifi";
+const contactDescription =
+  `Elegance İnşaat: ${site.address.street}, ${site.address.postalCode} Bakırköy/İstanbul. Tel: ${site.phoneDisplay}. Ücretsiz keşif ve yol tarifi.`;
 
 export const metadata: Metadata = {
-  title: "İletişim | Ücretsiz Keşif ve Teklif",
-  description:
-    "Elegance İnşaat ile iletişime geçin: telefon, WhatsApp, e-posta ve adres bilgileri. Bakırköy, Yeşilköy, Ataköy, Yeşilyurt ve Florya'da aynı gün keşif; İstanbul genelinde ve şehir dışında proje üstleniyoruz.",
+  title: contactTitle,
+  description: contactDescription,
   alternates: { canonical: "/iletisim" },
+  openGraph: {
+    type: "website",
+    locale: "tr_TR",
+    siteName: site.displayName,
+    title: `${contactTitle} | ${site.displayName}`,
+    description: contactDescription,
+    url: `${site.url}/iletisim`,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `${contactTitle} | ${site.displayName}`,
+    description: contactDescription,
+  },
 };
 
 export default function ContactPage() {
@@ -21,6 +38,16 @@ export default function ContactPage() {
 
   return (
     <>
+      <JsonLd data={{
+        "@context": "https://schema.org",
+        "@type": "ContactPage",
+        "@id": `${site.url}/iletisim#webpage`,
+        url: `${site.url}/iletisim`,
+        name: `${contactTitle} | ${site.displayName}`,
+        description: contactDescription,
+        inLanguage: "tr-TR",
+        mainEntity: { "@id": `${site.url}/#business` },
+      }} />
       <PageHeader
         label="İletişim"
         breadcrumbs={[{ label: "İletişim" }]}
@@ -79,11 +106,20 @@ export default function ContactPage() {
                   <Icon name="pin" className="h-4 w-4 text-brass" />
                   İş adresi
                 </span>
-                <p className="mt-2 text-lg leading-relaxed">
+                <address className="mt-2 text-lg not-italic leading-relaxed">
                   {site.address.street}
                   <br />
-                  {site.address.district} / {site.address.city}
-                </p>
+                  {site.address.postalCode} {site.address.district} / {site.address.city}
+                </address>
+                <a
+                  href={site.googleMapsUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-3 inline-flex min-h-11 items-center gap-2 text-sm font-semibold text-brass-deep underline-offset-4 hover:underline"
+                >
+                  Google Haritalar’da görüntüle
+                  <Icon name="arrowUpRight" className="h-4 w-4" />
+                </a>
               </div>
 
               <div>
@@ -91,7 +127,13 @@ export default function ContactPage() {
                   <Icon name="clock" className="h-4 w-4 text-brass" />
                   Çalışma saatleri
                 </span>
-                <p className="mt-2 text-lg">{site.hours}</p>
+                <ul className="mt-2 space-y-1 text-lg">
+                  {site.openingHours.map((hours) => (
+                    <li key={hours.label}>
+                      {hours.label} · {hours.opens} – {hours.closes}
+                    </li>
+                  ))}
+                </ul>
               </div>
             </div>
 
@@ -208,12 +250,12 @@ export default function ContactPage() {
           <div className="lg:col-span-5">
             <SectionLabel no="02">Konum</SectionLabel>
             <h2 className="mt-5 font-display text-4xl leading-tight lg:text-5xl">
-              İş adresimiz Bakırköy&apos;de.
+              Zuhuratbaba&apos;daki merkez ofisimiz.
             </h2>
             <p className="mt-6 max-w-md leading-relaxed text-muted">
               {site.address.street}
               <br />
-              {site.address.district} / {site.address.city}
+              {site.address.postalCode} {site.address.district} / {site.address.city}
             </p>
             <p className="mt-5 max-w-md text-[15px] leading-relaxed text-muted">
               {coverage.coreNote} {coverage.widerNote}

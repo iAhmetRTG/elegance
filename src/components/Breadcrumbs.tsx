@@ -1,4 +1,6 @@
 import Link from "next/link";
+import { site } from "@/lib/site";
+import { JsonLd } from "./JsonLd";
 
 export function Breadcrumbs({
   items,
@@ -13,6 +15,20 @@ export function Breadcrumbs({
   const separator = tone === "dark" ? "text-brass" : "text-brass-soft";
 
   return (
+    <>
+    <JsonLd data={{
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Ana Sayfa", item: site.url },
+        ...items.map((item, index) => ({
+          "@type": "ListItem",
+          position: index + 2,
+          name: item.label,
+          ...(item.href ? { item: `${site.url}${item.href}` } : {}),
+        })),
+      ],
+    }} />
     <nav
       aria-label="Sayfa yolu"
       className={`flex flex-wrap items-center gap-2 text-xs uppercase tracking-[0.16em] ${base}`}
@@ -33,5 +49,6 @@ export function Breadcrumbs({
         </span>
       ))}
     </nav>
+    </>
   );
 }

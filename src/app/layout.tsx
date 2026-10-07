@@ -64,9 +64,19 @@ export const viewport: Viewport = {
 const organizationJsonLd = {
   "@context": "https://schema.org",
   "@type": "GeneralContractor",
-  name: site.legalName,
-  alternateName: site.displayName,
+  "@id": `${site.url}/#business`,
+  name: site.displayName,
+  legalName: site.legalName,
+  alternateName: site.googleBusinessName,
   url: site.url,
+  logo: `${site.url}/brand/logo-dark.png`,
+  image: `${site.url}/brand/logo-dark.png`,
+  hasMap: site.googleMapsUrl,
+  sameAs: [site.googleMapsUrl],
+  geo: {
+    "@type": "GeoCoordinates",
+    ...site.geo,
+  },
   telephone: site.phone,
   email: site.email,
   description: site.description,
@@ -75,27 +85,22 @@ const organizationJsonLd = {
     streetAddress: site.address.street,
     addressLocality: site.address.district,
     addressRegion: site.address.city,
-    addressCountry: "TR",
+    postalCode: site.address.postalCode,
+    addressCountry: site.address.country,
   },
-  areaServed: site.districts.map((district) => ({
-    "@type": "City",
-    name: district,
-  })),
-  openingHoursSpecification: [
-    {
-      "@type": "OpeningHoursSpecification",
-      dayOfWeek: [
-        "Monday",
-        "Tuesday",
-        "Wednesday",
-        "Thursday",
-        "Friday",
-        "Saturday",
-      ],
-      opens: "09:00",
-      closes: "19:00",
-    },
+  areaServed: [
+    { "@type": "City", name: site.address.city },
+    ...site.districts.map((district) => ({
+      "@type": "Place",
+      name: district,
+    })),
   ],
+  openingHoursSpecification: site.openingHours.map((hours) => ({
+    "@type": "OpeningHoursSpecification",
+    dayOfWeek: hours.dayOfWeek,
+    opens: hours.opens,
+    closes: hours.closes,
+  })),
   priceRange: "₺₺",
 };
 

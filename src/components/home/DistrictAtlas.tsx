@@ -151,7 +151,7 @@ export function DistrictAtlas({ no = "09" }: { no?: string }) {
                   {site.address.street}
                 </p>
                 <p className="text-[14px] text-muted">
-                  {site.address.district} · {site.address.city}
+                  {site.address.postalCode} {site.address.district} · {site.address.city}
                 </p>
               </div>
               <Link
@@ -164,6 +164,15 @@ export function DistrictAtlas({ no = "09" }: { no?: string }) {
                   className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1.5"
                 />
               </Link>
+              <a
+                href={site.googleMapsUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex min-h-11 items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.2em] text-brass-deep underline-offset-4 hover:underline"
+              >
+                Google Haritalar’da görüntüle
+                <Icon name="arrowUpRight" className="h-4 w-4 shrink-0" />
+              </a>
             </div>
 
           </div>
